@@ -66,54 +66,88 @@ function turnL()
   saveCoords()
 end
 
+local function goFor()
+  local worked = turtle.forward()
+  if(worked)
+    if f == 0 then
+      z = z + 1
+    end
+    
+    if f == 1 then
+      x = x - 1
+    end
+    
+    if f == 2 then
+      z = z - 1
+    end
+    
+    if f == 3 then
+      x = x + 1
+    end
+  end
+  return worked
+end
+
+local function goBack()
+  local worked = turtle.back()
+  if(worked)
+    if f == 0 then
+      z = z - 1
+    end
+    
+    if f == 1 then
+      x = x + 1
+    end
+    
+    if f == 2 then
+      z = z + 1
+    end
+      
+    if f == 3 then
+      x = x - 1
+    end
+  end
+  return worked
+end
+
 local function move(_direct)
   loadPos()
   if _direct == "for" then
-    if f == 0 then
-      z = z + 1
+    if(not goFor()) then
+      print("Stuck...")
+      while(not goFor()) do
+        turtle.attack()
+      end
     end
-    
-    if f == 1 then
-      x = x - 1
-    end
-    
-    if f == 2 then
-      z = z - 1
-    end
-    
-    if f == 3 then
-      x = x + 1
-    end
-    turtle.forward()
   end
   
   if _direct == "back" then
-    if f == 0 then
-      z = z - 1
+    if(not goBack()) then
+      print("Stuck...")
+      while(not goBack()) do
+        turtle.attack()
+      end
     end
-    
-    if f == 1 then
-      x = x + 1
-    end
-    
-    if f == 2 then
-      z = z + 1
-    end
-    
-    if f == 3 then
-      x = x - 1
-    end
-    turtle.back()
   end
   
   if _direct == "up" then
+    if(not turtle.up()) then
+      print("Stuck...")
+      while(not turtle.up()) do
+        turtle.attack()
+      end
+    end
     y = y + 1
-    turtle.up()
   end
   
   if _direct == "down" then
+    if(not turtle.down()) then
+      print("Stuck...")
+      while(not turtle.down()) do
+        turtle.attack()
+      end
+    end
     y = y - 1
-    turtle.down()
   end
   
   saveCoords()
