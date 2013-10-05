@@ -228,7 +228,7 @@ function goTo(_x, _y, _z, _f)
 	if _z == z then
 	  if _x > x then
 	    turnTo(2)
-	  else if _x < x
+	  else if _x < x then
 	    turnTo(1)
 	  end
 	end
@@ -238,7 +238,7 @@ function goTo(_x, _y, _z, _f)
 	if _z == z then
 	  if _x > x then
 	    turnTo(2)
-	  else if _x < x
+	  else if _x < x then
 	    turnTo(1)
 	  end
 	end
@@ -249,7 +249,7 @@ function goTo(_x, _y, _z, _f)
 	  if _x == x then
 	    needY = true
 	  end
-	else if _x < x
+	else if _x < x then
 	  turnTo(1)
 	  go("for", 1, false)
 	  if _x == x then
@@ -258,7 +258,7 @@ function goTo(_x, _y, _z, _f)
 	else
 	  if _y > y then
 	    go("up", 1, false)
-	  else if _y < )
+	  else if _y < ) then
 	    go("for", 1, false)
 	  else
 	    arrived = true
