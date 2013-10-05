@@ -142,7 +142,12 @@ function go(_direction, _dist)
 end
 
 function saveCoords()
-  local File = fs.open("BetterMovementAPI/Coords", "w")
+  local directory = "BetterMovementAPI"
+  if(not fs.isDir()) then
+  fs.makeDir(directory)
+  end
+  
+  local File = fs.open(directory.."/Coords", "w")
   File.writeLine(x)
   File.writeLine(y)
   File.writeLine(z)
