@@ -258,7 +258,7 @@ function goTo(_x, _y, _z, _f)
 	else
 	  if _y > y then
 	    go("up", 1, false)
-	  else if _y < y) then
+	  else if _y < y then
 	    go("for", 1, false)
 	  else
 	    arrived = true
