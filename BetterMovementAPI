@@ -6,6 +6,7 @@ hx = 0
 hy = 0
 hz = 0
 hf = 0
+directory = "BetterMovementAPI"
 
 function setPos(_x, _y, _z, _f)
   x = _x
@@ -23,7 +24,8 @@ function setHome(_x, _y, _z, _f)
   saveHome()
 end
 
-function setHome()
+function setHomeH()
+  loadPos()
   hx = x
   hy = y
   hz = z
@@ -150,7 +152,6 @@ function go(_direction, _dist)
 end
 
 function saveCoords()
-  local directory = "BetterMovementAPI"
   if(not fs.isDir(directory)) then
     fs.makeDir(directory)
   end
@@ -164,7 +165,6 @@ function saveCoords()
 end
 
 function saveHome()
-  local directory = "BetterMovementAPI"
   if(not fs.isDir(directory)) then
     fs.makeDir(directory)
   end
@@ -175,5 +175,19 @@ function saveHome()
   File.writeLine(hz)
   File.writeLine(hf)
   File.close()
+end
+
+function loadPos()
+  if(not fs.exists(directory .. "/Pos")) then 
+    return false 
+  end
+  
+  local File = fs.open(directory .. "/pos", "r")
+  x = tonumber(File.readLine())
+  y = tonumber(File.readLine())
+  z = tonumber(File.readLine())
+  f = tonumber(File.readLine())
+  
+  return true
 end
 
