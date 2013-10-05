@@ -143,8 +143,8 @@ end
 
 function saveCoords()
   local directory = "BetterMovementAPI"
-  if(not fs.isDir()) then
-  fs.makeDir(directory)
+  if(not fs.isDir(directory)) then
+    fs.makeDir(directory)
   end
   
   local File = fs.open(directory.."/Coords", "w")
