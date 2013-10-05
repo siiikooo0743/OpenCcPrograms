@@ -50,11 +50,11 @@ function turnTo(_f)
   print("shortest:"..dif)
   
   if dif > 0 then
-    for i = 0, dif , 1 do
+    for i = 0, math.abs(dif) , 1 do
       turnL()
     end
   elseif dif < 0 then
-    for i = 0, dif , 1 do
+    for i = 0, math.abs(dif) , 1 do
       turnR()
     end
   end
