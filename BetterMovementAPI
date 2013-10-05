@@ -23,6 +23,14 @@ function setHome(_x, _y, _z, _f)
   saveHome()
 end
 
+function setHome()
+  hx = x
+  hy = y
+  hz = z
+  hf = f
+  saveHome()
+end
+
 function turnTo(_f)
   if _f > 3 then return end
   local dif = math.abs(f - _f)
@@ -152,6 +160,20 @@ function saveCoords()
   File.writeLine(y)
   File.writeLine(z)
   File.writeLine(f)
+  File.close()
+end
+
+function saveHome()
+  local directory = "BetterMovementAPI"
+  if(not fs.isDir(directory)) then
+    fs.makeDir(directory)
+  end
+  
+  local File = fs.open(directory.."/Home", "w")
+  File.writeLine(hx)
+  File.writeLine(hy)
+  File.writeLine(hz)
+  File.writeLine(hf)
   File.close()
 end
 
