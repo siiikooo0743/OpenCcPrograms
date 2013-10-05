@@ -121,7 +121,7 @@ end
 
 function go(_direction, _dist)
     
-  if _direction == "rigth" then
+  if _direction == "right" then
     turnR()
   end
   
