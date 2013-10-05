@@ -219,7 +219,8 @@ end
 function goTo(_x, _y, _z, _f)
   local arrived = false
   local needY = false
-  
+  print("x:"..x..";y:"..y..";z:"..z..";f:"..f)
+  print("_x:".._x..";_y:".._y..";_z:".._z..";_f:".._f)
   while not arrived do
     if (not turtle.detect()) or needY then
       if _z > z then
