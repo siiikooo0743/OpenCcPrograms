@@ -46,12 +46,12 @@ function turnTo(_f)
   if dif < -2 then
     dif = dif + 4
   end
-  if(dif > 0)
-    for(i = 0, dif , 1)
+  if dif > 0 then
+    for i = 0, dif , 1 do
       turnL()
     end
-  elseif(dif < 0)
-    for(i = 0, dif , 1)
+  elseif dif < 0 then
+    for i = 0, dif , 1 do
       turnR()
     end
   end
