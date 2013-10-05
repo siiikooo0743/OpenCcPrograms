@@ -39,7 +39,6 @@ function turnTo(_f)
   
   local dif = f - _f
   
-  print("target:".._f..";actual:"..f..";diff:"..dif)
   if dif > 2 then
     dif = dif - 4
   end
@@ -47,7 +46,6 @@ function turnTo(_f)
   if dif < -2 then
     dif = dif + 4
   end
-  print("shortest:"..dif)
   
   if dif > 0 then
     for i = 1, math.abs(dif) , 1 do
