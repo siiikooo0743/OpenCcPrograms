@@ -67,7 +67,7 @@ function turnL()
 end
 
 local function goFor(_mine)
-  if(_mine)
+  if _mine then
     turtle.dig()
   end
   local worked = turtle.forward()
@@ -92,7 +92,7 @@ local function goFor(_mine)
 end
 
 local function goBack(_mine)
-  if(_mine)
+  if _mine then
     turtle.dig()
   end
   local worked = turtle.back()
@@ -117,7 +117,7 @@ local function goBack(_mine)
 end
 
 local function goUp(_mine)
-  if(_mine)
+  if _mine then
     turtle.digUp()
   end
   local worked = turtle.up()
@@ -128,7 +128,7 @@ local function goUp(_mine)
 end
 
 local function goDown(_mine)
-  if(_mine)
+  if _mine then
     turtle.digDown()
   end
   local worked = turtle.down()
