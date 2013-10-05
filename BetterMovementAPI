@@ -216,6 +216,79 @@ function go(_direction, _dist, _mine)
   end
 end
 
+function goTo(_x, _y, _z, _f)
+{
+  local arrived = false
+  local needY = false
+  
+  while not arrived do
+    if (not turtle.detect()) or needY then
+      if _z > z then
+	turnTo(0)
+	go("for", 1, false)
+	if _z == z then
+	  if _x > x then
+	    turnTo(2)
+	  else if _x < x
+	    turnTo(1)
+	  end
+	end
+      else if _z < z
+	turnTo(2)
+	go("for", 1, false)
+	if _z == z then
+	  if _x > x then
+	    turnTo(2)
+	  else if _x < x
+	    turnTo(1)
+	  end
+	end
+      else
+	if _x > x then
+	  turnTo(2)
+	  go("for", 1, false)
+	  if _x == x then
+	    needY = true
+	  end
+	else if _x < x
+	  turnTo(1)
+	  go("for", 1, false)
+	  if _x == x then
+	    needY = true
+	  end
+	else
+	  if _y > y then
+	    go("up", 1, false)
+	  else if _y < )
+	    go("for", 1, false)
+	  else
+	    arrived = true
+	  end
+	end
+      end
+    else
+      if not turtle.detectUp() then
+	go("up", 1, false)
+      else
+	if not turtle.detectDown() then
+	  go("down", 1, false)
+	else
+	  print("STUCK")
+	  while true do
+	    sleep(10)
+	  end
+	end
+      end
+    end
+  end
+  turnTo(_f)
+}
+
+function goHome()
+  loadHome()
+  goTo(hx, hy, hz, hf)
+end
+
 function saveCoords()
   if(not fs.isDir(directory)) then
     fs.makeDir(directory)
