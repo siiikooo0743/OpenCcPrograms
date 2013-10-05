@@ -1,0 +1,145 @@
+x = 0
+y = 0
+z = 0
+f = 0
+hx = 0
+hy = 0
+hz = 0
+hf = 0
+
+function setPos(_x, _y, _z, _f)
+  x = _x
+  y = _y
+  z = _z
+  f = _f
+  saveCoords()
+end
+
+function setHome(_x, _y, _z, _f)
+  hx = _x
+  hy = _y
+  hz = _z
+  hf = _f
+  saveHome()
+end
+
+function turnTo(_f)
+  if _f > 3 then
+    return()
+  end
+  local dif = math.abs(f - _f)
+  if dif < 3 then
+    for(i = 0, dif , 1)
+      turnR()
+    end
+  else
+    turnL()
+  end
+end
+
+function turnR()
+  f = f + 1
+  if(f == 4)then
+    f = 0
+  end
+  turtle.turnRight()
+  saveCoords()
+end
+
+function turnL()
+  f = f - 1
+  if(f == -1)then
+    f = 3
+  end
+  turtle.turnLeft()
+  saveCoords()
+end
+
+local function move(_direct)
+  if _direct == "for" then
+    if f == 0 then
+      z = z + 1
+    end
+    
+    if f == 1 then
+      x = x - 1
+    end
+    
+    if f == 2 then
+      z = z - 1
+    end
+    
+    if f == 3 then
+      x = x + 1
+    end
+    turtle.forward()
+  end
+  
+  if _direct == "back" then
+    if f == 0 then
+      z = z - 1
+    end
+    
+    if f == 1 then
+      x = x + 1
+    end
+    
+    if f == 2 then
+      z = z + 1
+    end
+    
+    if f == 3 then
+      x = x - 1
+    end
+    turtle.back()
+  end
+  
+  if _direct == "up" then
+    y = y + 1
+  end
+  
+  if _direct == "down" then
+    y = y - 1
+  end
+  
+  saveCoords()
+end
+
+function go(_direction, _dist)
+    
+  if _direction == "rigth" then
+    turnR()
+  end
+  
+  if _direction == "left" then
+   turnL()
+  end
+  
+  for i = 1, _dist, 1 do
+  
+    if _direction == "for" then
+      move("for")
+    end
+    
+    if _direction == "back" then
+      move("back")
+    end
+    
+    if _direction == "left" then
+      move("for")
+    end
+    
+    if _direction == "right" then
+      move("for")
+    end
+    
+    if _direction == "up" then
+      move("up")
+    end
+    
+    if _direction == "down" then
+      move("down")
+    end
+  end
+end
+
