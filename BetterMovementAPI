@@ -232,7 +232,7 @@ function goTo(_x, _y, _z, _f)
 	    turnTo(1)
 	  end
 	end
-      else if _z < z
+      else if _z < z then
 	turnTo(2)
 	go("for", 1, false)
 	if _z == z then
