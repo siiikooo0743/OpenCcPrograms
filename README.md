@@ -2,4 +2,4 @@ OpenCcProgramms
 ===============
 
 Open Computercraft Programms:
-Run "patebin get PZSkA7C2 GitHub" to get a GitHub downloader
+Run "patebin get F3g86YAC GitHub" to get a GitHub downloader
