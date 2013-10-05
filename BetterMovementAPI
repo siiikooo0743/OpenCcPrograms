@@ -191,3 +191,17 @@ function loadPos()
   return true
 end
 
+function loadHome()
+  if(not fs.exists(directory .. "/Home")) then 
+    return false 
+  end
+  
+  local File = fs.open(directory .. "/Home", "r")
+  hx = tonumber(File.readLine())
+  hy = tonumber(File.readLine())
+  hz = tonumber(File.readLine())
+  hf = tonumber(File.readLine())
+  
+  return true
+end
+
