@@ -143,3 +143,11 @@ function go(_direction, _dist)
   end
 end
 
+function saveCoords()
+  local File = fs.open("BetterMovementAPI/Coords", "w")
+  File.writeLine(x)
+  File.writeLine(y)
+  File.writeLine(z)
+  File.close()
+end
+
