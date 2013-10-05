@@ -148,6 +148,7 @@ function saveCoords()
   File.writeLine(x)
   File.writeLine(y)
   File.writeLine(z)
+  File.writeLine(f)
   File.close()
 end
 
