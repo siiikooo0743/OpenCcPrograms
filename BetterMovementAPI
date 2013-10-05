@@ -68,7 +68,7 @@ end
 
 local function goFor()
   local worked = turtle.forward()
-  if(worked)
+  if worked then
     if f == 0 then
       z = z + 1
     end
@@ -90,7 +90,7 @@ end
 
 local function goBack()
   local worked = turtle.back()
-  if(worked)
+  if worked then
     if f == 0 then
       z = z - 1
     end
