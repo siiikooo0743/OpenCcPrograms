@@ -34,6 +34,7 @@ function setHomeH()
 end
 
 function turnTo(_f)
+  loadPos()
   if _f > 3 then return end
   local dif = math.abs(f - _f)
   if dif < 3 then
@@ -46,6 +47,7 @@ function turnTo(_f)
 end
 
 function turnR()
+  loadPos()
   f = f + 1
   if(f == 4)then
     f = 0
@@ -55,6 +57,7 @@ function turnR()
 end
 
 function turnL()
+  loadPos()
   f = f - 1
   if(f == -1)then
     f = 3
@@ -64,6 +67,7 @@ function turnL()
 end
 
 local function move(_direct)
+  loadPos()
   if _direct == "for" then
     if f == 0 then
       z = z + 1
@@ -104,10 +108,12 @@ local function move(_direct)
   
   if _direct == "up" then
     y = y + 1
+    turtle.up()
   end
   
   if _direct == "down" then
     y = y - 1
+    turtle.down()
   end
   
   saveCoords()
