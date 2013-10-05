@@ -66,7 +66,10 @@ function turnL()
   saveCoords()
 end
 
-local function goFor()
+local function goFor(_mine)
+  if(_mine)
+    turtle.dig()
+  end
   local worked = turtle.forward()
   if worked then
     if f == 0 then
@@ -88,7 +91,10 @@ local function goFor()
   return worked
 end
 
-local function goBack()
+local function goBack(_mine)
+  if(_mine)
+    turtle.dig()
+  end
   local worked = turtle.back()
   if worked then
     if f == 0 then
@@ -110,12 +116,34 @@ local function goBack()
   return worked
 end
 
-local function move(_direct)
+local function goUp(_mine)
+  if(_mine)
+    turtle.digUp()
+  end
+  local worked = turtle.up()
+  if worked then
+    y = y + 1
+  end
+  return worked
+end
+
+local function goDown(_mine)
+  if(_mine)
+    turtle.digDown()
+  end
+  local worked = turtle.down()
+  if worked then
+    y = y - 1
+  end
+  return worked
+end
+
+local function move(_direct, _mine)
   loadPos()
   if _direct == "for" then
-    if(not goFor()) then
+    if(not goFor(_mine)) then
       print("Stuck...")
-      while(not goFor()) do
+      while(not goFor(_mine)) do
         turtle.attack()
       end
     end
@@ -131,29 +159,26 @@ local function move(_direct)
   end
   
   if _direct == "up" then
-    if(not turtle.up()) then
+    if(not goUp()) then
       print("Stuck...")
-      while(not turtle.up()) do
+      while(not goUp()) do
         turtle.attack()
       end
     end
-    y = y + 1
   end
   
   if _direct == "down" then
-    if(not turtle.down()) then
+    if(not goDown()) then
       print("Stuck...")
-      while(not turtle.down()) do
+      while(not goDown()) do
         turtle.attack()
       end
     end
-    y = y - 1
   end
-  
   saveCoords()
 end
 
-function go(_direction, _dist)
+function go(_direction, _dist, _mine)
     
   if _direction == "right" then
     turnR()
@@ -166,27 +191,27 @@ function go(_direction, _dist)
   for i = 1, _dist, 1 do
   
     if _direction == "for" then
-      move("for")
+      move("for", _mine)
     end
     
     if _direction == "back" then
-      move("back")
+     move("back", _mine)
     end
     
     if _direction == "left" then
-      move("for")
+      move("for", _mine)
     end
     
     if _direction == "right" then
-      move("for")
+      move("for", _mine)
     end
     
     if _direction == "up" then
-      move("up")
+      move("for", _mine)
     end
     
     if _direction == "down" then
-      move("down")
+      move("for", _mine)
     end
   end
 end
