@@ -38,7 +38,7 @@ while true do
   sleep(1)
   local e = rEC.getEnergyStored()
   print("Energy:"..e)
-  
+  e = tonumber(e)
   engines(0)
   
   if(e < 566664) then
