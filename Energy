@@ -5,31 +5,31 @@ function setRS(colors)
 end
 
 function engines(number)
-  if(number == 9)
+  if(number == 9) then
     setRS(511)
   end
-  if(number == 8)
+  if(number == 8) then
     setRS(255)
   end
-  if(number == 7)
+  if(number == 7) then
     setRS(127)
   end
-  if(number == 6)
+  if(number == 6) then
     setRS(63)
   end
-  if(number == 5)
+  if(number == 5) then
     setRS(31)
   end
-  if(number == 4)
+  if(number == 4) then
     setRS(15)
   end
-  if(number == 3)
+  if(number == 3) then
     setRS(7)
   end
-  if(number == 2)
+  if(number == 2) then
     setRS(3)
   end
-  if(number == 1)
+  if(number == 1) then
     setRS(1)
   end
 end
@@ -41,35 +41,31 @@ while true do
   
   engines(0)
   
-  if(e < 566664)
+  if(e < 566664) then
     engines(1)
   end
-  if(e < 533331)
+  if(e < 533331) then
     engines(2)
   end
-  if(e < 499998)
+  if(e < 499998) then
     engines(3)
   end
-  if(e < 466665)
+  if(e < 466665) then
     engines(4)
   end
-  if(e < 433332)
+  if(e < 433332) then
     engines(5)
   end
-  if(e < 399999)
+  if(e < 399999) then
     engines(6)
   end
-  if(e < 366666)
+  if(e < 366666) then
     engines(7)
   end
-  if(e < 333333)
+  if(e < 333333) then
     engines(8)
   end
-  if(e < 300000)
+  if(e < 300000) then
     engines(9)
   end
-  
-
-  
-  
 end
