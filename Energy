@@ -1,0 +1,75 @@
+local rEC = peripheral.wrap("front")
+
+function setRS(colors)
+  rs.setBundledOutput("bottom", colors)
+end
+
+function engines(number)
+  if(number == 9)
+    setRS(511)
+  end
+  if(number == 8)
+    setRS(255)
+  end
+  if(number == 7)
+    setRS(127)
+  end
+  if(number == 6)
+    setRS(63)
+  end
+  if(number == 5)
+    setRS(31)
+  end
+  if(number == 4)
+    setRS(15)
+  end
+  if(number == 3)
+    setRS(7)
+  end
+  if(number == 2)
+    setRS(3)
+  end
+  if(number == 1)
+    setRS(1)
+  end
+end
+
+while true do
+  sleep(1)
+  local e = rEC.getEnergyStored()
+  print("Energy:"..e)
+  
+  engines(0)
+  
+  if(e < 566664)
+    engines(1)
+  end
+  if(e < 533331)
+    engines(2)
+  end
+  if(e < 499998)
+    engines(3)
+  end
+  if(e < 466665)
+    engines(4)
+  end
+  if(e < 433332)
+    engines(5)
+  end
+  if(e < 399999)
+    engines(6)
+  end
+  if(e < 366666)
+    engines(7)
+  end
+  if(e < 333333)
+    engines(8)
+  end
+  if(e < 300000)
+    engines(9)
+  end
+  
+
+  
+  
+end
