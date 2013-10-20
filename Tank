@@ -14,9 +14,9 @@ while true do
   
   print(amount)
   if(amount > 1000) then
-    rs.setOutput("right", true)
+    rs.setBundledOutput("right", 1)
   else
-    rs.setOutput("right", false)
+    rs.setBundledOutput("right", 0)
   end
   
 end
