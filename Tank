@@ -1,6 +1,22 @@
+local tank = peripheral.wrap("top")
+
 while true do
   sleep(0.2)
+  local tableInfo = tank.getTanks("unknown")
+  local amount
+  for key, value in pairs(tableInfo) do
+    if(value.amount == nil)
+      amount = 0
+    else
+      amount = value.amount
+    end
+  end
   
-  for key,
+  print(amount)
+  if(amount > 1000)
+    rs.setOutput("right", true)
+  else
+    rs.setOutput("right", false)
+  end
   
 end
