@@ -1,4 +1,4 @@
-rs.setBundledOutput("right", 0)
+rs.setOutput("right", false)
 local tank = peripheral.wrap("top")
 
 while true do
@@ -15,9 +15,9 @@ while true do
   
   print(amount)
   if(amount > 1000) then
-    rs.setBundledOutput("right", 1)
+    rs.setOutput("right", true)
   else
-    rs.setBundledOutput("right", 0)
+    rs.setOutput("right", false)
   end
   
 end
