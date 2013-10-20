@@ -13,7 +13,7 @@ while true do
   end
   
   print(amount)
-  if(amount > 1000)
+  if(amount > 1000) then
     rs.setOutput("right", true)
   else
     rs.setOutput("right", false)
