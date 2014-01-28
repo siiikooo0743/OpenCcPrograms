@@ -1,0 +1,51 @@
+local arg = { ... }
+
+turtle.select(1)
+side = 1
+
+for i = 0, arg[2] do
+  for j = 0, arg[1] do
+    place()
+    for()
+  end
+  
+  turn(side)
+  if(side == 0) then
+    side = 1
+  else
+    side = 0
+  end
+end  
+
+function for()
+   turtle.select(16)
+   turtle.refuel(1)
+   while (not(turtle.forward())
+    turtle.refuel(1)
+   end
+end
+
+function turn(side)
+  if(side = 0) then
+    turtle.turnLeft()
+    for()
+    turtle.turnLeft()
+  end
+  
+  if(side = 1) then
+    turtle.turnRight()
+    for()
+    turtle.turnRight()
+  end
+end
+
+function place()
+  turtle.select(1)
+  for i = 1, 16 do
+    if (not(turtle.getItemCount(i) == 0)) then
+      turtle.select(i)
+      break
+    end
+  end
+  turtle.placeDown()
+end
