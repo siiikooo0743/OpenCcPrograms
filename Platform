@@ -7,13 +7,13 @@ function move()
 end
 
 function turn(side)
-  if(side = 0) then
+  if(side == 0) then
     turtle.turnLeft()
     move()
     turtle.turnLeft()
   end
   
-  if(side = 1) then
+  if(side == 1) then
     turtle.turnRight()
     move()
     turtle.turnRight()
