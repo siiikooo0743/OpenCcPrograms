@@ -1,22 +1,3 @@
-local arg = { ... }
-
-turtle.select(1)
-side = 1
-
-for i = 0, arg[2] do
-  for j = 0, arg[1] do
-    place()
-    move()
-  end
-  
-  turn(side)
-  if(side == 0) then
-    side = 1
-  else
-    side = 0
-  end
-end  
-
 function move()
    turtle.select(16)
    turtle.refuel(1)
@@ -49,3 +30,25 @@ function place()
   end
   turtle.placeDown()
 end
+
+
+
+local arg = { ... }
+
+turtle.select(1)
+side = 1
+
+for i = 0, arg[2] do
+  for j = 0, arg[1] do
+    place()
+    move()
+  end
+  
+  turn(side)
+  if(side == 0) then
+    side = 1
+  else
+    side = 0
+  end
+end  
+
