@@ -1,7 +1,7 @@
 function move()
    turtle.select(16)
    turtle.refuel(1)
-   while (not(turtle.forward()))
+   while (not(turtle.forward())) do
     turtle.refuel(1)
    end
 end
