@@ -6,7 +6,7 @@ side = 1
 for i = 0, arg[2] do
   for j = 0, arg[1] do
     place()
-    for()
+    move()
   end
   
   turn(side)
@@ -17,7 +17,7 @@ for i = 0, arg[2] do
   end
 end  
 
-function for()
+function move()
    turtle.select(16)
    turtle.refuel(1)
    while (not(turtle.forward())
@@ -28,13 +28,13 @@ end
 function turn(side)
   if(side = 0) then
     turtle.turnLeft()
-    for()
+    move()
     turtle.turnLeft()
   end
   
   if(side = 1) then
     turtle.turnRight()
-    for()
+    move()
     turtle.turnRight()
   end
 end
