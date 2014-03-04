@@ -64,6 +64,10 @@ if(#tArgs < 1) or tArgs[1] == "help" then
 end
      
 if(tArgs[1] == "rep") then
+   if(#tArgs != 2)
+   	printUsage()
+   	return
+   end
    setRep(tArgs[2])
    return
 end
@@ -76,12 +80,11 @@ end
      
 fs.makeDir(".GitHub")
           
-if not (fs.exists(".GitHub/Rep")) then
-    print( "Please set the repository.")
-    return
-end
-          
 if(tArgs[1] == "update") then
+    if(#tArgs != 1)
+   	printUsage()
+   	return
+    end
     files = fs.list(".GitHub")
 		
     for _, file in ipairs(files) do 
@@ -89,17 +92,21 @@ if(tArgs[1] == "update") then
     end 
     return
 end
-
+          
 if(tArgs[1] == "remove") then
+    if(#tArgs != 2)
+   	printUsage()
+   	return
+    end
     fs.delete(".GitHub/"..tArgs[2])
     return
 end	
-
-if(tArgs[1] == "rep") then
-   setRep(tArgs[2])
-   return
+          
+if not (fs.exists(".GitHub/Rep")) then
+    print( "Please set the repository.")
+    return
 end
-
+          
 if(tArgs[1] == "clone") then
    if(#tArgs != 3)
    	printUsage()
