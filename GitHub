@@ -85,12 +85,12 @@ if(tArgs[1] == "remove") then
     return
 end	
 
-if(tArgs[1] == "rep")
+if(tArgs[1] == "rep") then
    setRep(tArgs[2])
    return
 end
 
-if(tArgs[1] == "clone")
+if(tArgs[1] == "clone") then
    -- Determine file to download
    local sCode = tArgs[1]
    local sFile = tArgs[2]
