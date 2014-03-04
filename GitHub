@@ -11,14 +11,14 @@ local function printUsage()
 end
      
 local function getPath(sFile)
-  file = fs.open(".GitHub/Rep")
+  file = fs.open(".GitHub/Rep", "r")
   return("https://raw.github.com/" + file.readLine() + "/master/" + sFile)
 end
 
 local function setRep(sRep)
   fs.delete(".GitHub/Rep")
   fs.create(".GitHub/Rep")
-  file = fs.open(".GitHub/Rep")
+  file = fs.open(".GitHub/Rep", "w")
   file.writeLine(sRep)
 end
      
