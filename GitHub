@@ -77,7 +77,7 @@ end
      
 fs.makeDir(".GitHub")
           
-if not (fs.exists(".GitHub/Rep"))
+if not (fs.exists(".GitHub/Rep")) then
     print( "Please set the repository.")
     return
 end
