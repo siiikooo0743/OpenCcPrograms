@@ -1,7 +1,7 @@
 local function printUsage()
     print( "Usage:" )
     print( "GitHub clone <GitHub file> <filename>" )
-    print( "->Clones the file)
+    print( "->Clones the file")
     print( "GitHub update")
     print( "->Updates all files")
     print( "GitHub remove <file>")
