@@ -102,6 +102,11 @@ if(tArgs[1] == "rep") then
 end
 
 if(tArgs[1] == "clone") then
+   if(#tArgs != 3)
+   	printUsage()
+   	return
+   end
+   
    -- Determine file to download
    local sCode = tArgs[1]
    local sFile = tArgs[2]
