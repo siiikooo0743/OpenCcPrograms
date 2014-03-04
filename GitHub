@@ -17,7 +17,6 @@ end
 
 local function setRep(sRep)
   fs.delete(".GitHub/Rep")
-  fs.create(".GitHub/Rep")
   file = fs.open(".GitHub/Rep", "w")
   file.writeLine(sRep)
 end
