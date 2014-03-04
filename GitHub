@@ -56,13 +56,12 @@ local function update(name)
 	getFile(code, name)
 end 	
     
+    
 local tArgs = { ... }
     
-if (#tArgs < 2) and not (tArgs[1] == "update") then
+if(#tArgs < 1) or tArgs[1] == "help" then
     printUsage()
-    return
 end
-     
      
 if not http then
     print( "GitHub requires http API" )
@@ -73,24 +72,36 @@ end
 fs.makeDir(".GitHub")
           
 if(tArgs[1] == "update") then
-	files = fs.list(".GitHub")
+    files = fs.list(".GitHub")
 		
-	for _, file in ipairs(files) do 
-		update(file)
-	end 
-	
-else 
-	if(tArgs[1] == "remove") then
-		fs.delete(".GitHub/"..tArgs[2])
-	else
-		-- Determine file to download
-		local sCode = tArgs[1]
-		local sFile = tArgs[2]
-   
-		print( "Connecting to GitHub.com... " )
-		getFile(sCode, sFile)
-		file = fs.open(".GitHub/"..sFile, "w")
-		file.write(sCode)
-		file.close()
-	end	
+    for _, file in ipairs(files) do 
+	update(file)
+    end 
+    return
 end
+
+if(tArgs[1] == "remove") then
+    fs.delete(".GitHub/"..tArgs[2])
+    return
+end	
+
+if(tArgs[1] == "rep")
+   setRep(tArgs[2])
+   return
+end
+
+if(tArgs[1] == "clone")
+   -- Determine file to download
+   local sCode = tArgs[1]
+   local sFile = tArgs[2]
+   
+   print( "Connecting to GitHub.com... " )
+   getFile(sCode, sFile)
+   file = fs.open(".GitHub/"..sFile, "w")
+   file.write(sCode)
+   file.close()
+   return
+end
+
+showUsage()
+
