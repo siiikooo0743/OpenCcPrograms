@@ -3,7 +3,7 @@ local function printUsage()
     print( "GitHub clone <GitHub file> <filename>" )
     print( "->Clones the file")
     print( "GitHub update")
-    print( "->Updates all files")
+    print( "->Updates all files(of all Repositorys)")
     print( "GitHub remove <file>")
     print( "->Removes file from update Function but not from Computer")
     print( "GitHub rep <GitHub repository>")
@@ -64,6 +64,11 @@ if(#tArgs < 1) or tArgs[1] == "help" then
     return
 end
      
+if(tArgs[1] == "rep") then
+   setRep(tArgs[2])
+   return
+end
+     
 if not http then
     print( "GitHub requires http API" )
     print( "Set enableAPI_http to true in ComputerCraft.cfg" )
@@ -71,6 +76,11 @@ if not http then
 end
      
 fs.makeDir(".GitHub")
+          
+if not (fs.exists(".GitHub/Rep"))
+    print( "Please set the repository.")
+    return
+end
           
 if(tArgs[1] == "update") then
     files = fs.list(".GitHub")
