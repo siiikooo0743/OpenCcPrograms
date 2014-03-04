@@ -61,6 +61,7 @@ local tArgs = { ... }
     
 if(#tArgs < 1) or tArgs[1] == "help" then
     printUsage()
+    return
 end
      
 if not http then
@@ -103,5 +104,5 @@ if(tArgs[1] == "clone") then
    return
 end
 
-showUsage()
+printUsage()
 
