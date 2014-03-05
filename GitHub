@@ -10,9 +10,11 @@ local function printUsage()
     print( "->Sets the repository")
 end
      
-local function getPath(sFile)
+local function getPath(sCode)
   file = fs.open(".GitHub/Rep", "r")
-  return("https://raw.github.com/" + file.readLine() + "/master/" + sFile)
+  s = file.readLine()
+  print("s")
+  return("https://raw.github.com/" + s + "/master/" + sCode)
 end
 
 local function setRep(sRep)
