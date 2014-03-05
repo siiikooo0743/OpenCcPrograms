@@ -13,7 +13,7 @@ end
 local function getPath(sCode)
   file = fs.open(".GitHub/Rep", "r")
   s = file.readLine()
-  print("s")
+  print(s)
   return("https://raw.github.com/" + s + "/master/" + sCode)
 end
 
@@ -85,7 +85,7 @@ if not http then
     return
 end
      
-fs.makeDir(".GitHub")
+fs.makeDir(".GitHub/update")
           
 if(tArgs[1] == "update") then
     if not (#tArgs == 1) then
