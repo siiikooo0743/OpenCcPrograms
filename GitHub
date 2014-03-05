@@ -58,13 +58,13 @@ end
     
 local tArgs = { ... }
     
-if(#tArgs < 1) or tArgs[1] == "help" then
+if(#tArgs < 1) or (tArgs[1] == "help") then
     printUsage()
     return
 end
      
 if(tArgs[1] == "rep") then
-   if(#tArgs != 2)
+   if(#tArgs != 2) then
    	printUsage()
    	return
    end
@@ -81,7 +81,7 @@ end
 fs.makeDir(".GitHub")
           
 if(tArgs[1] == "update") then
-    if(#tArgs != 1)
+    if(#tArgs != 1) then
    	printUsage()
    	return
     end
@@ -94,7 +94,7 @@ if(tArgs[1] == "update") then
 end
           
 if(tArgs[1] == "remove") then
-    if(#tArgs != 2)
+    if(#tArgs != 2) then
    	printUsage()
    	return
     end
@@ -108,7 +108,7 @@ if not (fs.exists(".GitHub/Rep")) then
 end
           
 if(tArgs[1] == "clone") then
-   if(#tArgs != 3)
+   if(#tArgs != 3)then
    	printUsage()
    	return
    end
