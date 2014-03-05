@@ -125,8 +125,8 @@ if(tArgs[1] == "clone") then
    end
    
    -- Determine file to download
-   local sCode = tArgs[1]
-   local sFile = tArgs[2]
+   local sCode = tArgs[2]
+   local sFile = tArgs[3]
    
    print( "Connecting to GitHub.com... " )
    getFile(sCode, sFile)
