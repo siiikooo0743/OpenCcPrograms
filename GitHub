@@ -111,7 +111,7 @@ if(tArgs[1] == "remove") then
    	return
     end
     fs.delete(".GitHub/update/"..tArgs[2])
-    print("Removed" .. tArgs[2] .. "from update")
+    print("Removed <" .. tArgs[2] .. "> from update")
     return
 end	
           
