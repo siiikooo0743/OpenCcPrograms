@@ -16,7 +16,6 @@ local function getPath(sCode)
   s = "https://raw.github.com/" .. s
   s = s .. "/master/"
   s = s .. sCode
-  print(s)
   return(s)
 end
 
@@ -63,6 +62,8 @@ end
     
     
 local tArgs = { ... }
+
+shell.run("clear")
     
 if(#tArgs < 1) then
     printUsage()
