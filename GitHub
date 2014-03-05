@@ -92,7 +92,7 @@ if(tArgs[1] == "update") then
    	printUsage()
    	return
     end
-    files = fs.list(".GitHub")
+    files = fs.list(".GitHub/update")
 		
     for _, file in ipairs(files) do 
 	update(file)
@@ -105,7 +105,7 @@ if(tArgs[1] == "remove") then
    	printUsage()
    	return
     end
-    fs.delete(".GitHub/"..tArgs[2])
+    fs.delete(".GitHub/update/"..tArgs[2])
     return
 end	
           
@@ -126,7 +126,7 @@ if(tArgs[1] == "clone") then
    
    print( "Connecting to GitHub.com... " )
    getFile(sCode, sFile)
-   file = fs.open(".GitHub/"..sFile, "w")
+   file = fs.open(".GitHub/update/"..sFile, "w")
    file.write(sCode)
    file.close()
    return
