@@ -58,7 +58,12 @@ end
     
 local tArgs = { ... }
     
-if(#tArgs < 1) or (tArgs[1] == "help") then
+if(#tArgs < 1) then
+    printUsage()
+    return
+end
+
+if(tArgs[1] == "help") then
     printUsage()
     return
 end
