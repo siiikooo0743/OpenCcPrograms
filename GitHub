@@ -20,7 +20,6 @@ local function getPath(sCode)
 end
 
 local function setRep(sRep)
-  fs.delete(".GitHub/Rep")
   file = fs.open(".GitHub/Rep", "w")
   file.writeLine(sRep)
   file.close()
