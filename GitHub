@@ -69,7 +69,7 @@ if(tArgs[1] == "help") then
 end
      
 if(tArgs[1] == "rep") then
-   if(#tArgs != 2) then
+   if not (#tArgs == 2) then
    	printUsage()
    	return
    end
