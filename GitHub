@@ -13,12 +13,13 @@ end
 local function getPath(sCode)
   file = fs.open(".GitHub/Rep", "r")
   s = file.readLine()
-  print(s)
-  return("https://raw.github.com/" + s + "/master/" + sCode)
+  s = "https://raw.github.com/" + s
+  s = s + "/master/"
+  s = s + sCode
+  return(s)
 end
 
 local function setRep(sRep)
-  print(sRep)
   fs.delete(".GitHub/Rep")
   file = fs.open(".GitHub/Rep", "w")
   file.writeLine(sRep)
