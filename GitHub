@@ -13,9 +13,9 @@ end
 local function getPath(sCode)
   file = fs.open(".GitHub/Rep", "r")
   s = file.readLine()
-  s = "https://raw.github.com/" + s
-  s = s + "/master/"
-  s = s + sCode
+  s = "https://raw.github.com/" .. s
+  s = s .. "/master/"
+  s = s .. sCode
   return(s)
 end
 
