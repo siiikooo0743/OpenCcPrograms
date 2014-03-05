@@ -24,6 +24,7 @@ local function setRep(sRep)
   file = fs.open(".GitHub/Rep", "w")
   file.writeLine(sRep)
   file.close()
+  print("Set Repository to:" .. sRep)
 end
      
 local function getFile(sCode, sFile) 
@@ -111,6 +112,7 @@ if(tArgs[1] == "remove") then
    	return
     end
     fs.delete(".GitHub/update/"..tArgs[2])
+    print("Removed" .. tArgs[2] .. "from update")
     return
 end	
           
