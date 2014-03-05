@@ -55,7 +55,7 @@ local function getFile(sCode, sFile)
 end
 	
 local function update(name)
-	file = fs.open(".GitHub/"..name, "r")
+	file = fs.open(".GitHub/update"..name, "r")
 	code = file.readAll()
 	file.close()
 	getFile(code, name)
