@@ -1,0 +1,21 @@
+
+
+
+--#########
+R_cow = 4
+R_pig = 2
+R_chi = 1
+
+bool[] R_off = new
+
+R_currOut = 0
+
+function spawnOn(int animal)
+  R_currOut = R_currOut + animal
+  
+end
+
+functionspawnOff(int animal)
+
+end
+--###########
