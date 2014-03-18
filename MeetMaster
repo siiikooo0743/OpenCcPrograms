@@ -1,10 +1,16 @@
+BEEF = 20
+PORK = 19
+CHIC = 18
+BEEF_RAW = 17
+PORK_RAW = 22
+CHIC_RAW = 21
+
+COW = 4
+PIG = 2
+CHI = 1
 
 
 --#########
-R_cow = 4
-R_pig = 2
-R_chi = 1
-
 R_off = {}
 R_off[1] = 1
 R_off[2] = 1
@@ -13,16 +19,78 @@ R_off[4] = 1
 R_currOut = 0
 
 --AutoSpawner are inverted
+--_a = animal; _B = bool(on/off)
 
-function spawnOff(_a)
-  R_currOut = R_currOut + (_a * R_off[_a])
-  R_off[_a] = false
+function spawn(_a, _b)
+  if(_b) then
+    R_currOut = R_currOut - (_a * (not R_off[_a]))
+    R_off[_a] = true
+  else
+    R_currOut = R_currOut + (_a * R_off[_a])
+    R_off[_a] = false
+  end
+  
   rs.setBundledOutput("bottom", R_currOut)
 end
 
-functionspawnOn(_a)
-  R_currOut = R_currOut - (_a * (not R_off[_a]))
-  R_off[_a] = true
-  rs.setBundledOutput("bottom", R_currOut)
-end
 --###########
+
+--_m = MeetType
+
+function getFillage(_m)
+  rednet.send(_m, "getFillage")
+  return(rednet.receive())
+end
+
+--_c = count/amount
+
+function dumb(_m, _c)
+  rednet.send(_m, _c)
+end
+
+--###########
+
+function checkRaw()
+  spawn(COW, (getFillage(BEEF_RAW) < 128))
+  spawn(PIG, (getFillage(PORK_RAW) < 128))
+  spawn(CHI, (getFillage(CHIC_RAW) < 128))
+end
+
+function checkNuggets()
+  c = 128 - getFillage(BEEF)
+  if(c > 0)then
+    dumb(BEEF_RAW, c)
+  end
+  
+  c = 128 - getFillage(PORK)
+  if(c > 0)then
+    dumb(PORK_RAW, c)
+  end
+  
+  c = 128 - getFillage(CHIC)
+  if(c > 0)then
+    dumb(CHIC_RAW, c)
+  end
+end
+
+function checkLever()
+  if(rs.getInput("top"))then
+    dumb(BEEF, 8)
+    dumb(PORK, 8)
+    dumb(CHIC, 8)
+  end
+end
+
+
+--###########
+
+rednet.open("right")
+while true do
+  
+  checkLever()
+  checkNuggets()
+  checkRaw()
+  
+end
+
+
