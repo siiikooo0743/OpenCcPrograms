@@ -1,21 +1,28 @@
 
 
-
 --#########
 R_cow = 4
 R_pig = 2
 R_chi = 1
 
-bool[] R_off = new
+R_off = {}
+R_off[1] = 1
+R_off[2] = 1
+R_off[4] = 1
 
 R_currOut = 0
 
-function spawnOn(int animal)
-  R_currOut = R_currOut + animal
-  
+--AutoSpawner are inverted
+
+function spawnOff(_a)
+  R_currOut = R_currOut + (_a * R_off[_a])
+  R_off[_a] = false
+  rs.setBundledOutput("bottom", R_currOut)
 end
 
-functionspawnOff(int animal)
-
+functionspawnOn(_a)
+  R_currOut = R_currOut - (_a * (not R_off[_a]))
+  R_off[_a] = true
+  rs.setBundledOutput("bottom", R_currOut)
 end
 --###########
