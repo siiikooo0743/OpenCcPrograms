@@ -75,6 +75,8 @@ if(tArgs[1] == "help") then
     return
 end
      
+fs.makeDir(".GitHub/update")
+     
 if(tArgs[1] == "rep") then
    if not (#tArgs == 2) then
    	printUsage()
@@ -89,8 +91,6 @@ if not http then
     print( "Set enableAPI_http to true in ComputerCraft.cfg" )
     return
 end
-     
-fs.makeDir(".GitHub/update")
           
 if(tArgs[1] == "update") then
     if not (#tArgs == 1) then
