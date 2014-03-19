@@ -75,6 +75,7 @@ if(tArgs[1] == "help") then
     return
 end
      
+fs.makeDir(".GitHub")
 fs.makeDir(".GitHub/update")
      
 if(tArgs[1] == "rep") then
