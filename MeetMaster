@@ -1,14 +1,20 @@
-BEEF = 20
-PORK = 19
-CHIC = 18
-BEEF_RAW = 17
-PORK_RAW = 22
-CHIC_RAW = 21
+BEEF = 8
+PORK = 7
+CHIC = 6
+BEEF_RAW = 5
+PORK_RAW = 4
+CHIC_RAW = 3
 
-COW = 4
-PIG = 2
-CHI = 1
+COW = 2
+PIG = 1
+CHI = 0
 
+R_currOut = 0
+
+--#########
+function getColor(count)
+  return(2 ^ count)
+end
 
 --#########
 R_off = {}
@@ -16,17 +22,15 @@ R_off[1] = 1
 R_off[2] = 1
 R_off[4] = 1
 
-R_currOut = 0
-
 --AutoSpawner are inverted
 --_a = animal; _B = bool(on/off)
 
 function spawn(_a, _b)
   if(_b) then
-    R_currOut = R_currOut - (_a * (not R_off[_a]))
+    colors.subtract(r_currOut, getColor(_a))
     R_off[_a] = true
   else
-    R_currOut = R_currOut + (_a * R_off[_a])
+    colors.combine(r_currOut, getColor(_a))
     R_off[_a] = false
   end
   
@@ -38,8 +42,7 @@ end
 --_m = MeetType
 
 function getFillage(_m)
-  rednet.send(_m, "getFillage")
-  return(rednet.receive())
+  colors.test(rs.getBundledInput("bottom"), getColor(_m))
 end
 
 --_c = count/amount
