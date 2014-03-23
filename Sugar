@@ -62,6 +62,6 @@ while true do
   turtle.refuel()
   turtle.select(1)
   
-  sleep(60)
+  sleep(5*60)
   
 end
