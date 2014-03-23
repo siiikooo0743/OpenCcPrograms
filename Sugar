@@ -1,0 +1,67 @@
+while true do
+  turtle.select(1)
+  turtle.forward()
+  
+  turtle.forward()
+  turtle.digDown()
+  turtle.turnRight()
+  turtle.dig()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.dig()
+  turtle.turnRight()
+  
+  turtle.forward()
+  turtle.digDown()
+  turtle.turnRight()
+  turtle.dig()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.dig()
+  turtle.turnRight()
+  
+  turtle.forward()
+  turtle.digDown()
+  turtle.turnRight()
+  turtle.dig()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.dig()
+  turtle.turnRight()
+  
+  turtle.forward()
+  turtle.digDown()
+  turtle.turnRight()
+  turtle.dig()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.dig()
+  turtle.turnRight()
+  
+  turtle.forward()
+  turtle.digDown()
+  turtle.turnRight()
+  turtle.dig()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.dig()
+  turtle.turnRight()
+  
+  turtle.back()
+  turtle.back()
+  turtle.back()
+  turtle.back()
+  turtle.back()
+  turtle.back()
+  
+  turtle.select(2)
+  turtle.craft()
+  turtle.dropDown()
+  
+  turtle.select(3)
+  turtle.refuel()
+  turtle.select(1)
+  
+  sleep(60)
+  
+end
