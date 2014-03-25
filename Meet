@@ -154,42 +154,42 @@ end
     print("Spawning:")
     
     if(spawn[0]) then
-      print(  Chicken);
+      print("  Chicken");
     end
     if(spawn[1]) then
-      print(  Pig);
+      print("  Pig");
     end
     if(spawn[2]) then
-      print(  Cow);
+      print("  Cow");
     end
     
     print("")
     print("Pumping out:")
     
     if(dumb[1]) then
-      print(  Raw Chicken);
+      print("  Raw Chicken");
     end
     if(dumb[2]) then
-      print(  Raw Porkchop);
+      print("  Raw Porkchop");
     end
     if(dumb[3]) then
-      print(  Raw Beef);
+      print("  Raw Beef");
     end
     if(dumb[4]) then
-      print(  Ingredients);
+      print("  Ingredients");
     end
     
     print("")
     print("Ready for Pumpout:")
     
     if(D_Chic) then
-      print(  Chicken Nuggets)
+      print("  Chicken Nuggets")
     end
     if(D_Pork) then
-      print(  Pork Nuggets)
+      print("  Pork Nuggets")
     end
     if(D_Beef) then
-      print(  Beef Nuggets)
+      print("  Beef Nuggets")
     end
     
   end
