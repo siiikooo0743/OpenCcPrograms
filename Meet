@@ -143,7 +143,7 @@ function checkNuggets()
   
 end
 --###########
-  functio print(_text)
+  function print(_text)
     mon.write(_text)
     mon.scroll(1)
   end
