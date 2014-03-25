@@ -16,10 +16,10 @@ D_Chic = false
 D_Pork = false
 D_Beef = false
 
-spawn = {}
-spawn[0] = false
-spawn[1] = false
-spawn[2] = false
+spawnA = {}
+spawnA[0] = false
+spawnA[1] = false
+spawnA[2] = false
 dumbA = {}
 dumbA[0] = false
 dumbA[1] = false
@@ -47,7 +47,7 @@ function spawn(_a, _b)
   term.write(";...;")
   term.write(_b)
   term.write(";...;")
-  spawn[0] = _b
+  spawnA[_a] = _b
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
   else
@@ -130,13 +130,13 @@ end
     
     printM("Spawning:")
     
-    if(spawn[0]) then
+    if(spawnA[0]) then
       printM("  Chicken");
     end
-    if(spawn[1]) then
+    if(spawnA[1]) then
       printM("  Pig");
     end
-    if(spawn[2]) then
+    if(spawnA[2]) then
       printM("  Cow");
     end
     
