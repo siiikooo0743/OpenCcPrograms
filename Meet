@@ -138,8 +138,8 @@ end
       printM("  Cow");
     end
     
-    print("")
-    print("Pumping out:")
+    printM("")
+    printM("Pumping out:")
     
     if(dumbA[1]) then
       printM("  Raw Chicken");
