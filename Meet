@@ -42,6 +42,8 @@ end
 --_a = animal; _b = bool(on/off)
 
 function spawn(_a, _b)
+  print(_a)
+  print(_b)
   spawn[_a] = _b
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
@@ -114,37 +116,6 @@ function checkNuggets()
   end
   
   rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  sleep(1)
-  rs.setBundledOutput("right", R_currOut)
-  sleep(1)
-  rs.setBundledOutput("right", 0)
-  
 end
 --###########
   function print(_text)
@@ -205,7 +176,8 @@ mon.setTextColor(colors.white)
 while true do
   checkNuggets()
   checkRaw()
-  
-  
+  report()
+  sleep(2)
+  rs.setBundledOutput("right", 0)
   sleep(60)
 end
