@@ -17,17 +17,17 @@ D_Pork = false
 D_Beef = false
 
 spawn = {}
-spawn[0] = false
-spawn[1] = false
-spawn[2] = false
+spawn[0.0] = false
+spawn[1.0] = false
+spawn[2.0] = false
 dumbA = {}
-dumbA[0] = false
-dumbA[1] = false
-dumbA[2] = false
-dumbA[3] = false
-dumbA[4] = false
-dumbA[5] = false
-dumbA[6] = false
+dumbA[0.0] = false
+dumbA[1.0] = false
+dumbA[2.0] = false
+dumbA[3.0] = false
+dumbA[4.0] = false
+dumbA[5.0] = false
+dumbA[6.0] = false
 
 
 mon = peripheral.wrap("monitor_0")
