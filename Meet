@@ -42,8 +42,9 @@ end
 --_a = animal; _b = bool(on/off)
 
 function spawn(_a, _b)
-  printM(_a)
-  printM(_b)
+  term.write(_a)
+  term.write(";...;")
+  term.write(_b)
   spawn[_a] = _b
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
