@@ -21,6 +21,7 @@ spawn[0] = false
 spawn[1] = false
 spawn[2] = false
 dump = {}
+dumb[0] = false
 dumb[1] = false
 dumb[2] = false
 dumb[3] = false
