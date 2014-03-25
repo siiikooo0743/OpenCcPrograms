@@ -169,8 +169,8 @@ end
   end
 --###########
 
-mon.setBackgroundColor(colors.red)
-mon.setTextColor(colors.white)
+mon.setBackgroundColor(colors.white)
+mon.setTextColor(colors.black)
 
 while true do
   checkNuggets()
