@@ -77,9 +77,12 @@ end
 --###########
 
 function checkRaw()
-  spawn(COW, getFillage(BEEF_RAW))
-  spawn(PIG, getFillage(PORK_RAW))
-  spawn(CHI, getFillage(CHIC_RAW))
+  cowF = getFillage(BEEF_RAW)
+  pigF = getFillage(PORK_RAW)
+  chiF = getFillage(CHIC_RAW)
+  spawn(COW, cowF)
+  spawn(PIG, pigF)
+  spawn(CHI, chiF)
 end
 
 function checkNuggets()
