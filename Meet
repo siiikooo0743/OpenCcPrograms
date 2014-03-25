@@ -116,49 +116,55 @@ function checkNuggets()
   rs.setBundledOutput("right", R_currOut)
 end
 --###########
+  function printM(_text)
+    mon.write(_text)
+    x, y = mon.getCursorPos()
+    mon.setCursorPos(1, y + 1)
+  end
+--###########
   function report()
     mon.clear()
     mon.setCursorPos(1,1)
     
-    print("Spawning:")
+    printM("Spawning:")
     
     if(spawnA[0]) then
-      print("  Chicken");
+      printM(" Chicken");
     end
     if(spawnA[1]) then
-      print("  Pig");
+      printM(" Pig");
     end
     if(spawnA[2]) then
-      print("  Cow");
+      printM(" Cow");
     end
     
-    print("")
-    print("Pumping out:")
+    printM("")
+    printM("Pumping out:")
     
     if(dumbA[1]) then
-      print("  Raw Chicken");
+      printM(" Raw Chicken");
     end
     if(dumbA[2]) then
-      print("  Raw Porkchop");
+      printM(" Raw Porkchop");
     end
     if(dumbA[3]) then
-      print("  Raw Beef");
+      printM(" Raw Beef");
     end
     if(dumbA[4]) then
-      print("  Ingredients");
+      print(" Ingredients");
     end
     
-    print("")
-    print("Ready for Pumpout:")
+    printM("")
+    printM("Ready for Pumpout:")
     
     if(D_Chic) then
-      print("  Chicken Nuggets")
+      printM(" Chicken Nuggets")
     end
     if(D_Pork) then
-      print("  Pork Nuggets")
+      printM(" Pork Nuggets")
     end
     if(D_Beef) then
-      print("  Beef Nuggets")
+      printM(" Beef Nuggets")
     end
     
   end
