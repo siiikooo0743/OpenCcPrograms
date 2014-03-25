@@ -118,8 +118,8 @@ end
 --###########
   function printM(_text)
     mon.write(_text)
-    pos = mon.getCursorPos()
-    mon.setCursorPos(1, pos[y])
+    x, y = mon.getCursorPos()
+    mon.setCursorPos(1, y + 1)
   end
 --###########
   function report()
