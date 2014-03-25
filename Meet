@@ -12,6 +12,25 @@ CHI = 0
 R_currOut = 0
 L_currOut = 0
 
+D_Chic = false
+D_Pork = false
+D_Beef = false
+
+spawn = {}
+spawn[0] = false
+spawn[1] = false
+spawn[2] = false
+dump = {}
+dumb[1] = false
+dumb[2] = false
+dumb[3] = false
+dumb[4] = false
+dumb[5] = false
+dumb[6] = false
+
+
+mon = peripheral.wrap("monitor_0")
+
 --#########
 function getColor(count)
   return(2 ^ count)
@@ -22,6 +41,7 @@ end
 --_a = animal; _b = bool(on/off)
 
 function spawn(_a, _b)
+  spawn[_a] = _b
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
   else
@@ -39,6 +59,17 @@ function getFillage(_m)
 end
 
 function dumb(_m)
+  dumb[_m] = true
+  
+  if(_m < 4) then
+    dumb[_m + 3] = false
+  end
+  if(_m > 3) then
+    dumb[_m - 3] = false
+  end
+  
+  
+  
   colors.combine(R_currOut, getColor(_m))
 end
 
@@ -53,20 +84,29 @@ end
 function checkNuggets()
   if not (getFillage(BEEF)) then
     dumb(BEEF_RAW)
+    D_Beef = false
   else
-    dumb(BEEF)
+    D_Beef = true
   end
   
   if not (getFillage(PORK)) then
     dumb(PORK_RAW)
+    D_Pork = false
   else
-    dumb(PORK)
+    D_Pork = true
   end
   
   if not (getFillage(CHIC))then
     dumb(CHIC_RAW)
+    D_Chic = false
   else
+    D_Chic = true
+  end
+  
+  if(D_Chic and D_Pork and D_Beef) then
     dumb(CHIC)
+    dumb(PORK)
+    dumb(BEEF)
   end
   
   rs.setBundledOutput("rigth", R_currOut)
@@ -102,11 +142,66 @@ function checkNuggets()
   rs.setBundledOutput("rigth", 0)
   
 end
-
 --###########
+  functio print(_text)
+    mon.write(_text)
+    mon.scroll(1)
+  end
+--###########
+  function report()
+    mon.clear()
+    
+    print("Spawning:")
+    
+    if(spawn[0]) then
+      print(  Chicken);
+    end
+    if(spawn[1]) then
+      print(  Pig);
+    end
+    if(spawn[2]) then
+      print(  Cow);
+    end
+    
+    print("")
+    print("Pumping out:")
+    
+    if(dumb[1]) then
+      print(  Raw Chicken);
+    end
+    if(dumb[2]) then
+      print(  Raw Porkchop);
+    end
+    if(dumb[3]) then
+      print(  Raw Beef);
+    end
+    if(dumb[4]) then
+      print(  Ingredients);
+    end
+    
+    print("")
+    print("Ready for Pumpout:")
+    
+    if(D_Chic) then
+      print(  Chicken Nuggets)
+    end
+    if(D_Pork) then
+      print(  Pork Nuggets)
+    end
+    if(D_Beef) then
+      print(  Beef Nuggets)
+    end
+    
+  end
+--###########
+
+mon.setBackgroundColor(colors.black)
+mon.setTextColor(colors.white)
 
 while true do
   checkNuggets()
   checkRaw()
+  
+  
   sleep(60)
 end
