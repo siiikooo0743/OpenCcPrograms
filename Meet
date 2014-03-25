@@ -42,11 +42,6 @@ end
 --_a = animal; _b = bool(on/off)
 
 function spawn(_a, _b)
-  _a = math.floor(_a)
-  term.write(_a)
-  term.write(";...;")
-  term.write(_b)
-  term.write(";...;")
   spawnA[_a] = _b
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
@@ -123,10 +118,13 @@ end
 --###########
   function printM(_text)
     mon.write(_text)
+    pos = mon.getCursorPos()
+    mon.setCursorPos(1, pos[y])
   end
 --###########
   function report()
     mon.clear()
+    mon.setCursorPos(1,1)
     
     printM("Spawning:")
     
