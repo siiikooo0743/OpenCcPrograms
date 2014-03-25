@@ -42,8 +42,8 @@ end
 --_a = animal; _b = bool(on/off)
 
 function spawn(_a, _b)
-  print(_a)
-  print(_b)
+  printM(_a)
+  printM(_b)
   spawn[_a] = _b
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
@@ -169,7 +169,7 @@ end
   end
 --###########
 
-mon.setBackgroundColor(colors.black)
+mon.setBackgroundColor(colors.red)
 mon.setTextColor(colors.white)
 
 while true do
