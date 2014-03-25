@@ -1,0 +1,112 @@
+BEEF = 6
+PORK = 5
+CHIC = 4
+BEEF_RAW = 3
+PORK_RAW = 2
+CHIC_RAW = 1
+
+COW = 2
+PIG = 1
+CHI = 0
+
+R_currOut = 0
+L_currOut = 0
+
+--#########
+function getColor(count)
+  return(2 ^ count)
+end
+
+
+--AutoSpawner are inverted
+--_a = animal; _b = bool(on/off)
+
+function spawn(_a, _b)
+  if(_b) then
+    colors.subtract(L_currOut, getColor(_a))
+  else
+    colors.combine(L_currOut, getColor(_a))
+  end
+  rs.setBundledOutput("left", L_currOut)
+end
+
+--###########
+
+--_m = MeetType
+
+function getFillage(_m)
+  return(colors.test(rs.getBundledInput("bottom"), getColor(_m)))
+end
+
+function dumb(_m)
+  colors.combine(R_currOut, getColor(_m))
+end
+
+--###########
+
+function checkRaw()
+  spawn(COW, getFillage(BEEF_RAW))
+  spawn(PIG, getFillage(PORK_RAW))
+  spawn(CHI, getFillage(CHIC_RAW))
+end
+
+function checkNuggets()
+  if not (getFillage(BEEF)) then
+    dumb(BEEF_RAW)
+  else
+    dumb(BEEF)
+  end
+  
+  if not (getFillage(PORK)) then
+    dumb(PORK_RAW)
+  else
+    dumb(PORK)
+  end
+  
+  if not (getFillage(CHIC))then
+    dumb(CHIC_RAW)
+  else
+    dumb(CHIC)
+  end
+  
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  sleep(1)
+  rs.setBundledOutput("rigth", R_currOut)
+  sleep(1)
+  rs.setBundledOutput("rigth", 0)
+  
+end
+
+--###########
+
+while true do
+  checkNuggets()
+  checkRaw()
+  sleep(60)
+end
