@@ -20,14 +20,14 @@ spawn = {}
 spawn[0] = false
 spawn[1] = false
 spawn[2] = false
-dump = {}
-dumb[0] = false
-dumb[1] = false
-dumb[2] = false
-dumb[3] = false
-dumb[4] = false
-dumb[5] = false
-dumb[6] = false
+dumpA = {}
+dumbA[0] = false
+dumbA[1] = false
+dumbA[2] = false
+dumbA[3] = false
+dumbA[4] = false
+dumbA[5] = false
+dumbA[6] = false
 
 
 mon = peripheral.wrap("monitor_0")
@@ -60,13 +60,13 @@ function getFillage(_m)
 end
 
 function dumb(_m)
-  dumb[_m] = true
+  dumbA[_m] = true
   
   if(_m < 4) then
-    dumb[_m + 3] = false
+    dumbA[_m + 3] = false
   end
   if(_m > 3) then
-    dumb[_m - 3] = false
+    dumbA[_m - 3] = false
   end
   
   
@@ -167,16 +167,16 @@ end
     print("")
     print("Pumping out:")
     
-    if(dumb[1]) then
+    if(dumbA[1]) then
       print("  Raw Chicken");
     end
-    if(dumb[2]) then
+    if(dumbA[2]) then
       print("  Raw Porkchop");
     end
-    if(dumb[3]) then
+    if(dumbA[3]) then
       print("  Raw Beef");
     end
-    if(dumb[4]) then
+    if(dumbA[4]) then
       print("  Ingredients");
     end
     
