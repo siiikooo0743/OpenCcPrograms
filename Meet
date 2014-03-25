@@ -42,7 +42,7 @@ end
 --_a = animal; _b = bool(on/off)
 
 function spawn(_a, _b)
-  (_a)
+  print(_a)
   print(_b)
   spawn[_a] = _b
   if(_b) then
