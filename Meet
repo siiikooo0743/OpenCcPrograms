@@ -47,7 +47,7 @@ function spawn(_a, _b)
   term.write(";...;")
   term.write(_b)
   term.write(";...;")
-  spawn[_a] = _b
+  spawn[_a] = 1
   if(_b) then
     colors.subtract(L_currOut, getColor(_a))
   else
