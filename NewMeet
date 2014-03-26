@@ -46,10 +46,10 @@ function make()
     rsOutR = colors.substract(rsOutR, colors.magenta)
   end
   
-  if(making["NChic"]) then
+  if(making["NPork"]) then
     rsOutR = colors.combine(rsOutR, colors.lightBlue)
   else
-    rsOutR = colors.substract(rsOutR, colors.magenta)
+    rsOutR = colors.substract(rsOutR, colors.lightBlue)
   end
   
   
