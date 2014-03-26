@@ -49,7 +49,7 @@ function make()
   if(making["NChic"]) then
     rsOutR = colors.combine(rsOutR, colors.lightBlue)
   else
-    rsOutR = colors.substract(rsOutR, colors.lightBlue)
+    rsOutR = colors.substract(rsOutR, colors.magenta)
   end
   
   
@@ -70,6 +70,12 @@ function test()
   making["NChic"] = not(fullEnough["NChic"]) and fullEnough["Chic"]
   
   making["TMT"] = fullEnough["NBeef"] and fullEnough["NPork"] and fullEnough["NChic"]
+end
+
+function printM(_text)
+    mon.write(_text)
+    x, y = mon.getCursorPos()
+    mon.setCursorPos(1, y + 1)
 end
 
 function report()
