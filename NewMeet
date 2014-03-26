@@ -46,6 +46,8 @@ function make()
     rsOutR = colors.substract(rsOutR, colors.magenta)
   end
   
+  --rema
+  
   if(making["NChic"]) then
     rsOutR = colors.combine(rsOutR, colors.lightBlue)
   else
