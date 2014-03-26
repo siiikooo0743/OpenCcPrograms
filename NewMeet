@@ -30,6 +30,11 @@ function getFilled()
 end
 
 function make()
+  makeRaw()
+  makeCoocked()
+end
+
+function makeRaw()  
   if(making["Beef"]) then
     rsOutL = colors.substract(rsOutL, colors.orange)
   else
@@ -47,8 +52,9 @@ function make()
   else
     rsOutL = colors.combine(rsOutL, colors.lightBlue)
   end
+end  
   
-  
+function makeCoocked()
   if(making["NBeef"]) then
     rsOutR = colors.combine(rsOutR, colors.orange)
   else
