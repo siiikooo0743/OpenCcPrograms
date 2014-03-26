@@ -73,7 +73,7 @@ function makeCoocked()
     rsOutR = colors.substract(rsOutR, colors.lightBlue)
   end
   
-  if(making["NPork"]) then
+  if(making["TMT"]) then
     rsOutR = colors.combine(rsOutR, colors.yellow)
   else
     rsOutR = colors.substract(rsOutR, colors.yellow)
@@ -129,7 +129,7 @@ function report()
   end
 end
 
-mon = peripheral.wrap("monitor_0")
+mon = peripheral.wrap("monitor_1")
 
 while true do
   rsInB = rs.getBundledInput("bottom")
