@@ -56,7 +56,7 @@ function make()
   if(making["TMT"]) then
     rsOutR = colors.combine(rsOutR, colors.yellow)
   else
-    rsOutL = colors.substract(rsOutR, colors.yellow)
+    --rsOutL = colors.substract(rsOutR, colors.yellow)
   end
 end
 
