@@ -6,54 +6,54 @@ rsOutL = 0
 rsOutR = 0
 
 function getFilled()
- fullEnough[Beef] = colors.test(rsInB, colors.orange)
- fullEnough[Pork] = colors.test(rsInB, colors.magenta)
- fullEnough[Chic] = colors.test(rsInB, colors.lightBlue)
- fullEnough[NBeef] = colors.test(rsInB, colors.yellow)
- fullEnough[NPork] = colors.test(rsInB, colors.lime)
- fullEnough[NChic] = colors.test(rsInB, colors.pink)
+ fullEnough["Beef"] = colors.test(rsInB, colors.orange)
+ fullEnough["Pork"] = colors.test(rsInB, colors.magenta)
+ fullEnough["Chic"] = colors.test(rsInB, colors.lightBlue)
+ fullEnough["NBeef"] = colors.test(rsInB, colors.yellow)
+ fullEnough["NPork"] = colors.test(rsInB, colors.lime)
+ fullEnough["NChic"] = colors.test(rsInB, colors.pink)
 end
 
 function make()
-  if(making[Beef]) then
+  if(making["Beef"]) then
     rsOutL = colors.substract(rsOutL, colors.orange)
   else
     rsOutL = colors.combine(rsOutL, colors.orange)
   end
   
-  if(making[Pork]) then
+  if(making["Pork"]) then
     rsOutL = colors.substract(rsOutL, colors.magenta)
   else
     rsOutL = colors.combine(rsOutL, colors.magenta)
   end
   
-  if(making[Chic]) then
+  if(making["Chic"]) then
     rsOutL = colors.substract(rsOutL, colors.lightBlue)
   else
     rsOutL = colors.combine(rsOutL, colors.lightBlue)
   end
   
   
-  if(making[NBeef]) then
+  if(making["NBeef"]) then
     rsOutL = colors.combine(rsOutR, colors.orange)
   else
     rsOutL = colors.substract(rsOutR, colors.orange)
   end
   
-  if(making[NPork]) then
+  if(making["NPork"]) then
     rsOutL = colors.combine(rsOutR, colors.magenta)
   else
     rsOutL = colors.substract(rsOutR, colors.magenta)
   end
   
-  if(making[NChic]) then
+  if(making["NChic"]) then
     rsOutL = colors.combine(rsOutR, colors.lightBlue)
   else
     rsOutL = colors.substarct(rsOutR, colors.lightBlue)
   end
   
   
-  if(making[TMT]) then
+  if(making["TMT"]) then
     rsOutL = colors.combine(rsOutR, colors.yellow)
   else
     rsOutL = colors.substract(rsOutR, colors.yellow)
@@ -61,15 +61,15 @@ function make()
 end
 
 function test()
-  making[Beef] = not(fullEnough[Beef])
-  making[Pork] = not(fullEnough[Pork])
-  making[Chic] = not(fullEnough[Chic])
+  making["Beef"] = not(fullEnough["Beef"])
+  making["Pork"] = not(fullEnough["Pork"])
+  making["Chic"] = not(fullEnough["Chic"])
   
-  making[NBeef] = not(fullEnough[NBeef]) and fullEnough[Beef]
-  making[NPork] = not(fullEnough[NPork]) and fullEnough[Pork]
-  making[NChic] = not(fullEnough[NChic]) and fullEnough[Chic]
+  making["NBeef"] = not(fullEnough["NBeef"]) and fullEnough["Beef"]
+  making["NPork"] = not(fullEnough["NPork"]) and fullEnough["Pork"]
+  making["NChic"] = not(fullEnough["NChic"]) and fullEnough["Chic"]
   
-  making[TMT] = fullEnough[NBeef] and fullEnough[NPork] and fullEnough[NChic]
+  making["TMT"] = fullEnough["NBeef"] and fullEnough["NPork"] and fullEnough["NChic"]
 end
 
 function report()
