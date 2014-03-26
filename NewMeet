@@ -20,6 +20,8 @@ rsInB = 0
 rsOutL = 0
 rsOutR = 0
 
+mon = peripheral.wrap("monitor_1")
+
 function getFilled()
  fullEnough["Beef"] = colors.test(rsInB, colors.orange)
  fullEnough["Pork"] = colors.test(rsInB, colors.magenta)
@@ -129,7 +131,6 @@ function report()
   end
 end
 
-mon = peripheral.wrap("monitor_1")
 
 while true do
   rsInB = rs.getBundledInput("bottom")
