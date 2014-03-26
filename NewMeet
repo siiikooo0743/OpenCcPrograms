@@ -15,45 +15,45 @@ function getFilled()
 end
 
 function make()
-  if(making[Beef] = true) then
+  if(making[Beef]) then
     rsOutL = colors.substract(rsOutL, colors.orange)
   else
     rsOutL = colors.combine(rsOutL, colors.orange)
   end
   
-  if(making[Pork] = true) then
+  if(making[Pork]) then
     rsOutL = colors.substract(rsOutL, colors.magenta)
   else
     rsOutL = colors.combine(rsOutL, colors.magenta)
   end
   
-  if(making[Chic] = true) then
+  if(making[Chic]) then
     rsOutL = colors.substract(rsOutL, colors.lightBlue)
   else
     rsOutL = colors.combine(rsOutL, colors.lightBlue)
   end
   
   
-  if(making[NBeef] = true) then
+  if(making[NBeef]) then
     rsOutL = colors.combine(rsOutR, colors.orange)
   else
     rsOutL = colors.substract(rsOutR, colors.orange)
   end
   
-  if(making[NPork] = true) then
+  if(making[NPork]) then
     rsOutL = colors.combine(rsOutR, colors.magenta)
   else
     rsOutL = colors.substract(rsOutR, colors.magenta)
   end
   
-  if(making[NChic] = true) then
+  if(making[NChic]) then
     rsOutL = colors.combine(rsOutR, colors.lightBlue)
   else
     rsOutL = colors.substarct(rsOutR, colors.lightBlue)
   end
   
   
-  if(making[TMT] = true) then
+  if(making[TMT]) then
     rsOutL = colors.combine(rsOutR, colors.yellow)
   else
     rsOutL = colors.substract(rsOutR, colors.yellow)
