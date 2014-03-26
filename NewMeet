@@ -117,14 +117,14 @@ function report()
   print("Full enough:")
   for key, value in pairs(fullEnough) do
     if(value) then
-      print(key)
+      printM(key)
     end  
   end
   
   print("Making:")
   for key, value in pairs(making) do
     if(value) then
-      print(key)
+      printM(key)
     end  
   end
 end
@@ -139,4 +139,5 @@ while true do
   report()
   rs.setBundledOutput("left", rsOutL)
   rs.setBundledOutput("right", rsOutR)
+  sleep(10)
 end
