@@ -35,26 +35,26 @@ function make()
   
   
   if(making["NBeef"]) then
-    rsOutL = colors.combine(rsOutR, colors.orange)
+    rsOutR = colors.combine(rsOutR, colors.orange)
   else
-    rsOutL = colors.substract(rsOutR, colors.orange)
+    rsOutR = colors.substract(rsOutR, colors.orange)
   end
   
   if(making["NPork"]) then
-    rsOutL = colors.combine(rsOutR, colors.magenta)
+    rsOutR = colors.combine(rsOutR, colors.magenta)
   else
-    rsOutL = colors.substract(rsOutR, colors.magenta)
+    rsOutR = colors.substract(rsOutR, colors.magenta)
   end
   
   if(making["NChic"]) then
-    rsOutL = colors.combine(rsOutR, colors.lightBlue)
+    rsOutR = colors.combine(rsOutR, colors.lightBlue)
   else
-    rsOutL = colors.substract(rsOutR, colors.lightBlue)
+    rsOutR = colors.substract(rsOutR, colors.lightBlue)
   end
   
   
   if(making["TMT"]) then
-    rsOutL = colors.combine(rsOutR, colors.yellow)
+    rsOutR = colors.combine(rsOutR, colors.yellow)
   else
     rsOutL = colors.substract(rsOutR, colors.yellow)
   end
