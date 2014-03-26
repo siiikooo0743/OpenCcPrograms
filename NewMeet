@@ -1,0 +1,103 @@
+fullEnough = {}
+making = {}
+
+rsInB
+rsOutL
+rsOutR
+
+function getFilled()
+ fullEnough[Beef] = colors.test(rsInB, colors.orange)
+ fullEnough[Pork] = colors.test(rsInB, colors.magenta)
+ fullEnough[Chic] = colors.test(rsInB, colors.lightBlue)
+ fullEnough[NBeef] = colors.test(rsInB, colors.yellow)
+ fullEnough[NPork] = colors.test(rsInB, colors.lime)
+ fullEnough[NChic] = colors.test(rsInB, colors.pink)
+end
+
+function make()
+  if(making[Beef] = true) then
+    rsOutL = colors.substract(rsOutL, colors.orange)
+  else
+    rsOutL = colors.combine(rsOutL, colors.orange)
+  end
+  
+  if(making[Pork] = true) then
+    rsOutL = colors.substract(rsOutL, colors.magenta)
+  else
+    rsOutL = colors.combine(rsOutL, colors.magenta)
+  end
+  
+  if(making[Chic] = true) then
+    rsOutL = colors.substract(rsOutL, colors.lightBlue)
+  else
+    rsOutL = colors.combine(rsOutL, colors.lightBlue)
+  end
+  
+  
+  if(making[NBeef] = true) then
+    rsOutL = colors.combine(rsOutR, colors.orange)
+  else
+    rsOutL = colors.substract(rsOutR, colors.orange)
+  end
+  
+  if(making[NPork] = true) then
+    rsOutL = colors.combine(rsOutR, colors.magenta)
+  else
+    rsOutL = colors.substract(rsOutR, colors.magenta)
+  end
+  
+  if(making[NChic] = true) then
+    rsOutL = colors.combine(rsOutR, colors.lightBlue)
+  else
+    rsOutL = colors.substarct(rsOutR, colors.lightBlue)
+  end
+  
+  
+  if(making[TMT] = true) then
+    rsOutL = colors.combine(rsOutR, colors.yellow)
+  else
+    rsOutL = colors.substract(rsOutR, colors.yellow)
+  end
+end
+
+function test()
+  making[Beef] = not(fullEnough[Beef])
+  making[Pork] = not(fullEnough[Pork])
+  making[Chic] = not(fullEnough[Chic])
+  
+  making[NBeef] = not(fullEnough[NBeef]) and fullEnough[Beef]
+  making[NPork] = not(fullEnough[NPork]) and fullEnough[Pork]
+  making[NChic] = not(fullEnough[NChic]) and fullEnough[Chic]
+  
+  making[TMT] = fullEnough[NBeef] and fullEnough[NPork] and fullEnough[NChic]
+end
+
+function report()
+  mon.clear()
+  mon.setCursorPosition(1,1)
+  print("Full enough:")
+  for key, value in pairs(fullEnough) do
+    if(value)
+      print(key)
+    end  
+  end
+  
+  print("Making:")
+  for key, value in pairs(making) do
+    if(value)
+      print(key)
+    end  
+  end
+end
+
+mon = peripheral.wrap("monitor_0")
+
+while true do
+  rsInB = rs.getBundledInput("bottom")
+  getFilled()
+  test()
+  make()
+  report()
+  rs.setBundledOutput("left", rsOutL)
+  rs.setBundledOutput("right", rsOutR)
+end
