@@ -67,6 +67,18 @@ function makeCoocked()
     rsOutR = colors.substract(rsOutR, colors.magenta)
   end
   
+  if(making["NBeef"]) then
+    rsOutR = colors.combine(rsOutR, colors.orange)
+  else
+    rsOutR = colors.substract(rsOutR, colors.orange)
+  end
+  
+  if(making["NPork"]) then
+    rsOutR = colors.combine(rsOutR, colors.magenta)
+  else
+    rsOutR = colors.substract(rsOutR, colors.magenta)
+  end
+  
 --  if(making["NChic"]) then
 --    rsOutR = colors.combine(rsOutR, colors.lightBlue)
 --  else
