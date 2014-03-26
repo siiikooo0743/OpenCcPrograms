@@ -1,9 +1,9 @@
 fullEnough = {}
 making = {}
 
-rsInB
-rsOutL
-rsOutR
+rsInB = 0
+rsOutL = 0
+rsOutR = 0
 
 function getFilled()
  fullEnough[Beef] = colors.test(rsInB, colors.orange)
