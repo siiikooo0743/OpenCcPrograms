@@ -74,7 +74,7 @@ end
 
 function report()
   mon.clear()
-  mon.setCursorPosition(1,1)
+  mon.setCursorPos(1,1)
   print("Full enough:")
   for key, value in pairs(fullEnough) do
     if(value) then
