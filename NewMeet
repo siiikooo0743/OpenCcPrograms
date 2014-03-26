@@ -1,5 +1,20 @@
 fullEnough = {}
+fullEnough["Beef"] = false
+fullEnough["Pork"] = false
+fullEnough["Chic"] = false
+fullEnough["NBeef"] = false
+fullEnough["NPork"] = false
+fullEnough["NChic"] = false
+
 making = {}
+
+making["Beef"] = false
+making["Pork"] = false
+making["Chic"] = false
+making["NBeef"] = false
+making["NPork"] = false
+making["NChic"] = false
+making["TMT"] = false
 
 rsInB = 0
 rsOutL = 0
