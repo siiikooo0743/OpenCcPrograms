@@ -49,7 +49,7 @@ function make()
   if(making["NChic"]) then
     rsOutL = colors.combine(rsOutR, colors.lightBlue)
   else
-    rsOutL = colors.substarct(rsOutR, colors.lightBlue)
+    rsOutL = colors.substract(rsOutR, colors.lightBlue)
   end
   
   
