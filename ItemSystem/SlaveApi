@@ -1,10 +1,10 @@
-function putIntoChest (c_middle, c_right, slotT, SlotC)
+function putIntoChest (c_middle, c_right, slotT, slotC)
   ec = peripheral.wrap("top")
   ec.setColours(colors.black, c_middle, c_right)
-  ec.pullItem("down", SlotT, 64, slotC)
+  ec.pullItem("down", slotT, 64, slotC)
 end
 
-function getOutofChest (c_middle, c_right, slotT, SlotC)
+function getOutofChest (c_middle, c_right, slotT, slotC)
   ec = peripheral.wrap("top")
   ec.setColours(colors.black, c_middle, c_right)
   ec.pushItem("down", slotC, 64, slotT)
