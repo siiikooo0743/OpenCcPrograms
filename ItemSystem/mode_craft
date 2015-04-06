@@ -1,0 +1,16 @@
+os.loadApi("slaveApi")
+function craft (colorA, colorB, aa, ab, ac, ba, bb, bc, ca, cb, cc)
+  slaveApi.getOutofChest("colorA", colorB, 1, aa)
+  slaveApi.getOutofChest("colorA", colorB, 2, ab)
+  slaveApi.getOutofChest("colorA", colorB, 3, ac)
+  slaveApi.getOutofChest("colorA", colorB, 5, ba)
+  slaveApi.getOutofChest("colorA", colorB, 6, bb)
+  slaveApi.getOutofChest("colorA", colorB, 7, bc)
+  slaveApi.getOutofChest("colorA", colorB, 9, ca)
+  slaveApi.getOutofChest("colorA", colorB, 10, cb)
+  slaveApi.getOutofChest("colorA", colorB, 11, cc)
+  turtle.select(16)
+  turtle.craft()
+  
+  
+end
