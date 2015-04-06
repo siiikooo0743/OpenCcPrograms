@@ -9,3 +9,13 @@ function getOutofChest (c_middle, c_right, slotT, slotC)
   ec.setColours(colors.black, c_middle, c_right)
   ec.pushItem("down", slotC, 64, slotT)
 end
+
+function emptyInventory ()
+  ec = peripheral.wrap("top")
+  ec.setColours(colors.black, colors.black, colors.black)
+  
+  for i, 1, 16 do 
+    turtle.select(i)
+    turtle.dropUp()
+  end
+end
