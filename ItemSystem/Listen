@@ -1,7 +1,8 @@
+os.loadAPI("slaveApi")
 while true do
   senderId, message, protocol = rednet.receive()
   if message == "register" then
-    
+    slaveApi.register(senderId)
   else
     commands.exec(message)
   end
