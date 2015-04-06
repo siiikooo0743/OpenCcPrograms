@@ -15,6 +15,6 @@ function craft (colorA, colorB, aa, ab, ac, ba, bb, bc, ca, cb, cc, result)
   slaveApi.emptyInventory()
 end
 
-function startup()
-  slaveApi.emptyInventory()
-end
+--On StartUp
+slaveApi.emptyInventory()
+
