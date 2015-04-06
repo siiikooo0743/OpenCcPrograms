@@ -19,3 +19,15 @@ function emptyInventory ()
     turtle.dropUp()
   end
 end
+
+function register (id)
+  f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
+  mode = f.read(*l)
+  f.close
+  
+  f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
+  status = f.read(*l)
+  f.close
+  
+  rednet.send(id, "register:" .. mode ..";" .. status)
+end
