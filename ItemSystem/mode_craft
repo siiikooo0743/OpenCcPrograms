@@ -1,5 +1,5 @@
+os.loadAPI("slaveApi")
 function craft (colorA, colorB, aa, ab, ac, ba, bb, bc, ca, cb, cc, result)
-  os.loadAPI("slaveApi")
   slaveApi.getOutofChest(colorA, colorB, 1, aa)
   slaveApi.getOutofChest(colorA, colorB, 2, ab)
   slaveApi.getOutofChest(colorA, colorB, 3, ac)
@@ -12,5 +12,9 @@ function craft (colorA, colorB, aa, ab, ac, ba, bb, bc, ca, cb, cc, result)
   turtle.select(16)
   turtle.craft()
   slaveApi.putIntoChest(colorA, colorB, 16, result)
+  slaveApi.emptyInventory()
+end
+
+function startup()
   slaveApi.emptyInventory()
 end
