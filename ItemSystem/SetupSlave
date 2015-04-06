@@ -1,2 +1,27 @@
-fs.makeDir("ItemSystem")
-fs.makeDir("ItemSystem/BareBoneSlave")
+print("Modes:")
+print("")
+print(" 1: craft")
+print("")
+print("Wich one?")
+m = read()
+
+if(m == 1) then 
+  fs.makeDir("ItemSystem")
+  fs.makeDir("ItemSystem/BareBoneSlave")
+  f = fs.open("ItemSystem/BareBoneSlave/mode", "w")
+  f.write("mode_craft")
+  f.close
+  f = fs.open("ItemSystem/BareBoneSlave/status", "w")
+  fwrite("ready")
+  shell.run("GitHub rep siiikooo0743/OpenCcPrograms")
+  shell.run("GitHub clone ItemSystem/SlaveApi")
+  shell.run("GitHub clone ItemSystem/BareBoneSlave")
+  shell.run("GitHub clone ItemSystem/Listen")
+  shell.run("GitHub clone ItemSystem/mode_craft")
+else
+ print("Invalid!")
+end
+
+
+
+
