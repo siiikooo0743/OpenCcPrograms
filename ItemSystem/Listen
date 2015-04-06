@@ -1,0 +1,8 @@
+while true do
+  senderId, message, protocol = rednet.receive()
+  if message == "register" then
+    
+  else
+    commands.exec(message)
+  end
+end
