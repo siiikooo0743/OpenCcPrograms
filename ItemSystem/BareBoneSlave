@@ -1,18 +1,3 @@
-function putIntoChest(c_middle, c_right, slotT, SlotC)
-{
-  ec = peripheral.wrap("top")
-  ec.setColours(colors.black, c_middle, c_right)
-  ec.pullItem("down", SlotT, 64, slotC)
-}
-
-function getOutofChest(c_middle, c_right, slotT, SlotC)
-{
-  ec = peripheral.wrap("top")
-  ec.setColours(colors.black, c_middle, c_right)
-  ec.pushItem("down", slotC, 64, slotT)
-}
-
-
 rednet.open("right")
 f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
 text = f.read(*l)
