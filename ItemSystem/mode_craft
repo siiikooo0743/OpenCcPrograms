@@ -1,3 +1,6 @@
+
+
+
 function craft (colorA, colorB, aa, ab, ac, ba, bb, bc, ca, cb, cc, result)
   os.loadAPI("slaveApi")
   slaveApi.getOutofChest(colorA, colorB, 1, aa)
