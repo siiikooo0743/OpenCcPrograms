@@ -5,7 +5,7 @@ print("")
 print("Wich one?")
 m = read()
 
-if(m == 1) then 
+if(m == "1") then 
   fs.makeDir("ItemSystem")
   fs.makeDir("ItemSystem/BareBoneSlave")
   f = fs.open("ItemSystem/BareBoneSlave/mode", "w")
