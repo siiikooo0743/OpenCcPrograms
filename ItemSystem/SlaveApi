@@ -40,14 +40,14 @@ function setMode(mode)
 end
 
 function getStatus()
-  f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
+  f = fs.open("/ItemSystem/BareBoneSlave/status", "r")
   status = f.readAll()
   f.close()
   return status
 end
 
 function setStatus(status)
-  f = fs.open("/ItemSystem/BareBoneSlave/mode", "w")
+  f = fs.open("/ItemSystem/BareBoneSlave/status", "w")
   f.write(status)
   f.close()
 end
