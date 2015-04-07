@@ -1,5 +1,5 @@
 os.loadAPI("slaveApi")
 rednet.open("right")
 mode = slaveApi.getMode()
-commands.execAsync("shell.run(\"Listen\")")
-commands.exec("shell.run(\"" .. mode .."\")")
+shell.run("Listen")
+shell.run("mode")
