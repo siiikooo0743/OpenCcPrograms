@@ -21,13 +21,33 @@ function emptyInventory ()
 end
 
 function register (id)
+  mode = getMode()
+  status = getStatus()
+  rednet.send(id, "register:" .. mode ..";" .. status)
+end
+
+function getMode()
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
   mode = f.read(*l)
   f.close
-  
+  return(mode)
+end
+
+function setMode(mode)
+  f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
+  f.write(mode)
+  f.close
+end
+
+function getStatus()
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
   status = f.read(*l)
   f.close
-  
-  rednet.send(id, "register:" .. mode ..";" .. status)
+  return(status)
+end
+
+function setStatus(status)
+  f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
+  f.write(status)
+  f.close
 end
