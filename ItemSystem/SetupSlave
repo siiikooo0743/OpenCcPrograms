@@ -1,11 +1,14 @@
 print("Modes:")
 print("")
+print(" 0: nothing")
 print(" 1: craft")
 print("")
 print("Wich one?")
 m = read()
 
-if(m == "1") then 
+if(m == "0") then
+  fs.delete("setup")
+elseif(m == "1") then 
   fs.makeDir("ItemSystem")
   fs.makeDir("ItemSystem/BareBoneSlave")
   f = fs.open("ItemSystem/BareBoneSlave/mode", "w")
@@ -19,6 +22,7 @@ if(m == "1") then
   shell.run("GitHub clone ItemSystem/BareBoneSlave BareBoneSlave")
   shell.run("GitHub clone ItemSystem/Listen Listen")
   shell.run("GitHub clone ItemSystem/mode_craft mode_craft")
+  fs.delete("setup")
 else
  print("Invalid!")
 end
