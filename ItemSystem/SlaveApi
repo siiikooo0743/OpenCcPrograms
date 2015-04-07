@@ -29,25 +29,25 @@ end
 function getMode()
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
   mode = f.read()
-  f.close
+  f.close()
   return mode
 end
 
 function setMode(mode)
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
   f.write(mode)
-  f.close
+  f.close()
 end
 
 function getStatus()
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
   status = f.read()
-  f.close
+  f.close()
   return status
 end
 
 function setStatus(status)
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
   f.write(status)
-  f.close
+  f.close()
 end
