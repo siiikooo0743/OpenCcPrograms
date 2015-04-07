@@ -1,4 +1,4 @@
-os.loadApi("slaveApi")
+os.loadAPI("slaveApi")
 rednet.open("right")
 mode = slaveApi.getMode()
 commands.execAsync("shell.run(\"Listen\")")
