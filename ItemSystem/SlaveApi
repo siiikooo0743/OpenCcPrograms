@@ -28,7 +28,7 @@ end
 
 function getMode()
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
-  mode = f.read(*l)
+  mode = f.read()
   f.close
   return(mode)
 end
@@ -41,7 +41,7 @@ end
 
 function getStatus()
   f = fs.open("/ItemSystem/BareBoneSlave/mode", "r")
-  status = f.read(*l)
+  status = f.read()
   f.close
   return(status)
 end
