@@ -135,7 +135,8 @@ if(tArgs[1] == "clone") then
    
    print( "Connecting to GitHub.com... " )
    getFile(sCode, sFile)
-   if(#tArgs == 4 and tArgs[4] == true) then
+   
+   if(not(#tArgs == 4) or not(tArgs[4] == true)) then
    	file = fs.open(".GitHub/update/"..sFile, "w")
    	file.write(sCode)
    	file.close()
