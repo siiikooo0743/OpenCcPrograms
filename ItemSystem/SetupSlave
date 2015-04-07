@@ -12,7 +12,8 @@ if(m == 1) then
   f.write("mode_craft")
   f.close
   f = fs.open("ItemSystem/BareBoneSlave/status", "w")
-  fwrite("ready")
+  f.write("ready")
+  f.close
   shell.run("GitHub rep siiikooo0743/OpenCcPrograms")
   shell.run("GitHub clone ItemSystem/SlaveApi")
   shell.run("GitHub clone ItemSystem/BareBoneSlave")
