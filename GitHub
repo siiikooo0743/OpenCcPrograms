@@ -1,9 +1,9 @@
 local function printUsage()
     print( "Usage:" )
-    print( "GitHub clone <GitHub file> <filename>" )
+    print( "GitHub clone <GitHub file> <filename> [<registerForUpdate>]" )
     print( "->Clones the file")
-    print( "GitHub update")
-    print( "->Updates all files(of all Repositorys)")
+    print( "GitHub update [file]")
+    print( "->Updates the or if not specifed all files(of all Repositorys)")
     print( "GitHub remove <file>")
     print( "->Removes file from update Function but not from Computer")
     print( "GitHub rep <GitHub repository>")
@@ -93,11 +93,15 @@ if not http then
 end
           
 if(tArgs[1] == "update") then
-    if not (#tArgs == 1) then
-   	printUsage()
-   	return
+    if (#tArgs == 1) then
+   	files = fs.list(".GitHub/update")
+    else
+    	files = {}
+    	for i = 2, #tArgs, 1 do
+			files[i - 1] = tArgs[i]
+    	end
     end
-    files = fs.list(".GitHub/update")
+    
 		
     for _, file in ipairs(files) do 
 	update(file)
