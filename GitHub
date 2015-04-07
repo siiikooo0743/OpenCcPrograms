@@ -1,6 +1,6 @@
 local function printUsage()
     print( "Usage:" )
-    print( "GitHub clone <GitHub file> <filename> [<registerForUpdate>]" )
+    print( "GitHub clone <GitHub file> <filename> [<NotToUpdate>]" )
     print( "->Clones the file")
     print( "GitHub update [file]")
     print( "->Updates the or if not specifed all files(of all Repositorys)")
@@ -136,7 +136,7 @@ if(tArgs[1] == "clone") then
    print( "Connecting to GitHub.com... " )
    getFile(sCode, sFile)
    
-   if(not(#tArgs == 4) or not(tArgs[4] == true)) then
+   if(not(#tArgs == 4) or not(tArgs[4] == "true")) then
    	file = fs.open(".GitHub/update/"..sFile, "w")
    	file.write(sCode)
    	file.close()
