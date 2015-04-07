@@ -15,10 +15,10 @@ if(m == "1") then
   f.write("ready")
   f.close()
   shell.run("GitHub rep siiikooo0743/OpenCcPrograms")
-  shell.run("GitHub clone ItemSystem/SlaveApi")
-  shell.run("GitHub clone ItemSystem/BareBoneSlave")
-  shell.run("GitHub clone ItemSystem/Listen")
-  shell.run("GitHub clone ItemSystem/mode_craft")
+  shell.run("GitHub clone ItemSystem/SlaveApi slaveApi")
+  shell.run("GitHub clone ItemSystem/BareBoneSlave BareBoneSlave")
+  shell.run("GitHub clone ItemSystem/Listen Listen")
+  shell.run("GitHub clone ItemSystem/mode_craft mode_craft")
 else
  print("Invalid!")
 end
