@@ -10,10 +10,10 @@ if(m == 1) then
   fs.makeDir("ItemSystem/BareBoneSlave")
   f1 = fs.open("ItemSystem/BareBoneSlave/mode", "w")
   f1.write("mode_craft")
-  f1.close
+  f1.close()
   f2 = fs.open("ItemSystem/BareBoneSlave/status", "w")
   f2.write("ready")
-  f2.close
+  f2.close()
   shell.run("GitHub rep siiikooo0743/OpenCcPrograms")
   shell.run("GitHub clone ItemSystem/SlaveApi")
   shell.run("GitHub clone ItemSystem/BareBoneSlave")
