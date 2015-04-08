@@ -1,8 +1,28 @@
 multishell.setTitle(multishell.getCurrent(), "MasterLoop") 
 
+function getItem(name, amount)
+  print("Get Item!")
+  print("Name:" .. name)
+  print("Amount:" .. name)
+end
+
 function processTasks()
+  l = fs.list("ItemSystem/tasks")
+  for _, file in ipairs(l) do 
+    f = fs.open("ItemSystem/tasks/" .. file)
+    name = f.readLine()
+    amount = f.readLine()
+  end
+end
+
+function listen()
+
+end
+
+
 
 while true do
+  parallel.waitForAny(processTasks(), listen())
 
 end
 
