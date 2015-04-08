@@ -14,6 +14,7 @@ function processTasks()
       name = f.readLine()
       amount = f.readLine()
     end
+    coroutine.yield()
   end
 end
 
@@ -23,13 +24,15 @@ function listen()
     print("Message received!")
     print("Id:" .. id)
     print("Message:" .. msg)
+    coroutine.yield()
   end
 end
 
 rednet.open("right")
 
 while true do
-  parallel.waitForAll(processTasks(), listen())
+  corountine.create(listen())
+  corountine.create(processTaks())
 
 end
 
