@@ -7,6 +7,7 @@ function getItem(name, amount)
 end
 
 function processTasks()
+  print("ProcessTasks initialized!)
   while true do
     l = fs.list("ItemSystem/tasks")
     for _, file in ipairs(l) do 
@@ -20,6 +21,7 @@ function processTasks()
 end
 
 function listen()
+  print("Listen initialized!)
   while true do
     id, msg = rednet.receive()
     print("Message received!")
