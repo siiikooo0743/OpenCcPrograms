@@ -34,8 +34,7 @@ end
 rednet.open("right")
 
 while true do
-  coroutine.create(processTasks())
-  coroutine.create(listen())
+  parallel.waitForAll(coroutine.create(processTasks()),  coroutine.create(listen()))
 
 end
 
