@@ -16,10 +16,13 @@ function processTasks()
 end
 
 function listen()
-
+  id, msg = rednet.receive()
+  print("Message received!")
+  print("Id:" .. id)
+  print("Message:" .. msg)
 end
 
-
+rednet.open("right")
 
 while true do
   parallel.waitForAny(processTasks(), listen())
