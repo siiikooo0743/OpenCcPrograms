@@ -8,7 +8,7 @@ end
 
 function processTasks()
   print("ProcessTasks initialized!")
-  while true do
+  while not(fs.exists("ItemSystem/stop")) do
     l = fs.list("ItemSystem/tasks")
     for _, file in ipairs(l) do 
       print("Looking for:" .. file)
@@ -22,7 +22,7 @@ end
 
 function listen()
   print("Listen initialized!")
-  while true do
+  while not(fs.exists("ItemSystem/stop")) do
     id, msg = rednet.receive()
     print("Message received!")
     print("Id:" .. id)
@@ -33,8 +33,6 @@ end
 
 rednet.open("right")
 
-while true do
-  parallel.waitForAll(processTasks(),  listen())
-
-end
+parallel.waitForAll(processTasks(),  listen())
+print("Done.")
 
