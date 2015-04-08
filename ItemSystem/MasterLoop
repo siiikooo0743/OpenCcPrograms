@@ -10,6 +10,7 @@ function processTasks()
   while true do
     l = fs.list("ItemSystem/tasks")
     for _, file in ipairs(l) do 
+      print("Looking for:" .. file)
       f = fs.open("ItemSystem/tasks/" .. file, "r")
       name = f.readLine()
       amount = f.readLine()
