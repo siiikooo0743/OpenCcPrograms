@@ -7,25 +7,29 @@ function getItem(name, amount)
 end
 
 function processTasks()
-  l = fs.list("ItemSystem/tasks")
-  for _, file in ipairs(l) do 
-    f = fs.open("ItemSystem/tasks/" .. file)
-    name = f.readLine()
-    amount = f.readLine()
+  while true do
+    l = fs.list("ItemSystem/tasks")
+    for _, file in ipairs(l) do 
+      f = fs.open("ItemSystem/tasks/" .. file)
+      name = f.readLine()
+      amount = f.readLine()
+    end
   end
 end
 
 function listen()
-  id, msg = rednet.receive()
-  print("Message received!")
-  print("Id:" .. id)
-  print("Message:" .. msg)
+  while true do
+    id, msg = rednet.receive()
+    print("Message received!")
+    print("Id:" .. id)
+    print("Message:" .. msg)
+  end
 end
 
 rednet.open("right")
 
 while true do
-  parallel.waitForAny(processTasks(), listen())
+  parallel.waitForAll(processTasks(), listen())
 
 end
 
