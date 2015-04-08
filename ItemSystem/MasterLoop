@@ -31,8 +31,8 @@ end
 rednet.open("right")
 
 while true do
-  corountine.create(listen())
-  corountine.create(processTaks())
+  coroutine.create(listen())
+  coroutine.create(processTaks())
 
 end
 
