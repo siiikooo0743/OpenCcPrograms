@@ -1,0 +1,5 @@
+while true
+  id, msg = rednet.receive()
+  if()
+  os.queueEvent()
+do
