@@ -1,5 +1,5 @@
 multishell.setTitle(multishell.getCurrent(), "EventLoop")
-while true do
+while not(fs.exists("ItemSystem/stop")) do
   id, msg = rednet.receive()
   t = string.split(msg, ";")
   if(t[1] == "sucessfull")
