@@ -1,5 +1,26 @@
-while true
+while true do
   id, msg = rednet.receive()
-  if()
-  os.queueEvent()
-do
+  t = string.split(msg, ";")
+  if(t[1] == "sucessfull")
+  then
+    //Par1(t2): taskID
+    //Par2(t3): amount
+    //Par3    : sender id
+    os.queueEvent("successfull", t[2], t[3], id)
+  end
+  
+  if(t[1] == "failed")
+  then
+    //Par1(t2): taskID
+    //Par2    : sender id
+    os.queueEvent("failed", t[2], id)
+  end
+  
+  if(t[1] == "request")
+  then
+    //Par1(t2): item
+    //Par2(t3): amount
+    //Par3    : sender id
+    os.queueEvent("request", t[2], t[3], id)
+  end
+end
