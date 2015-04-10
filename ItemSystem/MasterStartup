@@ -1,1 +1,2 @@
 shell.openTab("MasterLoop")
+shell.openTab("MasterEventLoop")
