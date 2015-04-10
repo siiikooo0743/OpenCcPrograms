@@ -3,9 +3,6 @@ function string:concat(parts, glue)
 end
 
 function string:split(string, delimiter)
-  if(delimiter == "") then 
-    return string 
-  end
   local result = { }
   local from = 1
   local delim_from, delim_to = string.find( string, delimiter, from )
