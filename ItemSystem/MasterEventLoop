@@ -1,3 +1,4 @@
+multishell.setTitle(multishell.getCurrent(), "EventLoop")
 while true do
   id, msg = rednet.receive()
   t = string.split(msg, ";")
