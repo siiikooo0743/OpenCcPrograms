@@ -1,3 +1,17 @@
+--[[
+	BetterMovementAPI
+	
+	Copyright (C) 2015 siiikooo0743
+	
+	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
+	see LicenseDetails for more details and LICENSE for the complete license.
+	
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	
+	This is an program, to farm the three types of meet, to make Thaumcrafts "Tripple Meat Treat"
+]]
+
 BEEF = 6
 PORK = 5
 CHIC = 4
