@@ -34,7 +34,7 @@ elseif(m == "1") then
   shell.run("GitHub rep siiikooo0743/OpenCcPrograms")
   shell.run("GitHub clone ItemSystem/SlaveApi slaveApi")
   shell.run("GitHub clone ItemSystem/BareBoneSlave BareBoneSlave")
-  shell.run("GitHub clone ItemSystem/Listen Listen")
+  shell.run("GitHub clone ItemSystem/SlaveListen SlaveListen")
   shell.run("GitHub clone ItemSystem/mode_craft mode_craft")
   fs.delete("setup")
 else
