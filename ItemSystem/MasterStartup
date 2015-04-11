@@ -1,2 +1,16 @@
+--[[
+	BareBoneSlave
+	
+	Copyright (C) 2015 siiikooo0743
+	
+	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
+	see LicenseDetails for more details and LICENSE for the complete license.
+	
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	
+	This program is part of the Item System
+]]
+
 shell.openTab("MasterLoop")
 shell.openTab("MasterEventLoop")
