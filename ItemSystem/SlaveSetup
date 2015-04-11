@@ -1,5 +1,5 @@
 --[[
-	SetupSlave
+	SlaveSetup
 	
 	Copyright (C) 2015 siiikooo0743
 	
@@ -33,7 +33,7 @@ elseif(m == "1") then
   f.close()
   shell.run("GitHub rep siiikooo0743/OpenCcPrograms")
   shell.run("GitHub clone ItemSystem/SlaveApi slaveApi")
-  shell.run("GitHub clone ItemSystem/BareBoneSlave BareBoneSlave")
+  shell.run("GitHub clone ItemSystem/SlaveBareBone SlaveBareBone")
   shell.run("GitHub clone ItemSystem/SlaveListen SlaveListen")
   shell.run("GitHub clone ItemSystem/mode_craft mode_craft")
   fs.delete("setup")
