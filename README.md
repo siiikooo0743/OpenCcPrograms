@@ -1,8 +1,7 @@
-OpenCcProgramms
+OpenCcPrograms - Open ComputerCraft Programs
 ===============
 
-Open Computercraft Programms:
-===============
+This is a collection of open-source programs for the Minecraft Mod ComputerCraft
 
 Run "pastebin get KwgQQGQ7 GitHub" to get a GitHub downloader
 GitHub seems to take a bit to updtae its data after editing, 
