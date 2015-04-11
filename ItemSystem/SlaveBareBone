@@ -1,5 +1,5 @@
 --[[
-	BareBoneSlave
+	SlaveBareBone
 	
 	Copyright (C) 2015 siiikooo0743
 	
@@ -15,5 +15,5 @@
 os.loadAPI("slaveApi")
 rednet.open("right")
 mode = slaveApi.getMode()
-shell.run("Listen")
-shell.run("mode")
+shell.run("SlaveListen")
+shell.run(mode)
