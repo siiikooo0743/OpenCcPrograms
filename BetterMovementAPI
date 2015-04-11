@@ -1,3 +1,18 @@
+--[[
+	BetterMovementAPI
+	
+	Copyright (C) 2015 siiikooo0743
+	
+	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
+	see LicenseDetails for more details and LICENSE for the complete license.
+	
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	
+	This was supposed to be an API for better moving around turtles, 
+	but was discarded when i found http://www.computercraft.info/wiki/Turtlemove_%28Custom_API%29
+]]
+
 x = 0
 y = 0
 z = 0
