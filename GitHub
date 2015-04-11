@@ -1,7 +1,22 @@
+--[[
+	BetterMovementAPI
+
+	Copyright (C) 2015 siiikooo0743
+
+	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3,
+	see LicenseDetails for more details and LICENSE for the complete license.
+
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	
+	This program is like the pastebin program, that is included in ComputerCraft, 
+	but is used to download from GitHub
+]]
+
 local function printUsage()
     print( "Usage:" )
-    print( "GitHub clone <GitHub file> <filename> [<NotToUpdate>]" )
-    print( "->Clones the file")
+    print( "GitHub get <GitHub file> <filename> [<NotToUpdate>]" )
+    print( "->Copies the file")
     print( "GitHub update [file]")
     print( "->Updates the or if not specifed all files(of all Repositorys)")
     print( "GitHub remove <file>")
@@ -123,7 +138,7 @@ if not (fs.exists(".GitHub/Rep")) then
     return
 end
           
-if(tArgs[1] == "clone") then
+if(tArgs[1] == "get") then
    if (#tArgs > 4 or #tArgs < 3) then
    	printUsage()
    	return
