@@ -1,5 +1,5 @@
 --[[
-	BareBoneSlave
+	SlaveApi
 	
 	Copyright (C) 2015 siiikooo0743
 	
@@ -9,7 +9,7 @@
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
 	
-	This program is part of the Item System
+	This API is part of the Item System
 ]]
 
 function putIntoChest (c_middle, c_right, slotT, slotC)
