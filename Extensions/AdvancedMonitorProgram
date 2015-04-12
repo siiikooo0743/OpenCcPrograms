@@ -1,11 +1,11 @@
---]
+--[[
   AdvancedMonitorProgram
   
   This is a modified version of the monitor program delivered with CC, to be able to change the textscale.
   
   Author of the modifications: siiikooo0743
   
-]
+]]
 
 function printUsage()
 	print( "Usage: monitor [size] [<TextSize>] <name/side> <program> <arguments>" )
