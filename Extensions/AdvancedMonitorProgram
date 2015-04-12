@@ -20,6 +20,8 @@ if #tArgs < 2 then
 end
 
 local size = 1.0
+local sName = tArgs[1]
+local sProgram = tArgs[2]
 
 if tArgs[1] == "size" then
 	if #tArgs < 4 then
@@ -27,15 +29,16 @@ if tArgs[1] == "size" then
 		return
 	end
 	size = tArgs[2]
+	sName = tArgs[3]
+	sProgram = tArgs[4]
+	sizeE = true
 end
 
-local sName = tArgs[1]
 if peripheral.getType( sName ) ~= "monitor" then
 	print( "No monitor named ".. sName )
 	return
 end
 
-local sProgram = tArgs[2]
 local sPath = shell.resolveProgram( sProgram )
 if sPath == nil then
 	print( "No such program: "..sProgram )
@@ -48,9 +51,16 @@ local monitor = peripheral.wrap( sName )
 monitor.setTextScale(size)
 local previousTerm = term.redirect( monitor )
 
-local co = coroutine.create( function()
+if sizeE then
+	local co = coroutine.create( function()
+    shell.run( sProgram, unpack( tArgs, 5 ) )
+	end )
+else
+	local co = coroutine.create( function()
     shell.run( sProgram, unpack( tArgs, 3 ) )
-end )
+	end )
+end
+
 
 local function resume( ... )
     local ok, param = coroutine.resume( co, ... )
