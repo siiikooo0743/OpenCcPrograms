@@ -25,12 +25,14 @@
 	
 	Recipes go in the recipes folder and have the name of the item as their name.
 	Their content contains the recipe.
-	Each item is the id, a ":" the damageValue, a "%" and the amount.
-	The different Items seperated by ";"
+	The file name is: The id, a ":" and the damageValue.
+	Due to restrictions in computercraft every ":" needs to be replaced with "_", that includes the one in the id.
+	Each item is: The id, a ":", the damageValue, a "%", and the amount.
+	The different Items seperated by ";".
 	
 	Example:
 	
-	"recipes/Botania:rune:8":
+	"recipes/Botania_rune_8":
 	"manaResource:0%5;manaResource:1%1;
 	
 ]]
@@ -81,7 +83,9 @@ if(tArgs[1] == "addRecipe") then
 		return
 	end
 	stackI = chest.getStackInSlot(tonumber(tArgs[2]))
-	file = fs.open("recipes/".. stackI["id"] .. ":" .. stackI["dmg"], "w")
+	name = "recipes/".. stackI["id"] .. ":" .. stackI["dmg"]
+	string.gsub(name, ":", "_")
+	file = fs.open(, "w")
 	text = ""
 	
 	for _,value in pairs(tArgs[3]) do
