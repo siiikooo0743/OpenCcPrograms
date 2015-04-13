@@ -24,11 +24,14 @@
 	RA Tu 
 	
 	Recipes go in the recipes folder and have the name of the item as their name.
-	Their content is the Item names followd by a ":" and the amount seperated by ";"
+	Their content contains the recipe.
+	Each item is the id, a ":" the damageValue, a "%" and the amount.
+	The different Items seperated by ";"
+	
 	Example:
 	
-	"recipes/Rune of Mana":
-	"Manasteel Ingot:5;Mana Pearl:1;
+	"recipes/Botania:rune:8":
+	"manaResource:0%5;manaResource:1%1;
 	
 ]]
 
@@ -65,7 +68,8 @@ if(tArgs[1] == "getName") then
 		printUsage()
 		return
 	end
-	print(chest.getStackInSlot(tonumber(tArgs[2]))["name"])
+	stack = chest.getStackInSlot(tonumber(tArgs[2]))
+	print(stack["name"] .. ":" .. stack.)
 	return
 end
 
