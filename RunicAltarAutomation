@@ -57,6 +57,7 @@ end
 
 if(tArgs[1] == "help") then
 	printUsage()
+	return
 end
 
 if(tArgs[1] == "getName") then
@@ -65,7 +66,12 @@ if(tArgs[1] == "getName") then
 		return
 	end
 	print(chest.getStackInSlot(tonumber(tArgs[2]))["name"])
+	return
 end
 
+if(tArgs[1] == "run") then
+
+	return
+end
 
 printUsage()
