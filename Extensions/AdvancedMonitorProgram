@@ -28,7 +28,11 @@ if tArgs[1] == "size" then
 		printUsage()
 		return
 	end
-	size = tArgs[2]
+	size = tonumber (tArgs[2])
+	if(size == nil) then
+		printUsage()
+		return
+	end
 	sName = tArgs[3]
 	sProgram = tArgs[4]
 	sizeE = true
