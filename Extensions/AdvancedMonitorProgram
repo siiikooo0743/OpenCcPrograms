@@ -10,6 +10,7 @@
 
 function printUsage()
 	print( "Usage: monitor [size] [<TextSize>] <name/side> <program> <arguments>" )
+	print( "The text size must be a multiple of 0.5"
 	return
 end
 
