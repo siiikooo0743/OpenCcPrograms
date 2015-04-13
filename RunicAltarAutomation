@@ -71,7 +71,7 @@ if(tArgs[1] == "getName") then
 		return
 	end
 	stack = chest.getStackInSlot(tonumber(tArgs[2]))
-	print(stack["name"] .. ":" .. stack.)
+	print(stack["id"] .. ":" .. stack["dmg"])
 	return
 end
 
