@@ -32,7 +32,40 @@
 	
 ]]
 
-function findItem("name")
-  
+tArgs = {...}
+chest = peripheral.wrap("top")
+
+function printUsage()
+	print("Usage:")
+	print("RAA help -> Print this help page")
+	print("RAA getName <slot> -> Print the name of the item in slot.")
+	print("RAA run -> Runs the main program
 end
 
+function findItem("name")
+ 	
+end
+
+function main()
+
+end
+
+if(#tArgs < 1) then
+	printUsage()
+	return
+end
+
+if(tArgs[1] == "help") then
+	printUsage()
+end
+
+if(tArgs[1] == "getName") then
+	if(#tArgs < 2) then
+		printUsage()
+		return
+	end
+	print(chest.getStackInSlot(tonumber(tArgs[2]))["name"])
+end
+
+
+printUsage()
