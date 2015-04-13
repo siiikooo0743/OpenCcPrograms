@@ -37,11 +37,13 @@
 
 tArgs = {...}
 chest = peripheral.wrap("top")
+fs.makeDir("recipes")
 
 function printUsage()
 	print("Usage:")
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
+	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be in a table.")
 	print("RAA run -> Runs the main program.")
 end
 
@@ -64,7 +66,7 @@ if(tArgs[1] == "help") then
 end
 
 if(tArgs[1] == "getName") then
-	if(#tArgs < 2) then
+	if(#tArgs != 2) then
 		printUsage()
 		return
 	end
@@ -73,8 +75,24 @@ if(tArgs[1] == "getName") then
 	return
 end
 
-if(tArgs[1] == "run") then
+if(tArgs[1] == "addRecipe") then
+	if(#tArgs != 3) then
+		printUsage()
+		return
+	end
+	stackI = chest.getStackInSlot(tonumber(tArgs[2]))
+	file = fs.open("recipes/".. stackI["id"] .. ":" .. stackI["dmg"], "w")
+	text = ""
+	
+	for _,value in pairs(tArgs[3]) do
+		text = text .. stackI["id"] .. ":" .. stackI["dmg"] .. "%" .. stackI["qty"] .. ";"
+	end
+	file.write(text)
+	file.close
+end
 
+if(tArgs[1] == "run") then
+	main()
 	return
 end
 
