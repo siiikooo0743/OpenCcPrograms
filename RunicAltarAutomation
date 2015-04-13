@@ -91,7 +91,7 @@ if(tArgs[1] == "addRecipe") then
 	
 	slots = string.split(tArgs[3], ";")
 	
-	for _,value in pairs(slots)) do
+	for _,value in pairs(slots) do
 		text = text .. stackI["id"] .. ":" .. stackI["dmg"] .. "%" .. stackI["qty"] .. ";"
 	end
 	ret = file.write(text)
