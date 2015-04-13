@@ -42,7 +42,7 @@ function printUsage()
 	print("RAA run -> Runs the main program.")
 end
 
-function findItem("name")
+function findItem(name)
  	
 end
 
