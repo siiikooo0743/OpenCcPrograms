@@ -41,11 +41,12 @@ tArgs = {...}
 chest = peripheral.wrap("top")
 fs.makeDir("recipes")
 
-function printUsage()
+function printUsage(cause)
+	print(cause)
 	print("Usage:")
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
-	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be in a table.")
+	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be seperated by >>;<<.")
 	print("RAA run -> Runs the main program.")
 end
 
@@ -58,18 +59,18 @@ function main()
 end
 
 if(#tArgs < 1) then
-	printUsage()
+	printUsage("To few arguments")
 	return
 end
 
 if(tArgs[1] == "help") then
-	printUsage()
+	printUsage("")
 	return
 end
 
 if(tArgs[1] == "getName") then
 	if not (#tArgs == 2) then
-		printUsage()
+		printUsage("Need exactly 2 arguments")
 		return
 	end
 	stack = chest.getStackInSlot(tonumber(tArgs[2]))
@@ -79,7 +80,7 @@ end
 
 if(tArgs[1] == "addRecipe") then
 	if not (#tArgs == 3) then
-		printUsage()
+		printUsage("Need exactly 3 arguments")
 		return
 	end
 	stackI = chest.getStackInSlot(tonumber(tArgs[2]))
@@ -106,4 +107,4 @@ if(tArgs[1] == "run") then
 	return
 end
 
-printUsage()
+printUsage("The first argument is wrong")
