@@ -88,7 +88,7 @@ if(tArgs[1] == "addRecipe") then
 		text = text .. stackI["id"] .. ":" .. stackI["dmg"] .. "%" .. stackI["qty"] .. ";"
 	end
 	file.write(text)
-	file.close
+	file.close()
 end
 
 if(tArgs[1] == "run") then
