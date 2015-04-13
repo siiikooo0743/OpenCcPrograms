@@ -51,12 +51,14 @@ local monitor = peripheral.wrap( sName )
 monitor.setTextScale(size)
 local previousTerm = term.redirect( monitor )
 
+local co
+
 if sizeE then
-	local co = coroutine.create( function()
+	co = coroutine.create( function()
     shell.run( sProgram, unpack( tArgs, 5 ) )
 	end )
 else
-	local co = coroutine.create( function()
+	co = coroutine.create( function()
     shell.run( sProgram, unpack( tArgs, 3 ) )
 	end )
 end
