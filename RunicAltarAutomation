@@ -42,6 +42,7 @@
 tArgs = {...}
 chest = peripheral.wrap("top")
 fs.makeDir("recipes")
+fs.makeDir(".dn")
 
 function printUsage(cause)
 	print(cause)
