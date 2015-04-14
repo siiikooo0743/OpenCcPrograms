@@ -54,7 +54,7 @@ end
 
 function registerDN(name, id)
 	path = ".dn/" .. name
-	if not (fs.exists(path))
+	if not (fs.exists(path)) then
 		f = fs.open("path", "w")
 		f.write(id)
 	end
@@ -74,6 +74,10 @@ end
 function main()
 	
 end
+
+--Start
+
+scan()
 
 if(#tArgs < 1) then
 	printUsage("To few arguments")
