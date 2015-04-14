@@ -60,19 +60,19 @@ function printError(cause)
 end
 
 function registerDn(name, id)
-	path = ".dn/" .. name
+	local path = ".dn/" .. name
 	if not (fs.exists(path)) then
-		f = fs.open(path, "w")
+		local f = fs.open(path, "w")
 		f.write(id)
 		f.close()
 	end
 end
 
 function getIdFromDn(name)
-	path = ".dn/" .. name
+	local path = ".dn/" .. name
 	if (fs.exists(path)) then
-		f = fs.open(path, "r")
-		id = f.readAll()
+		local f = fs.open(path, "r")
+		local id = f.readAll()
 		f.close()
 		return(id)
 	end
@@ -80,7 +80,7 @@ function getIdFromDn(name)
 end
 
 function scan()
-	stacks = chest.getAllStacks()
+	local stacks = chest.getAllStacks()
 	for _,slot in pairs(stacks) do
 		registerDn(slot["display_name"], slot["id"] .. ":" .. slot["dmg"])
 	end
@@ -88,10 +88,10 @@ end
 
 function findItem(idDmg)
  	chest.condenseItems()
- 	stacks = chest.getAllStacks()
+ 	local stacks = chest.getAllStacks()
  	
  	for slot,stack in pairs(stacks) do
- 		id = stack["id"] .. ":" .. stack["dmg"]
+ 		local id = stack["id"] .. ":" .. stack["dmg"]
  		if(id == idDmg) then
  			return slot, stack["qty"]
  		end
@@ -100,7 +100,7 @@ function findItem(idDmg)
 end
 
 function craft(items)
-	text = "Craft:"
+	local text = "Craft:"
 	for slot,amount in pairs(items) do
 		text = text .. slot .. "(" .. amount .. ") + "
 	end
@@ -108,32 +108,33 @@ function craft(items)
 end
 
 function main(idDmg, amount, useItemsInChest)
-	path = "recipes/" .. idDmg
+	local path = "recipes/" .. idDmg
 	path = string.gsub(path, ":", "_")
-	slot, amountFound = findItem(idDmg)
+	local slot, amountFound = findItem(idDmg)
 	
 	if(useItemsInChest and (amountFound >= amount)) then
 		
 	elseif (fs.exists(path)) then
-		amountToMake = amount
+		local amountToMake = amount
 		if useItemsInChest then amountToMake = amount - amountFound end
 		
-		f = fs.open(path, "r")
-		sA = f.readAll()
+		local f = fs.open(path, "r")
+		local sA = f.readAll()
 		f.close()
 		
-		amountPerCraft = tonumber(string.sub(sA, 1,1))
-		recipe = string.sub(sA, 3, string.len(sA))
+		local amountPerCraft = tonumber(string.sub(sA, 1,1))
+		local recipe = string.sub(sA, 3, string.len(sA))
 		
-		items = string.split(recipe, ";")
-		slots={}
+		local items = string.split(recipe, ";")
+		local slots={}
 		
 		for i = 1, math.ceil(amountToMake / amountPerCraft), 1 do
 			for _,item in pairs(items) do
-				parts = string.split(item, "?")
-				amountNeed = tonumber(parts[2])
+				local parts = string.split(item, "?")
+				local amountNeed = tonumber(parts[2])
 				main(parts[1], amountNeed, true)
-				slot, amountFound = findItem(parts[1])
+				
+				local slot, amountFound = findItem(parts[1])
 				slots[slot] = amountNeed
 			end
 			craft(slots)
