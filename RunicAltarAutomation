@@ -92,15 +92,11 @@ if(tArgs[1] == "addRecipe") then
 	slots = string.split(tArgs[3], ";")
 	
 	for _,value in pairs(slots) do
-		text = text .. stackI["id"] .. ":" .. stackI["dmg"] .. "%" .. stackI["qty"] .. ";"
+		stack = chest.getStackInSlot(tonumber(value))
+		text = text .. stack["id"] .. ":" .. stack["dmg"] .. "%" .. stack["qty"] .. ";"
 	end
-	ret = file.write(text)
+	file.write(text)
 	file.close()
-	if ret then
-		print("Recipe added.")
-	else
-		print("Failed.")
-	end
 	return
 end
 
