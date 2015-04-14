@@ -200,25 +200,23 @@ if(tArgs[1] == "make") then
 	
 	name = string.sub(name, 1, string.len(name))
 	
-	id = getIdFromDn(tArgs[2])
+	id = getIdFromDn(name)
 	if(id == "") then
 		print("This item is not registered yet.")
 		print("Put it in the chest and run anything to do so.")
 		print("Or just use the >>makeId<< function")
 		return
 	end
-	main(id, amount, false)
+	main(id, tArgs[2], false)
 	return
 end
 
 if(tArgs[1] == "makeId") then
-	if (#tArgs < 2 or #tArgs > 3) then
-		printError("Need 2 or 3 arguments")
+	if (#tArgs < 3) then
+		printError("Needs at least 3 arguments")
 		return
 	end
-	amount = 1
-	if #tArgs == 3 then amount = tArgs[3] end 
-	main(tArgs[2], amount, false)
+	main(tArgs[3], tArgs[2], false)
 	return
 end
 
