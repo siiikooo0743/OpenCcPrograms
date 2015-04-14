@@ -99,7 +99,7 @@ end
 
 function craft(items)
 	text = ""
-	for slot,amount in pairs(items)
+	for slot,amount in pairs(items) do
 		text = text .. slot .. "(" .. amount .. ") + "
 	end
 end
