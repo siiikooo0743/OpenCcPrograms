@@ -29,13 +29,13 @@
 	Their content contains the recipe.
 	The file name is: The id, a ":" and the damageValue.
 	Due to restrictions in computercraft every ":" needs to be replaced with "_", that includes any that may occur in the id.
-	Each item is: The id, a ":", the damageValue, a "%", and the amount.
+	Each item is: The id, a ":", the damageValue, a "?", and the amount.
 	The different Items seperated by ";".
 	
 	Example:
 	
 	"recipes/Botania_rune_8":
-	"manaResource:0%5;manaResource:1%1;
+	"manaResource:0?5;manaResource:1?1;
 	
 ]]
 
@@ -123,7 +123,7 @@ function main(idDmg, amount, useItemsInChest)
 		slots={}
 		
 		for _,item in pairs(items) do
-			parts = string.split(item, "%")
+			parts = string.split(item, "?")
 			amountNeed = tonumber(parts[2]) * amount
 			main(parts[1], amountNeed, true)
 			slot, amountFound = findItem(parts[1])
@@ -179,7 +179,7 @@ if(tArgs[1] == "addRecipe") then
 	
 	for _,value in pairs(slots) do
 		stack = chest.getStackInSlot(tonumber(value))
-		text = text .. stack["id"] .. ":" .. stack["dmg"] .. "%" .. stack["qty"] .. ";"
+		text = text .. stack["id"] .. ":" .. stack["dmg"] .. "?" .. stack["qty"] .. ";"
 	end
 	file.write(text)
 	file.close()
