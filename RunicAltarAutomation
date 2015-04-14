@@ -20,7 +20,7 @@
 	The turtle needs to have a wand of the forest.
 	
 	OC Ho
-	Ai Ch -> that is looking at it from the side without the gatee
+	Ai Ch -> that is looking at it from the side without the gate
 	RA Tu 
 	
 	The .dn folder is there to store any displayName-id combinations already registered.
@@ -49,8 +49,8 @@ function printUsage()
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
 	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be seperated by >>;<<.")
-	print("RAA make <item> -> Trys to craft the item, item is specified by display name")
-	print("RAA makeId <item> -> Trys to craft the item, item is specified by id")
+	print("RAA make <item> [<amount>] -> Trys to craft the item, item is specified by display name")
+	print("RAA makeId <item> [<amount>] -> Trys to craft the item, item is specified by id")
 end
 
 function printError(cause)
@@ -58,8 +58,7 @@ function printError(cause)
 	print("Please type >>RAA help<< for help")
 end
 
-function registerDN(name, id)
-	print("register:" .. name)
+function registerDn(name, id)
 	path = ".dn/" .. name
 	if not (fs.exists(path)) then
 		f = fs.open(path, "w")
@@ -68,19 +67,65 @@ function registerDN(name, id)
 	end
 end
 
+function getIdFromDn(name)
+	path = ".dn/" .. name
+	if (fs.exists(path)) then
+		f = fs.open(path, "r")
+		id = f.readAll()
+		f.close()
+		return(id)
+	end
+	return("")
+end
+
 function scan()
 	stacks = chest.getAllStacks()
 	for _,slot in pairs(stacks) do
-		registerDN(slot["display_name"], slot["id"] .. ":" .. slot["dmg"])
+		registerDn(slot["display_name"], slot["id"] .. ":" .. slot["dmg"])
 	end
 end
 
-function findItem(name)
+function findItem(idDmg)
  	
 end
 
-function main()
+function craft(items)
+
+end
+
+function main(idDmg, amount, useItemsInChest)
+	path = "recipes/" .. id
+	slot, amountFound = findItem(idDmg)
 	
+	if(useItemsInChest and (amountFound >= amount)) then
+		
+	elseif(fs.exist(path)) then
+		amountToMake = amount
+		if useItemsInChest then amountToMake = amount - amountFound end
+		
+		f = fs.open(path, "r")
+		sA = f.readAll()
+		f.close()
+		
+		items = string.split(sA, ";")
+		slots={}
+		
+		for _,item in pairs(items) do
+			parts = string.split(item, "%")
+			main(parts[1], tonumber(parts[2]) * amount, true)
+			slot, amountFound = findItem(item)
+		end
+		
+		for _,item in pairs(items) do
+			slot, amountFound = findItem(item)
+		end
+		craft(
+	else
+		print("Item not found:" .. idDmg)
+		print("Press any key to continue...")
+		os.pullEvent("key")
+		main(idDmg, amount, useItemsInChest)
+	end
 end
 
 --Start
@@ -130,8 +175,32 @@ if(tArgs[1] == "addRecipe") then
 	return
 end
 
-if(tArgs[1] == "run") then
-	main()
+if(tArgs[1] == "make") then
+	if (#tArgs < 2 or #tArgs > 3) then
+		printError("Need 2 or 3 arguments")
+		return
+	end
+	amount = 1
+	if #tArgs == 3 then amount = tArgs[3] end 
+	id = getIdFromDn(tArgs[2])
+	if(id == "") then
+		print("This item is not registered yet.")
+		print("Put it in the chest and run anything to do so.")
+		print("Or just use the >>makeId<< function")
+		return
+	end
+	main(id, amount, false)
+	return
+end
+
+if(tArgs[1] == "makeId") then
+	if (#tArgs < 2 or #tArgs > 3) then
+		printError("Need 2 or 3 arguments")
+		return
+	end
+	amount = 1
+	if #tArgs == 3 then amount = tArgs[3] end 
+	main(tArgs[2], amount, false)
 	return
 end
 
