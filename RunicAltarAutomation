@@ -100,11 +100,13 @@ function findItem(idDmg)
 end
 
 function craft(items)
-	local text = "Craft:"
+	local totalAmount
 	for slot,amount in pairs(items) do
-		text = text .. slot .. "(" .. amount .. ") + "
+		chest.pushItem("up", "slot", "amount")
+		totalAmount = totalAmount + amount
+		sleep(0.4)
 	end
-	print(text)
+	sleep(1)
 end
 
 function main(idDmg, amount, useItemsInChest)
