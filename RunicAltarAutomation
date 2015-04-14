@@ -96,6 +96,7 @@ function findItem(idDmg)
  			return slot, stack["qty"]
  		end
  	end
+ 	return 0, 0
 end
 
 function craft(items)
