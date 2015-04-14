@@ -124,6 +124,7 @@ function main(idDmg, amount, useItemsInChest)
 		
 		for _,item in pairs(items) do
 			parts = string.split(item, "?")
+			print(unpack(parts))
 			amountNeed = tonumber(parts[2]) * amount
 			main(parts[1], amountNeed, true)
 			slot, amountFound = findItem(parts[1])
@@ -207,7 +208,7 @@ if(tArgs[1] == "make") then
 		print("Or just use the >>makeId<< function")
 		return
 	end
-	main(id, tArgs[2], false)
+	main(id, tonumber(tArgs[2]), false)
 	return
 end
 
@@ -216,7 +217,7 @@ if(tArgs[1] == "makeId") then
 		printError("Needs at least 3 arguments")
 		return
 	end
-	main(tArgs[3], tArgs[2], false)
+	main(tArgs[3], tonumber(tArgs[2]), false)
 	return
 end
 
