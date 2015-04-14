@@ -182,6 +182,9 @@ if(tArgs[1] == "addRecipe") then
 		stack = chest.getStackInSlot(tonumber(value))
 		text = text .. stack["id"] .. ":" .. stack["dmg"] .. "?" .. stack["qty"] .. ";"
 	end
+	
+	text = string.sub(text, 1, string.len(text) - 1)
+	
 	file.write(text)
 	file.close()
 	return
@@ -199,7 +202,7 @@ if(tArgs[1] == "make") then
 		name = name .. tArgs[i] .. " "
 	end
 	
-	name = string.sub(name, 1, string.len(name))
+	name = string.sub(name, 1, string.len(name) - 1)
 	
 	id = getIdFromDn(name)
 	if(id == "") then
