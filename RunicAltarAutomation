@@ -49,7 +49,8 @@ function printUsage()
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
 	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be seperated by >>;<<.")
-	print("RAA make <item> -> Trys to craft the item, item is specified ")
+	print("RAA make <item> -> Trys to craft the item, item is specified by display name")
+	print("RAA makeId <item> -> Trys to craft the item, item is specified by id")
 end
 
 function printError(cause)
