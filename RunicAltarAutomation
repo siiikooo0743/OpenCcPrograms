@@ -127,7 +127,7 @@ function main(idDmg, amount, useItemsInChest)
 		items = string.split(recipe, ";")
 		slots={}
 		
-		for i = 1, math.ceil(amount / amountPerCraft), 1 do
+		for i = 1, math.ceil(amountToMake / amountPerCraft), 1 do
 			for _,item in pairs(items) do
 				parts = string.split(item, "?")
 				amountNeed = tonumber(parts[2])
@@ -135,9 +135,10 @@ function main(idDmg, amount, useItemsInChest)
 				slot, amountFound = findItem(parts[1])
 				slots[slot] = amountNeed
 			end
+			craft(slots)
 		end
 		
-		craft(slots)
+		
 	else
 		print("Item not found:" .. idDmg)
 		print("Press any key to continue...")
