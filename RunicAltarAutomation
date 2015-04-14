@@ -121,7 +121,7 @@ function main(idDmg, amount, useItemsInChest)
 		sA = f.readAll()
 		f.close()
 		
-		amountPerCraft = string.sub(sA, 1,1)
+		amountPerCraft = tonumber(string.sub(sA, 1,1))
 		recipe = string.sub(sA, 1, string.len(sA))
 		
 		items = string.split(sA, ";")
