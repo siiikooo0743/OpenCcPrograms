@@ -127,7 +127,7 @@ function main(idDmg, amount, useItemsInChest)
 		items = string.split(sA, ";")
 		slots={}
 		
-		for i = 1, amount, amountPerCraft do
+		for i = 1, math.ceil(amount / amountPerCraft), 1 do
 			for _,item in pairs(items) do
 				parts = string.split(item, "?")
 				amountNeed = tonumber(parts[2])
