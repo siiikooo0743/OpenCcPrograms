@@ -111,7 +111,7 @@ function main(idDmg, amount, useItemsInChest)
 	
 	if(useItemsInChest and (amountFound >= amount)) then
 		
-	elseif(fs.exist(path)) then
+	elseif (fs.exists(path)) then
 		amountToMake = amount
 		if useItemsInChest then amountToMake = amount - amountFound end
 		
