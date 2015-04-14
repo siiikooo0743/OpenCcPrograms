@@ -44,8 +44,7 @@ chest = peripheral.wrap("top")
 fs.makeDir("recipes")
 fs.makeDir(".dn")
 
-function printUsage(cause)
-	print(cause)
+function printUsage()
 	print("Usage:")
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
@@ -53,7 +52,13 @@ function printUsage(cause)
 	print("RAA make <item> -> Trys to craft the item, item is specified ")
 end
 
+function printError(cause)
+	print(cause)
+	print("Please type >>RAA help<< for help")
+end
+
 function registerDN(name, id)
+	print("register:" .. name)
 	path = ".dn/" .. name
 	if not (fs.exists(path)) then
 		f = fs.open("path", "w")
@@ -81,18 +86,18 @@ end
 scan()
 
 if(#tArgs < 1) then
-	printUsage("To few arguments")
+	printError("To few arguments")
 	return
 end
 
 if(tArgs[1] == "help") then
-	printUsage("")
+	printUsage()
 	return
 end
 
 if(tArgs[1] == "getName") then
 	if not (#tArgs == 2) then
-		printUsage("Need exactly 2 arguments")
+		printError("Need exactly 2 arguments")
 		return
 	end
 	stack = chest.getStackInSlot(tonumber(tArgs[2]))
@@ -103,7 +108,7 @@ end
 
 if(tArgs[1] == "addRecipe") then
 	if not (#tArgs == 3) then
-		printUsage("Need exactly 3 arguments")
+		printError("Need exactly 3 arguments")
 		return
 	end
 	stackI = chest.getStackInSlot(tonumber(tArgs[2]))
@@ -128,4 +133,4 @@ if(tArgs[1] == "run") then
 	return
 end
 
-printUsage("The first argument is wrong")
+printError("The first argument is wrong")
