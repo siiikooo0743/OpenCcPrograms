@@ -49,8 +49,8 @@ function printUsage()
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
 	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be seperated by >>;<<.")
-	print("RAA make <item> [<amount>] -> Trys to craft the item, item is specified by display name")
-	print("RAA makeId <item> [<amount>] -> Trys to craft the item, item is specified by id")
+	print("RAA make <amount> <item> -> Trys to craft the item, item is specified by display name")
+	print("RAA makeId <amount> <item> -> Trys to craft the item, item is specified by id")
 end
 
 function printError(cause)
@@ -87,7 +87,7 @@ end
 
 function findItem(idDmg)
  	chest.condenseItems()
- 	stacks = getAllStacks()
+ 	stacks = chest.getAllStacks()
  	
  	for slot,stack in pairs(stacks) do
  		id = stack["id"] .. ":" .. stack["dmg"]
@@ -187,12 +187,19 @@ if(tArgs[1] == "addRecipe") then
 end
 
 if(tArgs[1] == "make") then
-	if (#tArgs < 2 or #tArgs > 3) then
-		printError("Need 2 or 3 arguments")
+	if (#tArgs < 3) then
+		printError("Needs at least 3 arguments")
 		return
 	end
-	amount = 1
-	if #tArgs == 3 then amount = tArgs[3] end 
+	
+	name = ""
+	
+	for i = 3, #tArgs, 1 do
+		name = name .. tArgs[i] .. " "
+	end
+	
+	name = string.sub(name, 1, string.len(name))
+	
 	id = getIdFromDn(tArgs[2])
 	if(id == "") then
 		print("This item is not registered yet.")
