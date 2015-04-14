@@ -98,10 +98,11 @@ function findItem(idDmg)
 end
 
 function craft(items)
-	text = ""
+	text = "Craft:"
 	for slot,amount in pairs(items) do
 		text = text .. slot .. "(" .. amount .. ") + "
 	end
+	print(text)
 end
 
 function main(idDmg, amount, useItemsInChest)
@@ -124,9 +125,6 @@ function main(idDmg, amount, useItemsInChest)
 		
 		for _,item in pairs(items) do
 			parts = string.split(item, "?")
-			for key,value in pairs(parts) do
-				print("Key:" .. key .. ";Value:" .. value)
-			end
 			amountNeed = tonumber(parts[2]) * amount
 			main(parts[1], amountNeed, true)
 			slot, amountFound = findItem(parts[1])
