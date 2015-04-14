@@ -122,7 +122,7 @@ function main(idDmg, amount, useItemsInChest)
 		f.close()
 		
 		amountPerCraft = tonumber(string.sub(sA, 1,1))
-		recipe = string.sub(sA, 1, string.len(sA))
+		recipe = string.sub(sA, 3, string.len(sA))
 		
 		items = string.split(sA, ";")
 		slots={}
