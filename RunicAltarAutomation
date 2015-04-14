@@ -86,15 +86,27 @@ function scan()
 end
 
 function findItem(idDmg)
+ 	chest.condenseItems()
+ 	stacks = getAllStacks()
  	
+ 	for slot,stack in pairs(stacks) do
+ 		id = stack["id"] .. ":" .. stack["dmg"]
+ 		if(id == idDmg) then
+ 			return slot, stack["qty"]
+ 		end
+ 	end
 end
 
 function craft(items)
-
+	text = ""
+	for slot,amount in pairs(items)
+		text = text .. slot .. "(" .. amount .. ") + "
+	end
 end
 
 function main(idDmg, amount, useItemsInChest)
 	path = "recipes/" .. id
+	path = string.gsub(path, ":", "_")
 	slot, amountFound = findItem(idDmg)
 	
 	if(useItemsInChest and (amountFound >= amount)) then
@@ -112,14 +124,13 @@ function main(idDmg, amount, useItemsInChest)
 		
 		for _,item in pairs(items) do
 			parts = string.split(item, "%")
-			main(parts[1], tonumber(parts[2]) * amount, true)
-			slot, amountFound = findItem(item)
+			amountNeed = tonumber(parts[2]) * amount
+			main(parts[1], amountNeed, true)
+			slot, amountFound = findItem(parts[1])
+			slots[slot] = amountNeed
 		end
 		
-		for _,item in pairs(items) do
-			slot, amountFound = findItem(item)
-		end
-		craft(
+		craft(slots)
 	else
 		print("Item not found:" .. idDmg)
 		print("Press any key to continue...")
