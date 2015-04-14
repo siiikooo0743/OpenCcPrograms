@@ -108,7 +108,7 @@ function craft(items)
 end
 
 function main(idDmg, amount, useItemsInChest)
-	path = "recipes/" .. id
+	path = "recipes/" .. idDmg
 	path = string.gsub(path, ":", "_")
 	slot, amountFound = findItem(idDmg)
 	
