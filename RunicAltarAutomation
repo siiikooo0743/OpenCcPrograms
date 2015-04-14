@@ -61,7 +61,7 @@ function registerDN(name, id)
 	print("register:" .. name)
 	path = ".dn/" .. name
 	if not (fs.exists(path)) then
-		f = fs.open("path", "w")
+		f = fs.open(path, "w")
 		f.write(id)
 		f.close()
 	end
