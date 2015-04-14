@@ -29,13 +29,14 @@
 	Their content contains the recipe.
 	The file name is: The id, a ":" and the damageValue.
 	Due to restrictions in computercraft every ":" needs to be replaced with "_", that includes any that may occur in the id.
+	At the start of the file the amount being crafted each time is noted continued by a ";"
 	Each item is: The id, a ":", the damageValue, a "?", and the amount.
 	The different Items seperated by ";".
 	
 	Example:
 	
 	"recipes/Botania_rune_8":
-	"manaResource:0?5;manaResource:1?1;
+	"1;manaResource:0?5;manaResource:1?1
 	
 ]]
 
@@ -120,15 +121,20 @@ function main(idDmg, amount, useItemsInChest)
 		sA = f.readAll()
 		f.close()
 		
+		amountPerCraft = string.sub(sA, 1,1)
+		recipe = string.sub(sA, 1, string.len(sA))
+		
 		items = string.split(sA, ";")
 		slots={}
 		
-		for _,item in pairs(items) do
-			parts = string.split(item, "?")
-			amountNeed = tonumber(parts[2]) * amount
-			main(parts[1], amountNeed, true)
-			slot, amountFound = findItem(parts[1])
-			slots[slot] = amountNeed
+		for i = 1, amount, amountPerCraft do
+			for _,item in pairs(items) do
+				parts = string.split(item, "?")
+				amountNeed = tonumber(parts[2])
+				main(parts[1], amountNeed, true)
+				slot, amountFound = findItem(parts[1])
+				slots[slot] = amountNeed
+			end
 		end
 		
 		craft(slots)
@@ -174,7 +180,9 @@ if(tArgs[1] == "addRecipe") then
 	name = "recipes/".. stackI["id"] .. ":" .. stackI["dmg"]
 	name = string.gsub(name, ":", "_")
 	file = fs.open(name , "w")
-	text = ""
+	text = stackI["qty"] .. ";"
+	
+	
 	
 	slots = string.split(tArgs[3], ";")
 	
