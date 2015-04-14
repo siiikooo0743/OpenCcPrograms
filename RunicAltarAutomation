@@ -23,6 +23,8 @@
 	Ai Ch -> that is looking at it from the side without the gatee
 	RA Tu 
 	
+	The .dn folder is there to store any displayName-id combinations already registered.
+	
 	Recipes go in the recipes folder and have the name of the item as their name.
 	Their content contains the recipe.
 	The file name is: The id, a ":" and the damageValue.
@@ -47,7 +49,22 @@ function printUsage(cause)
 	print("RAA help -> Print this help page.")
 	print("RAA getName <slot> -> Print the name of the item in slot.")
 	print("RAA addRecipe <slot_item> <slots_ingredients> -> Adds the recipe for item with ingredients, wich need to be seperated by >>;<<.")
-	print("RAA run -> Runs the main program.")
+	print("RAA make <item> -> Trys to craft the item, item is specified ")
+end
+
+function registerDN(name, id)
+	path = ".dn/" .. name
+	if not (fs.exists(path))
+		f = fs.open("path", "w")
+		f.write(id)
+	end
+end
+
+function scan()
+	stacks = chest.getAllStacks()
+	for _,slot in pairs(stacks) do
+		registerDN(slot["display_name"], slot["id"] .. ":" .. slot["dmg"])
+	end
 end
 
 function findItem(name)
@@ -55,7 +72,7 @@ function findItem(name)
 end
 
 function main()
-
+	
 end
 
 if(#tArgs < 1) then
@@ -74,7 +91,8 @@ if(tArgs[1] == "getName") then
 		return
 	end
 	stack = chest.getStackInSlot(tonumber(tArgs[2]))
-	print(stack["id"] .. ":" .. stack["dmg"])
+	print("Id:" .. stack["id"] .. ":" .. stack["dmg"])
+	print("DisplayName:" .. stack["display_name"] .. ":" .. stack["dmg"])
 	return
 end
 
