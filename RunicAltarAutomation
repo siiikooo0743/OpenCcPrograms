@@ -124,7 +124,7 @@ function craft(items)
 	chest.pushItem("up", slot, 1)
 	sleep(2)
 	turtle.place()
-	sleep(4)
+	sleep(6)
 	turtle.select(2)
 	while(table.getn(chest.getAllStacks) > 0 ) do
 		turtle.suck()
