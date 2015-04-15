@@ -102,11 +102,28 @@ end
 function craft(items)
 	local totalAmount
 	for slot,amount in pairs(items) do
-		chest.pushItem("up", "slot", "amount")
+		chest.pushItem("up", slot, amount)
 		totalAmount = totalAmount + amount
 		sleep(0.4)
 	end
+	sleep(0.5)
+	turtle.select(1)
+	turtle.place()
 	sleep(1)
+	while rs.getInput("left") do
+		sleep(1)
+	end
+	local slot, amount = findItem("Botania:livingrock")
+	while(amount == 0) do
+		print("Item not found:" .. idDmg)
+		print("Press any key to continue...")
+		os.pullEvent("key")
+		slot, amount = findItem("Botania:livingrock")
+	end
+	
+	chest.pushItem("up", slot, 1)
+	sleep(0.5)
+	turtle.place()
 end
 
 function main(idDmg, amount, useItemsInChest)
@@ -172,7 +189,7 @@ if(tArgs[1] == "getName") then
 	end
 	stack = chest.getStackInSlot(tonumber(tArgs[2]))
 	print("Id:" .. stack["id"] .. ":" .. stack["dmg"])
-	print("DisplayName:" .. stack["display_name"] .. ":" .. stack["dmg"])
+	print("DisplayName:" .. stack["display_name"])
 	return
 end
 
