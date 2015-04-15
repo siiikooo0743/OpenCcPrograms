@@ -118,7 +118,7 @@ function craft(items)
 		print("Item not found:livingrock:0")
 		print("Press any key to continue...")
 		os.pullEvent("key")
-		slot, amount = findItem("Botania:livingrock")
+		slot, amount = findItem("Botania:livingrock:0")
 	end
 	
 	chest.pushItem("up", slot, 1)
