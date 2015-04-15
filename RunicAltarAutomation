@@ -106,7 +106,7 @@ function craft(items)
 		totalAmount = totalAmount + amount
 		sleep(0.4)
 	end
-	sleep(1)
+	sleep(2)
 	turtle.select(1)
 	turtle.place()
 	sleep(1)
@@ -122,9 +122,9 @@ function craft(items)
 	end
 	
 	chest.pushItem("up", slot, 1)
-	sleep(1)
+	sleep(2)
 	turtle.place()
-	sleep(3)
+	sleep(4)
 	turtle.select(2)
 	turtle.suck()
 	turtle.dropUp()
