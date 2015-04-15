@@ -100,7 +100,7 @@ function findItem(idDmg)
 end
 
 function craft(items)
-	local totalAmount
+	local totalAmount = 0
 	for slot,amount in pairs(items) do
 		chest.pushItem("up", slot, amount)
 		totalAmount = totalAmount + amount
