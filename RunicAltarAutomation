@@ -42,6 +42,7 @@
 
 tArgs = {...}
 chest = peripheral.wrap("top")
+table = peripheral.wrap("front")
 fs.makeDir("recipes")
 fs.makeDir(".dn")
 
@@ -126,7 +127,8 @@ function craft(items)
 	turtle.place()
 	sleep(6)
 	turtle.select(2)
-	while(table.getn(chest.getAllStacks) > 0 ) do
+	
+	while(table.getn(table.getAllStacks) > 0 ) do
 		turtle.suck()
 		turtle.dropUp()
 	end
