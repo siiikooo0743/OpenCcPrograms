@@ -126,8 +126,10 @@ function craft(items)
 	turtle.place()
 	sleep(4)
 	turtle.select(2)
-	turtle.suck()
-	turtle.dropUp()
+	while(table.getn(chest.getAllStacks) > 0 ) do
+		turtle.suck()
+		turtle.dropUp()
+	end
 	turtle.select(1)
 end
 
