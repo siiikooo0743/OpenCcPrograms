@@ -16,12 +16,15 @@
 	
 	A Runic Altar with an AirBlock above it and an Open Crate above that, a hopper facing into the Open Crate,
 	a chest for all Items below and a turtle facing the altar below that.
-	Additionaly a BC Gate set to Space for Mana and redstone-signale facing the altar and a redstone wire of kinds connecting it to the left of the turtle. 
+	Additionaly a BC Gate set to "Space for Mana" and "redstone-signale" facing the altar and a redstone wire of kinds connecting it to the left of the turtle. 
+	Alternativly a Comparator at the altar and a Redstone-Torch on the second redstone, leading (with some wire) into the left of the turtle.
+	Furthermore you need a hopper below the altar pushing all its contents into the chest through some sort of transport.
 	The turtle needs to have a wand of the forest.
 	
 	OC Ho
-	Ai Ch -> that is looking at it from the side without the gate
+	Ai Ch -> that is looking at it from the side without the gate/comparator and trasnport method.
 	RA Tu 
+	HO
 	
 	The .dn folder is there to store any displayName-id combinations already registered.
 	
@@ -101,6 +104,11 @@ function findItem(idDmg)
 end
 
 function craft(items)
+	
+	while(table.getn(altar.getAllStacks()) > 0) do
+		sleep(0.5)
+	end
+	
 	local totalAmount = 0
 	for slot,amount in pairs(items) do
 		chest.pushItem("up", slot, amount)
@@ -114,6 +122,7 @@ function craft(items)
 	while rs.getInput("left") do
 		sleep(1)
 	end
+	
 	local slot, amount = findItem("Botania:livingrock:0")
 	while(amount == 0) do
 		print("Item not found:livingrock:0")
@@ -123,16 +132,18 @@ function craft(items)
 	end
 	
 	chest.pushItem("up", slot, 1)
-	sleep(2)
+	sleep(3)
 	turtle.place()
-	sleep(6)
-	turtle.select(2)
-	
-	while(table.getn(altar.getAllStacks()) > 0 ) do
-		turtle.suck()
-		turtle.dropUp()
+end
+
+function needItem(idDamg, amount)
+	local slot, amountFound = findItem(idDmg)
+	if(amountFound < amount) then
+		print("Item not found:" .. idDmg)
+		print("Press any key to continue...")
+		os.pullEvent("key")
+		needItem(idDmg, amount)
 	end
-	turtle.select(1)
 end
 
 function main(idDmg, amount, useItemsInChest)
@@ -162,6 +173,8 @@ function main(idDmg, amount, useItemsInChest)
 				local amountNeed = tonumber(parts[2])
 				main(parts[1], amountNeed, true)
 				
+				needItems(parts[1], amountNeed)
+				
 				local slot, amountFound = findItem(parts[1])
 				slots[slot] = amountNeed
 			end
@@ -170,10 +183,7 @@ function main(idDmg, amount, useItemsInChest)
 		
 		
 	else
-		print("Item not found:" .. idDmg)
-		print("Press any key to continue...")
-		os.pullEvent("key")
-		main(idDmg, amount, useItemsInChest)
+		needItems(idDmg, amount)
 	end
 end
 
