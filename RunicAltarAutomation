@@ -183,7 +183,7 @@ function main(idDmg, amount, useItemsInChest)
 				
 				if(amountFound < amountNeed) 
 				then 
-					sleep(5)
+					sleep(8)
 				end
 				
 				needItems(parts[1], amountNeed)
