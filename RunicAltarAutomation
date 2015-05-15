@@ -109,6 +109,8 @@ function craft(items)
 		sleep(0.5)
 	end
 	
+	rs.setOutput("bottom", true)
+	
 	local totalAmount = 0
 	for slot,amount in pairs(items) do
 		chest.pushItem("up", slot, amount)
@@ -119,9 +121,12 @@ function craft(items)
 	turtle.select(1)
 	turtle.place()
 	sleep(1)
+	
 	while rs.getInput("left") do
 		sleep(1)
 	end
+	
+	rs.setOutput("bottom", false)
 	
 	local slot, amount = findItem("Botania:livingrock:0")
 	while(amount == 0) do
