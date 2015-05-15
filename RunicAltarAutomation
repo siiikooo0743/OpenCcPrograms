@@ -136,7 +136,7 @@ function craft(items)
 	turtle.place()
 end
 
-function needItem(idDamg, amount)
+function needItems(idDamg, amount)
 	local slot, amountFound = findItem(idDmg)
 	if(amountFound < amount) then
 		print("Item not found:" .. idDmg)
