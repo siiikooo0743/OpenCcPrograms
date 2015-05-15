@@ -18,7 +18,7 @@
 	a chest for all Items below and a turtle facing the altar below that.
 	Additionaly a BC Gate set to "Space for Mana" and "redstone-signale" facing the altar and a redstone wire of kinds connecting it to the left of the turtle. 
 	Alternativly a Comparator at the altar and a Redstone-Torch on the second redstone, leading (with some wire) into the left of the turtle.
-	Furthermore you need a hopper below the altar pushing all its contents into the chest through some sort of transport.
+	Furthermore you need a hopper below the altar pushing all its contents into the chest through some sort of transport(like BC pipes).
 	The turtle needs to have a wand of the forest.
 	
 	OC Ho
