@@ -122,6 +122,7 @@ function craft(items)
 	turtle.place()
 	sleep(1)
 	
+	print("Waiting for progress...")
 	while rs.getInput("left") do
 		sleep(1)
 	end
