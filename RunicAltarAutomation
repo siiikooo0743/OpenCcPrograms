@@ -148,7 +148,7 @@ function needItems(idDmg, amount)
 		print("Item not found:" .. idDmg)
 		print("Press any key to continue...")
 		os.pullEvent("key")
-		needItem(idDmg, amount)
+		needItems(idDmg, amount)
 	end
 end
 
