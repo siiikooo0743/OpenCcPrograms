@@ -90,7 +90,7 @@ function scan()
 	end
 end
 
-function findItem(idDmg)
+function findItems(idDmg)
  	chest.condenseItems()
  	local stacks = chest.getAllStacks()
  	
