@@ -141,6 +141,10 @@ function craft(items)
 	chest.pushItem("up", slot, 1)
 	sleep(2)
 	turtle.place()
+	
+	while(table.getn(altar.getAllStacks()) == 0) do
+		sleep(0.5)
+	end
 end
 
 function needItems(idDmg, amount)
