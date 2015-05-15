@@ -105,6 +105,7 @@ end
 
 function craft(items)
 	
+	sleep(0.5)
 	while(table.getn(altar.getAllStacks()) > 0) do
 		sleep(0.5)
 	end
@@ -138,7 +139,7 @@ function craft(items)
 	end
 	
 	chest.pushItem("up", slot, 1)
-	sleep(3)
+	sleep(2)
 	turtle.place()
 end
 
