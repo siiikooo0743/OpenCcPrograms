@@ -106,9 +106,11 @@ end
 function craft(items)
 	
 	sleep(0.5)
+	io.write("Waiting for items to clear...")
 	while(table.getn(altar.getAllStacks()) > 0) do
 		sleep(0.5)
 	end
+	print("Done.")
 	
 	rs.setOutput("bottom", true)
 	
@@ -129,8 +131,6 @@ function craft(items)
 	end
 	print("Done.")
 	
-	rs.setOutput("bottom", false)
-	
 	local slot, amount = findItem("Botania:livingrock:0")
 	while(amount == 0) do
 		print("Item not found:livingrock:0")
@@ -143,11 +143,12 @@ function craft(items)
 	sleep(2)
 	turtle.place()
 	
-	io.write("Waiting for items...")
+	io.write("Waiting for items in altar...")
 	while(table.getn(altar.getAllStacks()) == 0) do
 		sleep(0.1)
 	end
 	print("Done.")
+	rs.setOutput("bottom", false)
 end
 
 function needItems(idDmg, amount)
