@@ -123,10 +123,11 @@ function craft(items)
 	turtle.place()
 	sleep(1)
 	
-	print("Waiting for progress...")
+	io.write("Waiting for progress...")
 	while rs.getInput("left") do
 		sleep(1)
 	end
+	print("Done.")
 	
 	rs.setOutput("bottom", false)
 	
@@ -142,9 +143,11 @@ function craft(items)
 	sleep(2)
 	turtle.place()
 	
+	io.write("Waiting for items...")
 	while(table.getn(altar.getAllStacks()) == 0) do
 		sleep(0.1)
 	end
+	print("Done.")
 end
 
 function needItems(idDmg, amount)
