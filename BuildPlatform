@@ -69,7 +69,7 @@ for i = 1, arg[2] do
   for j = 1, (arg[1]) do
     place()
     
-    if((i%5)==2 && (j%5)==2)
+    if(math.fmod(i,6)==2 and math.fmod(j,6)==2)
     then
      placeTorch()
     end
