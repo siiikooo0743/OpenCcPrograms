@@ -15,20 +15,20 @@
 
 local function printUsage()
     print( "Usage:" )
-    print( "GitHub get <GitHub file> <filename> [<NotToUpdate>]" )
+    print( "GitHub get <GitHub file> [<filename>] [<NotToUpdate>]" )
     print( "->Copies the file")
     print( "GitHub update [file]")
     print( "->Updates the or if not specifed all files(of all Repositorys)")
     print( "GitHub remove <file>")
     print( "->Removes file from update Function but not from Computer")
     print( "GitHub rep <GitHub repository>")
-    print( "->Sets the repository")
+    print( "->Sets the repository(eg. \"siiikooo0743/OpenCcPrograms\"")
 end
      
 local function getPath(sCode)
   file = fs.open(".GitHub/Rep", "r")
   s = file.readLine()
-  s = "https://raw.github.com/" .. s
+  s = "https://raw.githubusercontent.com/" .. s
   s = s .. "/master/"
   s = s .. sCode
   return(s)
@@ -139,14 +139,19 @@ if not (fs.exists(".GitHub/Rep")) then
 end
           
 if(tArgs[1] == "get") then
-   if (#tArgs > 4 or #tArgs < 3) then
+   if (#tArgs > 4 or #tArgs < 2) then
    	printUsage()
    	return
    end
    
    -- Determine file to download
    local sCode = tArgs[2]
-   local sFile = tArgs[3]
+   
+   if(#tArgs == 2) then
+    local sFile = tArgs[2]
+   else
+    local sFile = tArgs[3]
+   end
    
    print( "Connecting to GitHub.com... " )
    getFile(sCode, sFile)
@@ -160,4 +165,3 @@ if(tArgs[1] == "get") then
 end
 
 printUsage()
-
