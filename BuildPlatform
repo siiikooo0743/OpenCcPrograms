@@ -8,7 +8,7 @@
 	
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
-	Version 1.4.4
+	Version 1.4.5
 	
 	Whith this program a turtle builds a platform with the materail in his inventory.
 	The first two arguments specifie the size of the platform.
@@ -63,7 +63,12 @@ function place()
   while(turtle.getItemCount(slot) == 0)
   do
    slot = slot + 1
-   if(slot == 13) then slot = 1 end
+   if(slot == 13) 
+   then 
+    slot = 1 
+    print("No more building material!")
+    sleep(5)
+   end
   end
   
   turtle.select(slot)
