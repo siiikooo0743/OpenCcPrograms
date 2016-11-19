@@ -15,7 +15,10 @@
 
 function move()
    turtle.select(16)
-   turtle.refuel(1)
+   if(turtle.getFuelLevel<100) 
+   then
+    turtle.refuel(1)
+   end
    while (not(turtle.forward())) do
     turtle.refuel(1)
    end
@@ -26,14 +29,12 @@ function turn(side)
     turtle.turnLeft()
     move()
     turtle.turnLeft()
-    move()
   end
   
   if(side == 1) then
     turtle.turnRight()
     move()
     turtle.turnRight()
-    move()
   end
 end
 
@@ -56,12 +57,15 @@ turtle.select(1)
 side = 1
 
 for i = 1, arg[2] do
-  for j = 1, arg[1] do
+  for j = 1, (arg[1] - 1) do
     place()
     move()
   end
   
+  place()
+  
   turn(side)
+  
   if(side == 0) then
     side = 1
   else
