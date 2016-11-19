@@ -60,7 +60,7 @@ end
 function place()
   turtle.select(1)
      
-  while(turtle.getItemCount(slot) == 0)) 
+  while(turtle.getItemCount(slot) == 0)
   do
    slot = slot + 1
    if(slot == 13) then slot = 1 end
