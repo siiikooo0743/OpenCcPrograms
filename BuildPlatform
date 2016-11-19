@@ -8,7 +8,7 @@
 	
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
-	Version 1.4.1
+	Version 1.4.2
 	
 	Whith this program a turtle builds a platform with the materail in his inventory.
 	The first two arguments specifie the size of the platform.
@@ -65,22 +65,25 @@ local arg = { ... }
 turtle.select(1)
 side = 1
 
-for i = 1, arg[2] do
-  for j = 1, (arg[1]) do
+width = arg[2]
+length = arg[1]
+
+for x = 1, width do
+  for y = 1, length do
     place()
     
-    if(math.fmod(i,6)==2 and math.fmod(j,6)==2)
+    if(math.fmod(x,6)==2 and math.fmod(y,6)==2)
     then
      placeTorch()
     end
     
-    if(j == arg[1]) 
+    if(y == length) 
     then 
      break
     end
   end
   
-  if(i == arg[2]) 
+  if(x == width) 
   then 
    break
   end
