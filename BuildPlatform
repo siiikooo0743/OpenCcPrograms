@@ -1,25 +1,27 @@
 --[[
 	BuildPlatform
 	
-	Copyright (C) 2015 siiikooo0743
+	Copyright (C) 2015,2016 siiikooo0743
 	
 	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
 	see LicenseDetails for more details and LICENSE for the complete license.
 	
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	Version 1.2
 	
 	Whith this program a turtle builds a platform with the materail in his inventory.
 	The first two arguments specifie the size of the platform.
 ]]
 
 function move()
-   turtle.select(16)
-   if(turtle.getFuelLevel<100) 
+   if(turtle.getFuelLevel()<100) 
    then
+    turtle.select(16)
     turtle.refuel(1)
    end
    while (not(turtle.forward())) do
+    turtle.select(16)
     turtle.refuel(1)
    end
 end
