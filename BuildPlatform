@@ -14,6 +14,8 @@
 	The first two arguments specifie the size of the platform.
 ]]
 
+slot = 1
+
 function move()
    if(turtle.getFuelLevel()<100) 
    then
@@ -57,12 +59,14 @@ end
 
 function place()
   turtle.select(1)
-  for i = 1, 12 do
-    if (not(turtle.getItemCount(i) == 0)) then
-      turtle.select(i)
-      break
-    end
+     
+  while(turtle.getItemCount(slot) == 0)) then
+   slot = slot + 1
+   if(slot == 13) then slot = 1 end
   end
+  
+  turtle.select(slot)
+  
   turtle.placeDown()
 end
 
