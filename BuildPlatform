@@ -40,9 +40,16 @@ function turn(side)
   end
 end
 
+function placeTorch()
+ turtle.turnLeft()
+ turtle.select(12)
+ turtle.place()
+ turtle.turnRight()
+end
+
 function place()
   turtle.select(1)
-  for i = 1, 15 do
+  for i = 1, 11 do
     if (not(turtle.getItemCount(i) == 0)) then
       turtle.select(i)
       break
@@ -61,6 +68,12 @@ side = 1
 for i = 1, arg[2] do
   for j = 1, (arg[1] - 1) do
     place()
+    
+    if((i%5)==2 && (j%5)==2)
+    then
+     placeTorch()
+    end
+    
     move()
   end
   
