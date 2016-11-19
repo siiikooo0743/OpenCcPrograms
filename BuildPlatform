@@ -8,7 +8,7 @@
 	
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
-	Version 1.2
+	Version 1.3
 	
 	Whith this program a turtle builds a platform with the materail in his inventory.
 	The first two arguments specifie the size of the platform.
@@ -74,7 +74,7 @@ for i = 1, arg[2] do
      placeTorch()
     end
     
-    if( j!=arg[1]) 
+    if( not(j==arg[1])) 
     then 
      move()
     end
