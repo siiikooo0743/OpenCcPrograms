@@ -15,7 +15,7 @@
 
 local function printUsage()
     print( "Usage:" )
-    print( "GitHub get <GitHub file> [<filename>] [<NotToUpdate>]" )
+    print( "GitHub get <GitHub file> [<filename> [<NotToUpdate>]]" )
     print( "->Copies the file")
     print( "GitHub update [file]")
     print( "->Updates the or if not specifed all files(of all Repositorys)")
@@ -146,11 +146,12 @@ if(tArgs[1] == "get") then
    
    -- Determine file to download
    local sCode = tArgs[2]
+   local sFile = ""
    
    if(#tArgs == 2) then
-    local sFile = tArgs[2]
+    sFile = tArgs[2]
    else
-    local sFile = tArgs[3]
+    sFile = tArgs[3]
    end
    
    print( "Connecting to GitHub.com... " )
