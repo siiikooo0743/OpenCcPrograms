@@ -66,7 +66,7 @@ turtle.select(1)
 side = 1
 
 for i = 1, arg[2] do
-  for j = 1, (arg[1] - 1) do
+  for j = 1, (arg[1]) do
     place()
     
     if((i%5)==2 && (j%5)==2)
@@ -74,11 +74,16 @@ for i = 1, arg[2] do
      placeTorch()
     end
     
-    move()
+    if( j!=arg[1]) 
+    then 
+     move()
+    end
   end
   
-  place()
-  
+  if(i == arg[2]) 
+  then 
+   break
+  end
   turn(side)
   
   if(side == 0) then
