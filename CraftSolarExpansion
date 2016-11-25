@@ -17,11 +17,8 @@
 chest = peripheral.wrap("front")
 
 function getItems(items, amount)
-  for slot = 1, 9, 1 do
-    if #items < slot then
-     return
-    end
-    
+  chest.condenseItems()
+  for slot = 1, 9, 1 do    
     if items[slot] ~= nil then
       found = false
       while not found do
