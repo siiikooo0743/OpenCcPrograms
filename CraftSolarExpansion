@@ -40,4 +40,4 @@ function getItems(items, amount)
 end
 
 --Test
-getItems{
+getItems({"minecraft:glass"}, 20)
