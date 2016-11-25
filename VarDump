@@ -41,7 +41,7 @@ function vardump(value, depth, key)
   end
 end
 
-varDumpToScreen(monitor, value, depth, key)
+function varDumpToScreen(monitor, value, depth, key)
  monitor.setTextScale(0.5)
  
  local linePrefix = ""
