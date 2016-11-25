@@ -29,7 +29,7 @@ function getItems(items, amount)
         for chestSlot, item in pairs(allItems) do
           if item["id"] == items[slot]  and item["qty"] >= amount then
             found = true
-            chest.pushItemIntoSlot(WEST,chestSlot,amount, slot)
+            chest.pushItemIntoSlot("WEST",chestSlot,amount, slot)
             break
 	        end
         end
