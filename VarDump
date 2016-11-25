@@ -5,11 +5,10 @@
 ]]
 
 function writeLnToMonitor(m, text)
-{
  m.write(text)
  x,y = m.getCursorPos()
  m.setCursorPos(1,y+2)
-}
+end
 
 function vardump(value, depth, key)
   local linePrefix = ""
