@@ -1,7 +1,7 @@
-[-- 
+--[[ 
  Var Dump 
  Copied from http://www.lua.org/gems/vardump.lua
---]
+]]
 
 function vardump(value, depth, key)
   local linePrefix = ""
