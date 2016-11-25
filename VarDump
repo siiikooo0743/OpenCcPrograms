@@ -76,7 +76,7 @@ function varDumpToScreen(monitor, value, depth, key)
   then
     monitor.write(spaces..tostring(value))
   else
-    monitor.writet(spaces..linePrefix.."("..type(value)..") "..tostring(value))
+    monitor.write(spaces..linePrefix.."("..type(value)..") "..tostring(value))
   end
  
 end
