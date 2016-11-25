@@ -18,22 +18,22 @@ chest = peripheral.wrap("front")
 
 function getItems(items, amount)
   for slot = 1, 9, 1 do
-    if #items < slot or then
+    if #items < slot then
      return
     end
     
-    if items[slot] != nil then
+    if items[slot] ~= nil then
       found = false
       while not found do
         allItems = chest.getAllStacks(false)
-        for chestSlot, item in allItems do
-          if item["id] == item[slot]  and item["qty"] >= amount then
+        for chestSlot, item in pairs(allItems) do
+          if item["id"] == item[slot]  and item["qty"] >= amount then
             found = true
 	    chest.pushItemIntoSlot(1,chestSlot,amount, slot)
 	    break
 	  end
         end
-        print("What? Hey! A item dissapeared! Missing " .. items[slot] .. ". I need " .. amount .. " of them!"
+        print("What? Hey! A item dissapeared! Missing " .. items[slot] .. ". I need " .. amount .. " of them!")
       end
     end
   end
