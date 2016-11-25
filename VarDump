@@ -62,6 +62,8 @@ function varDumpToScreen(monitor, value, depth, key)
     mTable = getmetatable(value)
     if mTable == nil then
       monitor.write(spaces ..linePrefix.."(table) ")
+      local _,cY= term.getCursorPos()
+      term.setCursorPos(1,cY+1)
     else
       print(spaces .."(metatable) ")
         value = mTable
@@ -75,8 +77,12 @@ function varDumpToScreen(monitor, value, depth, key)
       value		== nil
   then
     monitor.write(spaces..tostring(value))
+    local _,cY= term.getCursorPos()
+    term.setCursorPos(1,cY+1)
   else
     monitor.write(spaces..linePrefix.."("..type(value)..") "..tostring(value))
+    local _,cY= term.getCursorPos()
+    term.setCursorPos(1,cY+1)
   end
  
 end
