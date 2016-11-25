@@ -4,6 +4,13 @@
  Added varDumpToScreen
 ]]
 
+function writeLnToMonitor(m, text)
+{
+ m.write(text)
+ x,y = m.getCursorPos()
+ m.setCursorPos(1,y+2)
+}
+
 function vardump(value, depth, key)
   local linePrefix = ""
   local spaces = ""
@@ -61,9 +68,7 @@ function varDumpToScreen(monitor, value, depth, key)
   if type(value) == 'table' then
     mTable = getmetatable(value)
     if mTable == nil then
-      monitor.write(spaces ..linePrefix.."(table) ")
-      local _,cY= term.getCursorPos()
-      term.setCursorPos(1,cY+1)
+     writeLnToMonitor(monitor, spaces ..linePrefix.."(table) ")
     else
       print(spaces .."(metatable) ")
         value = mTable
@@ -76,13 +81,9 @@ function varDumpToScreen(monitor, value, depth, key)
       type(value)	== 'userdata' or
       value		== nil
   then
-    monitor.write(spaces..tostring(value))
-    local _,cY= term.getCursorPos()
-    term.setCursorPos(1,cY+1)
+    writeLnToMonitor(monitor, spaces..tostring(value))
   else
-    monitor.write(spaces..linePrefix.."("..type(value)..") "..tostring(value))
-    local _,cY= term.getCursorPos()
-    term.setCursorPos(1,cY+1)
+    writeLnToMonitor(monitor, spaces..linePrefix.."("..type(value)..") "..tostring(value))
   end
  
 end
