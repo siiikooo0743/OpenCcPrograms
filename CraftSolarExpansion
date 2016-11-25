@@ -29,9 +29,9 @@ function getItems(items, amount)
         for chestSlot, item in pairs(allItems) do
           if item["id"] == item[slot]  and item["qty"] >= amount then
             found = true
-	    chest.pushItemIntoSlot(1,chestSlot,amount, slot)
-	    break
-	  end
+	          chest.pushItemIntoSlot(1,chestSlot,amount, slot)
+	          break
+	        end
         end
         print("What? Hey! A item dissapeared! Missing " .. items[slot] .. ". I need " .. amount .. " of them!")
       end
