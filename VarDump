@@ -67,7 +67,7 @@ function varDumpToScreen(monitor, value, depth, key)
         value = mTable
     end		
     for tableKey, tableValue in pairs(value) do
-      vardump(tableValue, depth, tableKey)
+       varDumpToScreen(tableValue, depth, tableKey)
     end
   elseif type(value)	== 'function' or 
       type(value)	== 'thread' or 
