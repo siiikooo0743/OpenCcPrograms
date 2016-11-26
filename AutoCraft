@@ -15,6 +15,8 @@
 ]]
 
 chest = peripheral.wrap("front")
+os.loadAPI(".crafting/patterns")
+reservedItems = {}
 
 function getItems(items, amount)
   chest.condenseItems()
@@ -26,6 +28,15 @@ function getItems(items, amount)
         for chestSlot, item in pairs(allItems) do
           if item["id"] == items[slot]  and item["qty"] >= amount then
             found = true
+            tmpSlot = slot
+            if slot > 3 then
+              tmpSlot = tmpSlot + 1
+            end
+            
+            if slot > 6 then
+              tmpSlot = tmpSlot + 1
+            end
+            
             chest.pushItemIntoSlot("WEST",chestSlot,amount, slot)
             break
 	        end
@@ -39,5 +50,38 @@ function getItems(items, amount)
   end
 end
 
---Test
-getItems({"minecraft:glass"}, 20)
+function findOrMakeItem(item, amount)
+  while true do
+  
+    chest.condenseItems()
+    allItems = chest.getAllStacks(false)
+  
+    need = amount
+  
+    --Check for reserved
+    for resItem, resAmount in pairs(reservedItems) do
+      if resItem == item then
+        need = need + resAmount
+      end
+    end
+    
+  
+    for chestSlot, chestItem in pairs(allItems) do
+      if item["id"] == item  then
+        need = need - item["qty"]
+	    end
+      
+      if need <= 0 then
+        reserved[item] = reserved[item] + amount
+        return true
+      end
+    end
+  
+    recipe = patterns.getRecipe(item)
+  
+    for _,subItem in pairs(recipe) do
+      findOrMakeItem(subItem, need)
+    end
+end
+
+
