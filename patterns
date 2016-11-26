@@ -1,6 +1,6 @@
-patterns = { "minecraft:glass_pane:0", { "minecraft:glass:0", "minecraft:glass:0", "minecraft:glass:0", 
+patterns = { "minecraft:glass_pane:0" -> { "minecraft:glass:0", "minecraft:glass:0", "minecraft:glass:0", 
                                        "minecraft:glass:0", "minecraft:glass:0", "minecraft:glass:0" },
-             "TConstruct:materials:19", { "minecraft:iron_ingot:0" }
+             "TConstruct:materials:19"-> { "minecraft:iron_ingot:0" }
            }
 
 function getRecipe(item) 
