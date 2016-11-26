@@ -1,3 +1,13 @@
-patterns = { "minecraft:glass_pane", { "minecraft:glass", "minecraft:glass", "minecraft:glass", 
-                                       "minecraft:glass", "minecraft:glass", "minecraft:glass" },
-             "minecraft
+patterns = { "minecraft:glass_pane:0", { "minecraft:glass:0", "minecraft:glass:0", "minecraft:glass:0", 
+                                       "minecraft:glass:0", "minecraft:glass:0", "minecraft:glass:0" },
+             "TConstruct:materials:19", { "minecraft:iron_ingot:0" }
+           }
+
+function getRecipe(item) 
+  for result, recipe in pairs(patterns) do
+    if result == item then
+      return recipe
+    end
+  end
+  
+end
