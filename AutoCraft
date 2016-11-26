@@ -1,7 +1,7 @@
 --[[
-	BuildPlatform
+	AutoCraft
 	
-	Copyright (C) 2015,2016 siiikooo0743
+	Copyright (C) 2016 siiikooo0743
 	
 	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
 	see LicenseDetails for more details and LICENSE for the complete license.
@@ -10,8 +10,9 @@
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
 	Version 1.4.5
 	
-	Whith this program a turtle builds a platform with the materail in his inventory.
-	The first two arguments specifie the size of the platform.
+	This is a autocrafting routine. A big enough chest should be infront of the turtle. The turtle needs to face EAST.
+	A Item is descibed by item_id:dmg_value
+	
 ]]
 
 chest = peripheral.wrap("front")
@@ -101,4 +102,11 @@ function findOrMakeItem(item, amount)
     
 end
 
+tArgs = { ... }
+
+if #tArgs ~= 2 then
+  print("NEED 2 params. (item and amount)")
+end
+
+findOrMakeItem(tArgs[1], tArgs[2])
 
