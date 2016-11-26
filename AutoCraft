@@ -100,7 +100,7 @@ function findOrMakeItem(item, amount)
       
     end
   
-    print("Missing " .. need .. " of ".. item .. "."
+    print("Missing " .. need .. " of ".. item .. ".")
     
 end
 
