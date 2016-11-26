@@ -18,6 +18,10 @@ chest = peripheral.wrap("front")
 os.loadAPI(".crafting/patterns")
 reservedItems = {}
 
+function getExtendedID(item)
+  return item["id"] .. ":" .. item["dmg"]
+end
+
 function getItems(items, amount)
   chest.condenseItems()
   for slot = 1, 9, 1 do    
@@ -26,7 +30,7 @@ function getItems(items, amount)
       while not found do
         allItems = chest.getAllStacks(false)
         for chestSlot, item in pairs(allItems) do
-          if item["id"] == items[slot]  and item["qty"] >= amount then
+          if  getExtendedID(item) == items[slot]  and item["qty"] >= amount then
             found = true
             tmpSlot = slot
             if slot > 3 then
@@ -67,7 +71,7 @@ function findOrMakeItem(item, amount)
     
   
     for chestSlot, chestItem in pairs(allItems) do
-      if item["id"] == item  then
+      if getExtendedID(chestItem) == item  then
         need = need - item["qty"]
 	    end
       
