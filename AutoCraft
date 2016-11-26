@@ -79,9 +79,17 @@ function findOrMakeItem(item, amount)
   
     recipe = patterns.getRecipe(item)
   
-    for _,subItem in pairs(recipe) do
-      findOrMakeItem(subItem, need)
+    if recipe ~= nil then
+      for _,subItem in pairs(recipe) do
+        findOrMakeItem(subItem, need)
+      end
+      
+      getItems(recipe, need)
+      
     end
+  
+    print("Missing " .. need .. " of ".. item .. "."
+    
 end
 
 
