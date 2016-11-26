@@ -63,7 +63,7 @@ function findOrMakeItem(item, amount)
     chest.condenseItems()
     allItems = chest.getAllStacks(false)
   
-    need = tonumber(amount)
+    need = amount
   
     --Check for reserved
     for resItem, resAmount in pairs(reservedItems) do
@@ -71,11 +71,10 @@ function findOrMakeItem(item, amount)
         need = need + resAmount
       end
     end
-    
   
     for chestSlot, chestItem in pairs(allItems) do
       if getExtendedID(chestItem) == item  then
-        need = need - item["qty"]
+        need = need - chestItem["qty"]
       end
       
       if need <= 0 then
@@ -111,5 +110,5 @@ if #tArgs ~= 2 then
   print("NEED 2 params. (item and amount)")
 end
 
-findOrMakeItem(tArgs[1], tArgs[2])
+findOrMakeItem(tArgs[1], tonumber(tArgs[2]))
 
