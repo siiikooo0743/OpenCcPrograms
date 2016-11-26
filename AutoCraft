@@ -76,7 +76,7 @@ function findOrMakeItem(item, amount)
     for chestSlot, chestItem in pairs(allItems) do
       if getExtendedID(chestItem) == item  then
         need = need - item["qty"]
-	    end
+      end
       
       if need <= 0 then
         reserved[item] = reserved[item] + amount
@@ -97,11 +97,12 @@ function findOrMakeItem(item, amount)
       turtle.select(16)
       turtle.craft()
       turtle.drop()
-      
+      return true
     end
   
     print("Missing " .. need .. " of ".. item .. ".")
-    
+    sleep(10)
+  end 
 end
 
 tArgs = { ... }
