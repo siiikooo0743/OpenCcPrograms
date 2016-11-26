@@ -1,0 +1,3 @@
+patterns = { "minecraft:glass_pane", { "minecraft:glass", "minecraft:glass", "minecraft:glass", 
+                                       "minecraft:glass", "minecraft:glass", "minecraft:glass" },
+             "minecraft
