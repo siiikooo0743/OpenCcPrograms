@@ -114,19 +114,21 @@ if(tArgs[1] == "update") then
       noDirs = false
       
       while not noDirs do
-      
+        
         noDirs = true
       
-        for key, value in pairs(files)
-          if fs.IsDir(".GitHub/update/" .. value) then
+        for key, value in pairs(files) do
+          if fs.isDir(".GitHub/update/" .. value) then
             noDirs = false
             
-            subFiles = fs.list("".GitHub/update/" .. value")
+            subFiles = fs.list(".GitHub/update/" .. value)
             
             for _, sValue in pairs(subFiles) do
               files[value .. sValue] = value .. "/" ..sValue
             end
             
+	    files[key] = null
+	    break
           end
         end
       end
