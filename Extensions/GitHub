@@ -140,7 +140,7 @@ if(tArgs[1] == "update") then
     	end
     end
     
-    for _, file in ipairs(files) do 
+    for _, file in pairs(files) do 
 	update(file)
     end 
     return
