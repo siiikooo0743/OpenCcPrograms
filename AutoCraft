@@ -75,7 +75,7 @@ function findOrMakeItem(item, amount)
     if reservedItems[item] == nil then
 	    reservedItems[item] = 0
 	  end
-   reservedItems[item] + amount
+    reservedItems[item] = reservedItems[item] + amount
   
     for chestSlot, chestItem in pairs(allItems) do
       if getExtendedID(chestItem) == item  then
