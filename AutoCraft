@@ -75,7 +75,7 @@ function findOrMakeItem(item, amount)
     if reservedItems[item] == nil then
 	    reservedItems[item] = 0
 	  end
-    reservedItems[item] = reservedItems[item] + amount
+   reservedItems[item] + amount
   
     for chestSlot, chestItem in pairs(allItems) do
       if getExtendedID(chestItem) == item  then
@@ -92,7 +92,9 @@ function findOrMakeItem(item, amount)
     if recipe ~= nil then
       recipesNeeded = math.ceil(need / recipe["amount"])
       for key,subItem in pairs(recipe) do
-        findOrMakeItem(subItem, recipesNeeded)
+        if key ~= "amount" then
+          findOrMakeItem(subItem, recipesNeeded)
+        end
       end
       
       getItems(recipesNeeded, need)
@@ -103,6 +105,7 @@ function findOrMakeItem(item, amount)
     end
   
     print("Missing " .. need .. " of ".. item .. ".")
+    reservedItems[item] = reservedItems[item] - amount
     sleep(10)
   end 
 end
