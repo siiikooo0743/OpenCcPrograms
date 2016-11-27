@@ -44,7 +44,7 @@ function getItems(items, amount)
               tmpSlot = tmpSlot + 1
             end
             
-            chest.pushItemIntoSlot("WEST",chestSlot,amount, slot)
+            chest.pushItemIntoSlot("WEST",chestSlot,amount, tmpSlot)
             break
 	        end
         end
