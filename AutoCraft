@@ -97,7 +97,7 @@ function findOrMakeItem(item, amount)
         end
       end
       
-      getItems(recipesNeeded, need)
+      getItems(recipe, recipesNeeded)
       turtle.select(16)
       turtle.craft()
       turtle.drop()
