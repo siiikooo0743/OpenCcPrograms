@@ -63,7 +63,7 @@ function findOrMakeItem(item, amount)
     chest.condenseItems()
     allItems = chest.getAllStacks(false)
   
-    need = amount
+    local need = amount
   
     --Check for reserved
     for resItem, resAmount in pairs(reservedItems) do
@@ -90,7 +90,7 @@ function findOrMakeItem(item, amount)
     recipe = patterns.getRecipe(item)
     
     if recipe ~= nil then
-      recipesNeeded = math.ceil(need / recipe["amount"])
+      local recipesNeeded = math.ceil(need / recipe["amount"])
       for key,subItem in pairs(recipe) do
         if key ~= "amount" then
           findOrMakeItem(subItem, recipesNeeded)
