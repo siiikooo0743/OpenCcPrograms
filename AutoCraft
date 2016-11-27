@@ -8,7 +8,7 @@
 	
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
-	Version 0.8.3
+	Version 0.8.5
 	
 	This is a autocrafting routine. A big enough chest should be infront of the turtle. The turtle needs to face EAST.
 	A Item is descibed by item_id:dmg_value
