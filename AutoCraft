@@ -78,6 +78,9 @@ function findOrMakeItem(item, amount)
       end
       
       if need <= 0 then
+        if reserved[item] == nil then
+	        reserved[item] = 0
+	      end
         reserved[item] = reserved[item] + amount
         return true
       end
