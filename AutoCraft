@@ -89,14 +89,14 @@ function findOrMakeItem(item, amount)
   
     recipe = patterns.getRecipe(item)
   
-    recipesNeed = math.ceil(need / recipe["amount"])
+    recipesNeeded = math.ceil(need / recipe["amount"])
   
     if recipe ~= nil then
       for _,subItem in pairs(recipe) do
-        findOrMakeItem(subItem, need)
+        findOrMakeItem(subItem, recipesNeeded)
       end
       
-      getItems(recipe, need)
+      getItems(recipesNeeded, need)
       turtle.select(16)
       turtle.craft()
       turtle.drop()
