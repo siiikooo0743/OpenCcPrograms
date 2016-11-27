@@ -88,11 +88,10 @@ function findOrMakeItem(item, amount)
     end
   
     recipe = patterns.getRecipe(item)
-  
-    recipesNeeded = math.ceil(need / recipe["amount"])
-  
+    
     if recipe ~= nil then
-      for _,subItem in pairs(recipe) do
+      recipesNeeded = math.ceil(need / recipe["amount"])
+      for key,subItem in pairs(recipe) do
         findOrMakeItem(subItem, recipesNeeded)
       end
       
