@@ -5,7 +5,11 @@ patterns["minecraft:glass_pane:0"]["amount"] = 16
                                        
 patterns["TConstruct:materials:19"] = { "minecraft:iron_ingot:0" }
 patterns["TConstruct:materials:19"]["amount"] = 9
-       
+
+patterns["SolarExpansion:photovoltaicCell:0"] = { "minecraft:glass_pane:0", "minecraft:glass_pane:0", "minecraft:glass_pane:0",
+                                                  nil, "ProjectRed:Core:projectred.core.part:56", nil, 
+                                                  "TConstruct:materials:19", "TConstruct:materials:19", "TConstruct:materials:19"}
+patterns["SolarExpansion:photovoltaicCell:0"]["amount"] = 1
 
 function getRecipe(item) 
   for result, recipe in pairs(patterns) do
