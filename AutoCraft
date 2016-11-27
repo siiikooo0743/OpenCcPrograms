@@ -87,7 +87,7 @@ function findOrMakeItem(item, amount)
       end
     end
   
-    recipe = patterns.getRecipe(item)
+    local recipe = patterns.getRecipe(item)
     
     if recipe ~= nil then
       local recipesNeeded = math.ceil(need / recipe["amount"])
