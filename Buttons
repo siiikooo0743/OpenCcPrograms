@@ -1,0 +1,208 @@
+--Copied from y8f5ZRuS and modified to be inversable
+-- genericCtrl
+ 
+-- monSide: side of the monitor
+local monSide = "back"
+local term = peripheral.wrap(monSide)
+ 
+--local txtScale = 1.0
+ 
+-- rsSide: Redstone Bundled Output
+local rsSide = "right"
+ 
+-- Position in cfg arrays
+local bLabel = 1
+local bActive = 2
+local inverse = 3
+ 
+-- cfg:
+local cfg = {}
+
+cfg[1] = {"GrinderCE", false, true}
+cfg[2] = {"LightsCE", true, false}
+cfg[3] = {"GrinderAuto", false, true}
+cfg[4] = {"LightsAuto", true, false}
+cfg[5] = {"Spawner", false, true}
+
+--cfg[1] = {"Quarry", false, false}
+--cfg[2] = {"Sugar", false, false}
+--cfg[3] = {"Melons", false, false}
+--cfg[4] = {"Oak Wood", true, false}
+--cfg[5] = {"Birch", true, false}
+--cfg[6] = {"Spruce", true, false}
+--cfg[7] = {"Rubber", false, false}
+--cfg[8] = {"Peat Bog", true, false}
+ 
+-- columns & rows:
+columns = 3
+rows = 3
+ 
+-- buttons: this holds the buttons definitions
+local buttons = {}
+ 
+-- Screen size
+local screenX, screenY
+ 
+-- getBundledColor: returns colors codes ( white (n=1) / black (n=16) )
+function getBundledColor(n)
+  return bit.blshift(1,(n-1))
+end
+ 
+-- fills the buttons table
+function setButton(name, active, colorCode, callback, inverse, xMin, xMax, yMin, yMax)
+  buttons[name] = {}
+  buttons[name]["active"] = active
+  buttons[name]["color"] = colorCode
+  buttons[name]["func"] = callback
+  buttons[name]["inverse"] = inverse
+  buttons[name]["xMin"] = xMin
+  buttons[name]["xMax"] = xMax
+  buttons[name]["yMin"] = yMin
+  buttons[name]["yMax"] = yMax
+end
+ 
+-- defineButtons: define buttons in a dynamic "centered" layout
+function defineButtons()
+ 
+  screenX, screenY = term.getSize()
+ 
+  vertTrim = math.floor(screenY/(rows+1)) + 1
+  horizTrim = math.floor(screenX/(columns+1)) + 1
+ 
+  i = 1  
+  for row = 1, rows do
+   
+    if i > # cfg then break end
+   
+    local yMin = (row * vertTrim) - 1
+    local yMax = (row * vertTrim) + 1
+   
+    for col =  1, columns do
+     
+      if i > # cfg then break end
+     
+      local labelLen = string.len(cfg[i][bLabel])
+      local xMin = (col * horizTrim) - math.floor(labelLen/2) - 1
+      local xMax = xMin + labelLen + 2
+     
+      setButton(cfg[i][bLabel], cfg[i][bActive], getBundledColor(i), cfg[i][inverse], toggleBundledOutput, xMin, xMax, yMin, yMax)
+      --print(xMin..","..xMax..","..yMin..","..yMax)
+      i = i + 1
+           
+    end
+  end
+ 
+end
+ 
+-- toggleBundledOutput: toggle redstone output by button name
+function toggleBundledOutput(name)
+  local activeColors = rs.getBundledOutput(rsSide)
+  if buttons[name]["active"] and not buttons[name]["inverse"]  then
+    rs.setBundledOutput(rsSide, (activeColors - buttons[name]["color"]))
+    buttons[name]["active"] = false
+  else
+    rs.setBundledOutput(rsSide, (activeColors + buttons[name]["color"]))
+    buttons[name]["active"] = true
+  end
+end
+ 
+ 
+-- initBundledOutput: Init Bundled Output at reboot/restart
+function initBundledOutput()
+  local initColors = 0
+  for name, btn in pairs(buttons) do
+    if buttons[name]["active"] then
+      initColors = initColors + buttons[name]["color"]
+    end
+  end
+  rs.setBundledOutput(rsSide, initColors)
+end
+ 
+ 
+-- returns len whitespaces
+function fillSpace(len)
+  len = len or 1
+  fill = ""
+  for i = 1, len do
+    fill = fill .. " "
+  end
+  return fill
+end
+ 
+-- as it says
+function resetTermColors()
+  term.setTextColor(colors.white)
+  term.setBackgroundColor(colors.black)
+end
+ 
+-- drawScreen:
+function drawScreen()
+ 
+  for name, btn in pairs(buttons) do
+   
+    if buttons[name]["active"] then
+      term.setTextColor(colors.white)
+      term.setBackgroundColor(colors.green)
+    else
+      term.setTextColor(colors.black)
+      term.setBackgroundColor(colors.red)
+    end
+   
+    labelLen = string.len(name)
+   
+    term.setCursorPos(buttons[name]["xMin"], buttons[name]["yMin"])
+    term.write(fillSpace(labelLen + 4))
+ 
+    term.setCursorPos(buttons[name]["xMin"], (buttons[name]["yMin"] + 1))
+    term.write("  "..name.."  ")
+ 
+    term.setCursorPos(buttons[name]["xMin"], buttons[name]["yMax"])
+    term.write(fillSpace(labelLen + 4))
+ 
+    resetTermColors()
+   
+  end
+ 
+end
+ 
+-- touchEvent: process touch events
+function touchEvent(x, y)
+  for name, btn in pairs(buttons) do
+   
+    if (y >= buttons[name]["yMin"]) and (y <= buttons[name]["yMax"])
+      and (x >= buttons[name]["xMin"]) and (x <= buttons[name]["xMax"]) then
+   
+      print("Touch on button: "..name)
+      toggleBundledOutput(name)
+      break
+     
+    end
+  end
+end
+ 
+--------------------------------------------
+-- MAIN --
+--------------------------------------------
+term.clear()
+--term.setTextScale(txtScale)
+ 
+defineButtons()
+initBundledOutput()
+ 
+while true do
+ 
+  drawScreen()
+ 
+  local evtp, side, x, y = os.pullEvent()
+ 
+  if evtp == "monitor_touch" then
+   
+    touchEvent(x, y)
+ 
+  else
+ 
+    print("Ignoring event "..evtp)
+   
+  end
+ 
+end
