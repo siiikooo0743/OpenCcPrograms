@@ -97,11 +97,17 @@ end
 -- toggleBundledOutput: toggle redstone output by button name
 function toggleBundledOutput(name)
   local activeColors = rs.getBundledOutput(rsSide)
-  if buttons[name]["active"] and not buttons[name]["inverse"]  then
+  if (buttons[name]["active"]) and (not buttons[name]["inverse"])  then
     rs.setBundledOutput(rsSide, (activeColors - buttons[name]["color"]))
     buttons[name]["active"] = false
-  else
+  elseif (buttons[name]["active"]) and (buttons[name]["inverse"])
     rs.setBundledOutput(rsSide, (activeColors + buttons[name]["color"]))
+    buttons[name]["active"] = false
+   elseif (not buttons[name]["active"]) and (not buttons[name]["inverse"])
+    rs.setBundledOutput(rsSide, (activeColors + buttons[name]["color"]))
+    buttons[name]["active"] = true
+   elseif (not buttons[name]["active"]) and (buttons[name]["inverse"])
+    rs.setBundledOutput(rsSide, (activeColors - buttons[name]["color"]))
     buttons[name]["active"] = true
   end
 end
@@ -111,7 +117,7 @@ end
 function initBundledOutput()
   local initColors = 0
   for name, btn in pairs(buttons) do
-    if buttons[name]["active"] then
+    if (buttons[name]["active"] and (not buttons[name]["inverse"])) or (buttons[name]["inverse"] and (not buttons[name]["active"])) then
       initColors = initColors + buttons[name]["color"]
     end
   end
