@@ -156,20 +156,19 @@ function drawScreen()
       term.setBackgroundColor(colors.red)
     end
    
-    buttonLen = xMax-xMin
+    buttonLen = buttons[name]["xMax"] - buttons[name]["xMin"]
+    
+    labelLen = string.len(name)
     
     if buttonLen < labelLen then
       print("ButtonTextToLong")
       os.exit()
-    then
+    end
    
     fillLen = buttonLen - labelLen
     
     fillLenLeft = math.floor(fillLen/2)
     fillLenRight = buttonLen - labelLen - fillLenLeft
-    
-   
-    labelLen = string.len(name)
    
     term.setCursorPos(buttons[name]["xMin"], buttons[name]["yMin"])
     term.write(fillSpace(buttonLen))
