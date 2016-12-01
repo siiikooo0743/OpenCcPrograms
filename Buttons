@@ -161,7 +161,7 @@ function drawScreen()
     if buttonLen < labelLen then
       print("ButtonTextToLong")
       os.exit()
-    fi
+    then
    
     fillLen = buttonLen - labelLen
     
