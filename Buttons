@@ -162,7 +162,7 @@ function drawScreen()
     
     if buttonLen < labelLen then
       print("ButtonTextToLong")
-      shell.exit()
+      return(-1)
     end
    
     fillLen = buttonLen - labelLen
@@ -182,6 +182,8 @@ function drawScreen()
     resetTermColors()
    
   end
+  
+  return(0)
  
 end
  
@@ -208,10 +210,12 @@ term.clear()
  
 defineButtons()
 initBundledOutput()
+
+res = 0
+
+while res == 0 do
  
-while true do
- 
-  drawScreen()
+  res = drawScreen()
  
   local evtp, side, x, y = os.pullEvent()
  
