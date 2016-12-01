@@ -66,24 +66,26 @@ function defineButtons()
  
   screenX, screenY = term.getSize()
  
-  vertTrim = math.floor(screenY/(rows+1)) + 1
-  horizTrim = math.floor(screenX/(columns+1)) + 1
+  lineHeight = math.floor(screenY/(rows+1)) + 1
+  columnWidth = math.floor(screenX/(columns+1)) + 1
  
   i = 1  
   for row = 1, rows do
-   
+    
     if i > # cfg then break end
-   
-    local yMin = (row * vertTrim) - 1
-    local yMax = (row * vertTrim) + 1
+    
+    lastX = 0
+    
+    local yMin = (row * lineHeight) - 1
+    local yMax = (row * lineHeight) + 1
    
     for col =  1, columns do
      
       if i > # cfg then break end
      
       local labelLen = string.len(cfg[i][bLabel])
-      local xMin = ((col-1) * horizTrim) - 1
-      local xMax = xMin + labelLen + 2
+      local xMin = (col * columnWidth) - 1
+      local xMax = xMin + columnWidth + 1
      
       setButton(cfg[i][bLabel], cfg[i][bActive], getBundledColor(i), toggleBundledOutput, cfg[i][inverse], xMin, xMax, yMin, yMax)
       --print(xMin..","..xMax..","..yMin..","..yMax)
