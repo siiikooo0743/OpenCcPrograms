@@ -67,7 +67,7 @@ function defineButtons()
   screenX, screenY = term.getSize()
  
   lineHeight = math.floor(screenY/(rows+1)) + 1
-  columnWidth = math.floor(screenX/(columns+1)) + 1
+  columnWidth = math.floor(screenX/columns)
  
   i = 1  
   for row = 1, rows do
@@ -162,7 +162,7 @@ function drawScreen()
     
     if buttonLen < labelLen then
       print("ButtonTextToLong")
-      return(-1)
+      return -1 
     end
    
     fillLen = buttonLen - labelLen
@@ -183,7 +183,7 @@ function drawScreen()
    
   end
   
-  return(0)
+  return 0
  
 end
  
