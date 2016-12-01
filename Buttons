@@ -34,7 +34,7 @@ cfg[5] = {"Spawner", false, true}
 --cfg[8] = {"Peat Bog", true, false}
  
 -- columns & rows:
-columns = 3
+columns = 2
 rows = 3
  
 -- buttons: this holds the buttons definitions
@@ -84,8 +84,8 @@ function defineButtons()
       if i > # cfg then break end
      
       local labelLen = string.len(cfg[i][bLabel])
-      local xMin = (col * columnWidth) - 1
-      local xMax = xMin + columnWidth + 1
+      local xMin = ((col-1) * columnWidth) + 2
+      local xMax = xMin + columnWidth - 2
      
       setButton(cfg[i][bLabel], cfg[i][bActive], getBundledColor(i), toggleBundledOutput, cfg[i][inverse], xMin, xMax, yMin, yMax)
       --print(xMin..","..xMax..","..yMin..","..yMax)
