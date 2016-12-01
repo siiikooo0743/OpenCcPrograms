@@ -2,13 +2,13 @@
 -- genericCtrl
  
 -- monSide: side of the monitor
-local monSide = "back"
+local monSide = "right"
 local term = peripheral.wrap(monSide)
  
 --local txtScale = 1.0
  
 -- rsSide: Redstone Bundled Output
-local rsSide = "right"
+local rsSide = "left"
  
 -- Position in cfg arrays
 local bLabel = 1
