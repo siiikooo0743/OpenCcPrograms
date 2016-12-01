@@ -85,7 +85,7 @@ function defineButtons()
       local xMin = (col * horizTrim) - math.floor(labelLen/2) - 1
       local xMax = xMin + labelLen + 2
      
-      setButton(cfg[i][bLabel], cfg[i][bActive], getBundledColor(i), cfg[i][inverse], toggleBundledOutput, xMin, xMax, yMin, yMax)
+      setButton(cfg[i][bLabel], cfg[i][bActive], getBundledColor(i), toggleBundledOutput, cfg[i][inverse], xMin, xMax, yMin, yMax)
       --print(xMin..","..xMax..","..yMin..","..yMax)
       i = i + 1
            
