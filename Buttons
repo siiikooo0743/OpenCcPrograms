@@ -100,13 +100,13 @@ function toggleBundledOutput(name)
   if (buttons[name]["active"]) and (not buttons[name]["inverse"])  then
     rs.setBundledOutput(rsSide, (activeColors - buttons[name]["color"]))
     buttons[name]["active"] = false
-  elseif (buttons[name]["active"]) and (buttons[name]["inverse"])
+  elseif (buttons[name]["active"]) and (buttons[name]["inverse"]) then
     rs.setBundledOutput(rsSide, (activeColors + buttons[name]["color"]))
     buttons[name]["active"] = false
-   elseif (not buttons[name]["active"]) and (not buttons[name]["inverse"])
+   elseif (not buttons[name]["active"]) and (not buttons[name]["inverse"]) then
     rs.setBundledOutput(rsSide, (activeColors + buttons[name]["color"]))
     buttons[name]["active"] = true
-   elseif (not buttons[name]["active"]) and (buttons[name]["inverse"])
+   elseif (not buttons[name]["active"]) and (buttons[name]["inverse"]) then
     rs.setBundledOutput(rsSide, (activeColors - buttons[name]["color"]))
     buttons[name]["active"] = true
   end
