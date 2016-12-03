@@ -1,1 +1,14 @@
+pim = peripheral.wrap("top")
+s = peripheral.wrap("bottom")
+
+while true do
+  players = s.getPlayers()
+  
+  for(key,player in pairs(players)) do
+    if not fs.exists(".players" .. player["uuid"]) then
+      
+    end
+  end
+  
+end
 
