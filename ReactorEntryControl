@@ -1,12 +1,25 @@
+--[[
+	ReactorEntryControl
+	
+	Copyright (C) 2016 siiikooo0743
+	
+	This is used to control who can enter a reactor area. only with hazmat suite alowed.
+  You can switch your armor using the Pim above the turtle.
+	
+  Version 0.1
+  
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+]]
 pim = peripheral.wrap("top")
-s = peripheral.wrap("bottom")
+scanner = peripheral.wrap("bottom")
 
 function calcRealSlot(armorSlot)
   return (1 + ((armorSlot -1) * 4))
 end
 
 function isHazmat(slot)
-  return (turtle.getItemDetail(calcRealSlot(slot)) == "IC2:itemArmorHazmatHelmet")
+  return (turtle.getItemDetail(calcRealSlot(slot))["name"] == "IC2:itemArmorHazmatHelmet")
 end
 
 function findSlot()
@@ -40,7 +53,7 @@ function getSlotOfPlayer(player)
 end
 
 while true do
-  players = s.getPlayers()
+  players = scanner.getPlayers()
   open = false
   notOpen = false
   
