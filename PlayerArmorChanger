@@ -1,12 +1,12 @@
 pim = peripheral.wrap("top")
 s = peripheral.wrap("bottom")
 
-function clalcRealSlot(armorSlot)
+function calcRealSlot(armorSlot)
   return (1 + ((armorSlot -1) * 4))
 end
 
 function isHazmat(slot)
-  return (turtle.getItemDetails(clalcRealSlot(slot)) == "IC2:itemArmorHazmatHelmet")
+  return (turtle.getItemDetail(calcRealSlot(slot)) == "IC2:itemArmorHazmatHelmet")
 end
 
 function findSlot()
@@ -44,20 +44,21 @@ while true do
   open = false
   notOpen = false
   
-  for(key,player in pairs(players)) do
-    slot = getSlotOfPlayer(player)
+  for key,player in pairs(players) do
+    slot = getSlotOfPlayer(player['uuid'])
+
     if slot == -1 then
       slot = findSlot()
       if slot == -1 then
         notOpen = true
       else
         file = fs.open(".slots/" .. slot, "w")
-        p = file.writeLine(player)
+        p = file.writeLine(player['uuid'])
         file.close()
       end
     end
     
-    if not isHazmat(slot) then
+    if (slot > 0) and not isHazmat(slot) then
       open = true
     else
       notOpen = true
@@ -65,9 +66,9 @@ while true do
   end
   
   if open and (not notOpen) then
-    redstone.setOutput("ríght", true)
+    redstone.setOutput("right", true)
   else
-    redstone.setOutput("ríght", false)
+    redstone.setOutput("right", false)
   end
   
   
