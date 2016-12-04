@@ -128,7 +128,7 @@ while true do
 	      turtle.select(16)
 	      turtle.transferTo(slot)
         
-	      pimCd = 20
+	      pimCd = 50
 	      sleep(0.5)
       end
     end
