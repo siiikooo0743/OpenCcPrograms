@@ -48,6 +48,7 @@ function vardump(value, depth, key)
 end
 
 function varDumpToScreen(monitor, value, depth, key)
+ width, height = monitor.getSize()
  monitor.setTextScale(0.5)
  
  local linePrefix = ""
@@ -80,9 +81,32 @@ function varDumpToScreen(monitor, value, depth, key)
       type(value)	== 'userdata' or
       value		== nil
   then
-    writeLnToMonitor(monitor, spaces..tostring(value))
+    valueS = tostring(value)
+    len = string.len(valueS)
+    lenSpaces = string.len(spaces)
+    printed = 0
+    
+    while len > printed do
+      charsToPrint = (width - lenSpaces -2)
+      toPrint = string.sub(valueS,printed + 1, (printed + 1) + charsToPrint)
+      printed = printed + charsToPrint
+      writeLnToMonitor(monitor, spaces..toPrint)
+    end
+
   else
-    writeLnToMonitor(monitor, spaces..linePrefix.."("..type(value)..") "..tostring(value))
+    valueS = tostring(linePrefix.."("..type(value)..") "..tostring(value))
+    len = string.len(valueS)
+    lenSpaces = string.len(spaces)
+    printed = 0
+    
+    while len > printed do
+      charsToPrint = (width - lenSpaces -2)
+      toPrint = string.sub(valueS,printed + 1, (printed + 1) + charsToPrint)
+      printed = printed + charsToPrint
+      writeLnToMonitor(monitor, spaces..toPrint)
+    end
+  
+    writeLnToMonitor(monitor, spaces..toPrint)
   end
  
 end
