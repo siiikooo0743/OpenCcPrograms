@@ -6,7 +6,7 @@
 	This is used to control who can enter a reactor area. only with hazmat suite alowed.
   You can switch your armor using the Pim above the turtle.
 	
-  Version 0.1.1
+  Version 0.2.1
   
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
@@ -96,28 +96,40 @@ while true do
   
   if pim.getInventorySize() > 0 and pimCd == 0 then
     for key,player in pairs(players) do
-      if player["name"] == pim.getItemInventoryName() then
+      if player["name"] == pim.getInventoryName() then
         slot = getSlotOfPlayer(player['uuid'])
 	
-	--Helmet
-	pim.pushItemIntoSlot("down", 40, 1, 16)
-	pim.pullItemIntoSlot("down", slot, 1, 40)
+	      --Helmet
+	      pim.pushItemIntoSlot("down", 40, 1, 16)
+	      pim.pullItemIntoSlot("down", slot, 1, 40)
 	
-	--Chest
-	pim.pushItemIntoSlot("down", 39, 1, slot)
-	pim.pullItemIntoSlot("down", slot + 1, 1, 39)
+	      --Chest
+	      pim.pushItemIntoSlot("down", 39, 1, slot)
+	      pim.pullItemIntoSlot("down", slot + 1, 1, 39)
 	
-	--Legs
-	pim.pushItemIntoSlot("down", 38, 1, slot + 1)
-	pim.pullItemIntoSlot("down", slot + 2, 1, 38)
+	      --Legs
+	      pim.pushItemIntoSlot("down", 38, 1, slot + 1)
+	      pim.pullItemIntoSlot("down", slot + 2, 1, 38)
 	
-	--shoes
-	pim.pushItemIntoSlot("down", 37, 1, slot + 2)	
-	pim.pullItemIntoSlot("down", slot + 3, 1, 37)
+	      --shoes
+	      pim.pushItemIntoSlot("down", 37, 1, slot + 2)	
+	      pim.pullItemIntoSlot("down", slot + 3, 1, 37)
 
-	turtle.select(16)
-	turtle.transferTo(slot)
-	pimCd = 20
+        --Return to correct slot
+        turtle.select(slot+2)
+	      turtle.transferTo(slot+3)
+        
+        turtle.select(slot+1)
+	      turtle.transferTo(slot+2)
+        
+        turtle.select(slot)
+	      turtle.transferTo(slot+1)
+  
+	      turtle.select(16)
+	      turtle.transferTo(slot)
+        
+	      pimCd = 20
+	      sleep(2)
       end
     end
   end
