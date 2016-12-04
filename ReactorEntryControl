@@ -6,7 +6,7 @@
 	This is used to control who can enter a reactor area. only with hazmat suite alowed.
   You can switch your armor using the Pim above the turtle.
 	
-  Version 0.2.1
+  Version 0.2.2
   
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
@@ -129,7 +129,7 @@ while true do
 	      turtle.transferTo(slot)
         
 	      pimCd = 20
-	      sleep(2)
+	      sleep(0.5)
       end
     end
   end
