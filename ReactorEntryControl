@@ -6,7 +6,7 @@
 	This is used to control who can enter a reactor area. only with hazmat suite alowed.
   You can switch your armor using the Pim above the turtle.
 	
-  Version 0.1
+  Version 0.1.1
   
 	Author: siiikooo0743
 	Website: https://github.com/siiikooo0743/OpenCcPrograms
@@ -19,7 +19,12 @@ function calcRealSlot(armorSlot)
 end
 
 function isHazmat(slot)
-  return (turtle.getItemDetail(calcRealSlot(slot))["name"] == "IC2:itemArmorHazmatHelmet")
+  item = turtle.getItemDetail(calcRealSlot(slot))
+  if item == nil then
+    return false
+  end
+  
+  return (item["name"] == "IC2:itemArmorHazmatHelmet")
 end
 
 function findSlot()
