@@ -88,7 +88,7 @@ function varDumpToScreen(monitor, value, depth, key)
     
     while len > printed do
       charsToPrint = (width - lenSpaces -2)
-      toPrint = string.sub(valueS,printed + 1, (printed + 1) + charsToPrint)
+      toPrint = string.sub(valueS,printed + 1, printed  + charsToPrint)
       printed = printed + charsToPrint
       writeLnToMonitor(monitor, spaces..toPrint)
     end
@@ -101,7 +101,7 @@ function varDumpToScreen(monitor, value, depth, key)
     
     while len > printed do
       charsToPrint = (width - lenSpaces -2)
-      toPrint = string.sub(valueS,printed + 1, (printed + 1) + charsToPrint)
+      toPrint = string.sub(valueS,printed + 1, printed + charsToPrint)
       printed = printed + charsToPrint
       writeLnToMonitor(monitor, spaces..toPrint)
     end
