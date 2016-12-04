@@ -1,14 +1,76 @@
 pim = peripheral.wrap("top")
 s = peripheral.wrap("bottom")
 
-while true do
-  players = s.getPlayers()
-  
-  for(key,player in pairs(players)) do
-    if not fs.exists(".players" .. player["uuid"]) then
-      
+function clalcRealSlot(armorSlot)
+  return (1 + ((armorSlot -1) * 4))
+end
+
+function isHazmat(slot)
+  return (turtle.getItemDetails(clalcRealSlot(slot)) == "IC2:itemArmorHazmatHelmet")
+end
+
+function findSlot()
+  for i = 1, 4, 1 do
+    file = fs.open(".slots/" .. i, "r")
+    p = file.readLine()
+    file.close()
+    if p == "" then
+      return i
     end
   end
+
+  for i = 1, 4, 1 do
+    if isHazmat(i) then
+      return i
+    end
+  end
+  return -1 
+end
+
+function getSlotOfPlayer(player)
+  for i = 1, 4, 1 do
+    file = fs.open(".slots/" .. i, "r")
+    p = file.readLine()
+    file.close()
+    if p == player then
+      return i
+    end
+  end
+  return -1
+end
+
+while true do
+  players = s.getPlayers()
+  open = false
+  notOpen = false
+  
+  for(key,player in pairs(players)) do
+    slot = getSlotOfPlayer(player)
+    if slot == -1 then
+      slot = findSlot()
+      if slot == -1 then
+        notOpen = true
+      else
+        file = fs.open(".slots/" .. slot, "w")
+        p = file.writeLine(player)
+        file.close()
+      end
+    end
+    
+    if not isHazmat(slot) then
+      open = true
+    else
+      notOpen = true
+    end
+  end
+  
+  if open and (not notOpen) then
+    redstone.setOutput("ríght", true)
+  else
+    redstone.setOutput("ríght", false)
+  end
+  
+  
   
 end
 
