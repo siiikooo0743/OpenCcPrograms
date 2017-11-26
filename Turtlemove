@@ -1,0 +1,90 @@
+[
+  copied from http://www.computercraft.info/wiki/Turtlemove_%28Custom_API%29
+  Doku:
+  doString(str="", checkFuel=10, refuel=true, fuelRetLocation={x,y,z})
+
+doString takes as an argument a commandstr and some options. The commandstr is defined below. If the recorder is not on, Store and Goto require a wireless modem (for GPS). If any unsupported operation is attempted, the function will cause an error().
+checkFuel
+
+    -2: The turtle will attempt to return to fuelRetLocation if it has exactly that much fuel left after refueling attempts.
+    -1: The turtle will make no attempt to examine fuel levels.
+    n>=0: The API call will halt with a return of the string position if less than this much fuel is left AND refueling attempts fail.
+
+refuel
+
+    true: The turtle will try all slots, starting with 1, in an attempt to refuel.
+    false: The turtle will never attempt refueling,
+
+  commandstr
+
+  commandstr := {command}*
+  command := {direction} | {repeat} | {store} | {goto} | {mine} | {place} | {whitespace}
+  whitespace := Anything not defined here
+  direction := 'f' | 'b' | 'u' | 'd' | 'l' | 'r'
+  repeat := 'X{number}['{commandstr}']'
+  store := 'S<'{identifier}'>'
+  goto := 'G<'{identifier}'>'
+  identifier := [a-zA-Z0-9_ ]+
+  number := [0-9]+
+
+]
+turtlemove = {}
+
+local ALLCMDS=fbudlrxsg
+function turtlemove.doString(str, checkFuel, refuel, fuelRetLocation)
+  local function fuelCheck()
+    --TODO
+  end
+  local pos=0
+  local str = string.lower(str)
+  while pos <= string.len(str) do
+    pos = pos+1
+    fuelCheck()
+    local c = string.sub(str,pos,pos)
+    if string.find(ALLCMDS,c,1,true) then
+      if string.find("fbudlr",c,1,true) then
+        if c=="f" then
+          while not turtle.forward() do os.sleep(0.01) end
+        elseif c=="b" then
+          while not turtle.back() do os.sleep(0.01) end
+        elseif c=="u" then
+          while not turtle.up() do os.sleep(0.01) end
+        elseif c=="d" then
+          while not turtle.down() do os.sleep(0.01) end
+        elseif c=="l" then
+          while not turtle.turnLeft() do os.sleep(0.01) end
+        elseif c=="r" then
+          while not turtle.turnRight() do os.sleep(0.01) end
+        end
+      elseif c=="x" then
+        local numstr = ""
+        while pos <= string.len(str) do
+          pos = pos + 1
+          c2 = string.sub(str,pos,pos)
+          -- break check
+          if c2 == "[" then break end
+          -- errorcheck
+          if not string.find("0123456789",c2,1,true) then error("Unexpected character "..c2.." at position "..pos.." in repetition count") end
+          numstr = numstr .. c2
+        end
+        local pos_b = pos
+        local reps = tonumber(numstr)
+        if reps == nil then error("Repeated section at postition "..pos.." has no repetition count") end
+        while true do
+          pos=pos+1
+          c3=string.sub(str,pos,pos)
+          if c3=="]" then break end
+          if pos > string.len(str) then error("Repeated section not closed by position "..pos) end
+        end
+        local cmdstr = string.sub(str,pos_b,pos)
+        for i=1, reps do
+          turtlemove.doString(cmdstr)
+        end
+      else
+        error("Unimplemented character "..string.sub(str,pos,pos).." at position "..pos)
+      end
+    else
+      error("Unexpected character "..string.sub(str,pos,pos).." at position "..pos)
+    end
+  end
+end
