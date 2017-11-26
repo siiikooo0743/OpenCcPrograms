@@ -202,7 +202,7 @@ local function move(_direct, _mine)
       end
     end
   end
-  saveCoords()
+  savePos()
 end
 
 function go(_direction, _dist, _mine)
