@@ -1,0 +1,114 @@
+--[[
+	DigHall
+	
+	Copyright (C) 2015,2016,2017 siiikooo0743
+	
+	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
+	see LicenseDetails for more details and LICENSE for the complete license.
+	
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	Version 1.4.5
+	
+	Whith this program a turtle digs a room.
+	The first three arguments are the size of the room in the order x, y, z
+]]
+
+local arg = { ... }
+sizeX = 0
+sizeY = 0
+sizeZ = 0
+retX = 0
+retY = 0
+retZ = 0
+
+os.loadAPI("BetterMovementAPI")
+os.loadAPI("DiggingApi")
+
+if(#arg == 1 and arg[1] == "resume") then
+  if(fs.exists(".digRoom.resume")) then
+    local File = fs.open(".digRoom.resume", "r")
+    sizeX = tonumber(File.readLine())
+    sizeY = tonumber(File.readLine())
+    sizeZ = tonumber(File.readLine())
+    retX = tonumber(File.readLine())
+    retY = tonumber(File.readLine())
+    retZ = tonumber(File.readLine())
+    File.close()
+  fi
+elseif(#arg == 3) then 
+ sizeX = tonumber(arg[1])
+ sizeY = tonumber(arg[2])
+ sizeZ = tonumber(arg[3])
+ BetterMovementAPI.setHomeH()
+else 
+ print("Please give exactly three parameters x,y,z")
+ return
+end
+
+local File = fs.open(".digRoom.resume", "w")
+File.writeLine(x)
+File.writeLine(y)
+File.writeLine(z)
+File.writeLine(retX)
+File.writeLine(retY)
+File.writeLine(retZ)
+File.close()
+
+done = false
+
+while not done do
+ needToGoHome = not (BetterMovementAPI.checkFuel(true, 1000) && DiggingApi.checkItems())
+ if(retX ~= 0 and needToGoHome) then
+   retX, retY, retZ, _ = BetterMovementAPI.getPos()
+   local File = fs.open(".digRoom.resume", "w")
+   File.writeLine(x)
+   File.writeLine(y)
+   File.writeLine(z)
+   File.writeLine(retX)
+   File.writeLine(retY)
+   File.writeLine(retZ)
+   File.close()
+ elseif (retX ~= 0)
+   BetterMovementAPI.goTo(retX,retY,retZ)
+   cX, cY, cZ, _ = BetterMovementAPI.getPos()
+   if(cX == retX and cY == retY and cZ == retZ) then
+     retX = 0
+     retY = 0
+     retZ = 0
+     local File = fs.open(".digRoom.resume", "w")
+     File.writeLine(x)
+     File.writeLine(y)
+     File.writeLine(z)
+     File.writeLine(retX)
+     File.writeLine(retY)
+     File.writeLine(retZ)
+     File.close()
+   else
+     echo "Kernel Panic:"
+     echo "Failed to return!"
+     while true do sleep(3) end
+   end
+ end
+ if(needToGoHome) then 
+   BetterMovementAPI.goHome()
+   BetterMovementAPI.turnL()
+   BetterMovementAPI.turnL()
+   for i=1,16 do
+     turtle.select(i)
+     turtle.drop()
+   end
+   if(not BetterMovementAPI.checkFuel(true, 1000)) then
+     echo "Need fuel!"
+     while (not BetterMovementAPI.checkFuel(true, 1000)) do
+       os.pullEvent("turtle_inventory")
+     end
+   end
+   turtle.select(1)
+   // Next iteration the turtle will return to ret.
+ fi
+ 
+ 
+end
+
+fs.remove(".digRoom.resume")
