@@ -54,6 +54,11 @@ function setPos(_x, _y, _z, _f)
   savePos()
 end
 
+function getHome() 
+  loadPos()
+  return(hx,hy,hz,hf)
+end
+
 function setHome(_x, _y, _z, _f)
   hx = _x
   hy = _y
