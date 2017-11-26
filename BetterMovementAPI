@@ -25,6 +25,22 @@ hz = 0
 hf = 0
 directory = "BetterMovementAPI"
 
+--Returns true if every thing is good
+function checkFuel(tryRefuelFromInv, criticalLevel)
+  if (turtle.getFualLevel < criticalLevel) then
+    if(tryRefuelFromInv) then
+      for i=1,16 do
+        turtle.select(i)
+        turtle.refuel()
+      end
+    end
+    if (turtle.getFualLevel < criticalLevel) then
+      return false
+    end
+  end
+  return true
+end
+
 function setPos(_x, _y, _z, _f)
   x = _x
   y = _y
