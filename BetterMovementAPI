@@ -245,6 +245,7 @@ end
 
 function goTo(_x, _y, _z, _f)
   local arrived = false
+  local circumnav=0
   print("x:"..x..";y:"..y..";z:"..z..";f:"..f)
   print("_x:".._x..";_y:".._y..";_z:".._z..";_f:".._f)
   while not arrived do
@@ -292,9 +293,12 @@ function goTo(_x, _y, _z, _f)
 	end
       end
     else
-      if not turtle.detectUp() then
+      --Circumnavigating by going up or down!
+      if (not turtle.detectUp()) and circumnav<2 then
+        circumnav=1
 	go("up", 1, false)
       elseif not turtle.detectDown() then
+        circumnav=2
 	go("down", 1, false)
       else
 	print("STUCK")
