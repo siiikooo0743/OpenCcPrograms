@@ -41,6 +41,11 @@ function checkFuel(tryRefuelFromInv, criticalLevel)
   return true
 end
 
+function getPos() 
+  loadPos()
+  return(x,y,z,f)
+end
+
 function setPos(_x, _y, _z, _f)
   x = _x
   y = _y
