@@ -178,27 +178,27 @@ local function move(_direct, _mine)
   
   if _direct == "back" then
     if(not goBack()) then
-      print("Stuck...")
+      print("Stuck.")
       while(not goBack()) do
-        turtle.attack()
+        sleep(1)
       end
     end
   end
   
   if _direct == "up" then
-    if(not goUp()) then
+    if(not goUp(_mine)) then
       print("Stuck...")
-      while(not goUp()) do
-        turtle.attack()
+      while(not goUp(_mine)) do
+        turtle.attackUp()
       end
     end
   end
   
   if _direct == "down" then
-    if(not goDown()) then
+    if(not goDown(_mine)) then
       print("Stuck...")
-      while(not goDown()) do
-        turtle.attack()
+      while(not goDown(_mine)) do
+        turtle.attackDown()
       end
     end
   end
@@ -322,12 +322,12 @@ function goHome()
   goTo(hx, hy, hz, hf)
 end
 
-function saveCoords()
+function savePos()
   if(not fs.isDir(directory)) then
     fs.makeDir(directory)
   end
   
-  local File = fs.open(directory.."/Coords", "w")
+  local File = fs.open(directory.."/pos", "w")
   File.writeLine(x)
   File.writeLine(y)
   File.writeLine(z)
@@ -372,7 +372,7 @@ function loadHome()
   hy = tonumber(File.readLine())
   hz = tonumber(File.readLine())
   hf = tonumber(File.readLine())
-  
+  File.close()
   return true
 end
 
