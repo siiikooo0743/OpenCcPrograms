@@ -21,9 +21,27 @@ sizeZ = 0
 retX = 0
 retY = 0
 retZ = 0
+retF = 0
 
 os.loadAPI("BetterMovementAPI")
 os.loadAPI("DiggingApi")
+
+function unload()
+  BetterMovementAPI.goHome()
+  BetterMovementAPI.turnL()
+  BetterMovementAPI.turnL()
+  for i=1,16 do
+    turtle.select(i)
+    turtle.drop()
+  end
+  if(not BetterMovementAPI.checkFuel(true, 1000)) then
+    echo "Need fuel!"
+    while (not BetterMovementAPI.checkFuel(true, 1000)) do
+      os.pullEvent("turtle_inventory")
+    end
+  end
+  turtle.select(1)
+end
 
 if(#arg == 1 and arg[1] == "resume") then
   if(fs.exists(".digRoom.resume")) then
@@ -34,6 +52,7 @@ if(#arg == 1 and arg[1] == "resume") then
     retX = tonumber(File.readLine())
     retY = tonumber(File.readLine())
     retZ = tonumber(File.readLine())
+    retF = tonumber(File.readLine())
     File.close()
   fi
 elseif(#arg == 3) then 
@@ -53,6 +72,7 @@ File.writeLine(z)
 File.writeLine(retX)
 File.writeLine(retY)
 File.writeLine(retZ)
+File.writeLine(retF)
 File.close()
 
 done = false
@@ -60,7 +80,7 @@ done = false
 while not done do
  needToGoHome = not (BetterMovementAPI.checkFuel(true, 1000) && DiggingApi.checkItems())
  if(retX ~= 0 and needToGoHome) then
-   retX, retY, retZ, _ = BetterMovementAPI.getPos()
+   retX, retY, retZ, retF = BetterMovementAPI.getPos()
    local File = fs.open(".digRoom.resume", "w")
    File.writeLine(x)
    File.writeLine(y)
@@ -68,14 +88,16 @@ while not done do
    File.writeLine(retX)
    File.writeLine(retY)
    File.writeLine(retZ)
+   File.writeLine(retF)
    File.close()
  elseif (retX ~= 0)
-   BetterMovementAPI.goTo(retX,retY,retZ)
-   cX, cY, cZ, _ = BetterMovementAPI.getPos()
-   if(cX == retX and cY == retY and cZ == retZ) then
+   BetterMovementAPI.goTo(retX,retY,retZ,retF)
+   cX, cY, cZ, cF = BetterMovementAPI.getPos()
+   if(cX == retX and cY == retY and cZ == retZ and cF == retF) then
      retX = 0
      retY = 0
      retZ = 0
+     retF = 0
      local File = fs.open(".digRoom.resume", "w")
      File.writeLine(x)
      File.writeLine(y)
@@ -83,6 +105,7 @@ while not done do
      File.writeLine(retX)
      File.writeLine(retY)
      File.writeLine(retZ)
+     File.writeLine(retF)
      File.close()
    else
      echo "Kernel Panic:"
@@ -91,24 +114,26 @@ while not done do
    end
  end
  if(needToGoHome) then 
-   BetterMovementAPI.goHome()
-   BetterMovementAPI.turnL()
-   BetterMovementAPI.turnL()
-   for i=1,16 do
-     turtle.select(i)
-     turtle.drop()
-   end
-   if(not BetterMovementAPI.checkFuel(true, 1000)) then
-     echo "Need fuel!"
-     while (not BetterMovementAPI.checkFuel(true, 1000)) do
-       os.pullEvent("turtle_inventory")
-     end
-   end
-   turtle.select(1)
+   unload()
    // Next iteration the turtle will return to ret.
+ else
+   pX, pY, pZ, pF = BetterMovementAPI.getPos()
+   hX, hY, hZ, hF = BetterMovementAPI.getHome()
+   if(pY-hY >= sizeY and pZ-hZ >= sizeZ and pX-hX >= sizeX) then
+     --finished.
+     echo "I think i'm done."
+     echo "Now i'm going home and then i'm done."
+     done = true
+     fs.remove(".digRoom.resume")
+   end
+   if(pZ-hZ >= sizeZ and pX-hX >= sizeX) then
+     --need to go down
+     DiggingApi.clearDown()
+     //TODO: .... Problem: We need to switch between corners and the check above won't work for that.
+   fi
  fi
- 
- 
 end
+
+
 
 fs.remove(".digRoom.resume")
