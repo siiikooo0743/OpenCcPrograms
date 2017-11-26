@@ -1,4 +1,4 @@
-[
+--[[
   copied from http://www.computercraft.info/wiki/Turtlemove_%28Custom_API%29
   Doku:
   doString(str="", checkFuel=10, refuel=true, fuelRetLocation={x,y,z})
@@ -27,7 +27,7 @@ refuel
   identifier := [a-zA-Z0-9_ ]+
   number := [0-9]+
 
-]
+]]
 turtlemove = {}
 
 local ALLCMDS=fbudlrxsg
