@@ -244,17 +244,17 @@ function go(_direction, _dist, _mine)
 end
 
 function goTo(_x, _y, _z, _f)
-  local arrived = false
   local circumnav=0
   print("x:"..x..";y:"..y..";z:"..z..";f:"..f)
   print("_x:".._x..";_y:".._y..";_z:".._z..";_f:".._f)
-  while not arrived do
+  while not(x == _x  and y==_y and z==_z) do
     if _z > z then
     	turnTo(0)
     elseif _z < z then
 	turnTo(2)
     end
     if (not (turtle.detect())) then
+      circumnav=0
       if _z > z then
 	turnTo(0)
 	go("for", 1, false)
@@ -288,7 +288,7 @@ function goTo(_x, _y, _z, _f)
 	  elseif _y < y then
 	    go("down", 1, false)
 	  else
-	    arrived = true
+	    --Arrived
 	  end
 	end
       end
