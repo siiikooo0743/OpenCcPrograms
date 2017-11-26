@@ -1,7 +1,7 @@
 --[[
 	BetterMovementAPI
 	
-	Copyright (C) 2015 siiikooo0743
+	Copyright (C) 2015,2017 siiikooo0743
 	
 	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
 	see LicenseDetails for more details and LICENSE for the complete license.
@@ -349,7 +349,7 @@ function saveHome()
 end
 
 function loadPos()
-  if(not fs.exists(directory .. "/Pos")) then 
+  if(not fs.exists(directory .. "/pos")) then 
     return false 
   end
   
@@ -358,7 +358,7 @@ function loadPos()
   y = tonumber(File.readLine())
   z = tonumber(File.readLine())
   f = tonumber(File.readLine())
-  
+  File.close()
   return true
 end
 
