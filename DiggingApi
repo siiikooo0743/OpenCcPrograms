@@ -1,0 +1,79 @@
+--[[
+	DiggingApi
+	
+	Copyright (C) 2015,2016,2017 siiikooo0743
+	
+	This programm is part of the OpenCcPrograms-project and licensed under the GPLv3, 
+	see LicenseDetails for more details and LICENSE for the complete license.
+	
+	Author: siiikooo0743
+	Website: https://github.com/siiikooo0743/OpenCcPrograms
+	Version 1.4.5
+	
+  This is a API for digging. It needs the BetterMovementAPI
+]]
+
+--Returns true if every thing is good
+function checkItems()
+  local bFull = true
+  for i=1,16 do
+    local nCount = turtle.getItemCount(n)
+		if nCount == 0 then
+			bFull = false
+		end
+  end
+  return not bFull
+end
+
+--Checks if can safely dig without wasting items. Returns false if not and digs otherwise
+function dig()
+  if( not checkItems()) then return false end
+  turtle.dig()
+  return true
+end
+
+--Checks if can safely dig without wasting items. Returns false if not and digs otherwise
+function digUp()
+  if( not checkItems()) then return false end
+  turtle.digUp()
+  return true
+end
+
+--Checks if can safely dig without wasting items. Returns false if not and digs otherwise
+function digDown()
+  if( not checkItems()) then return false end
+  turtle.digDown()
+  return true
+end
+
+--Safely clears the block in front of the turtle. (returns false on full)
+function clearFront()
+  while(turtle.detect()) do
+    if(not dig()) then return false end
+    sleep(0.5)
+  end
+  return true
+end
+
+--Safely clears the block above the turtle. (returns false on full)
+function clearUp()
+  while(turtle.detectUp()) do
+    if(not digUp()) then return false end
+    sleep(0.5)
+  end
+  return true
+end
+
+--Safely clears the block below the turtle. (returns false on full)
+function clearDown()
+  while(turtle.detectDown()) do
+    if(not digDown()) then return false end
+    sleep(0.5)
+  end
+  return true
+end
+
+--Savely clears above and below. (returns false on full)
+function clearThree()
+  return clearUp() and clearDown()
+end
