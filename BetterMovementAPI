@@ -23,7 +23,7 @@ hx = 0
 hy = 0
 hz = 0
 hf = 0
-directory = "BetterMovementAPI"
+directory = ".bma"
 
 --Returns true if every thing is good
 function checkFuel(tryRefuelFromInv, criticalLevel)
